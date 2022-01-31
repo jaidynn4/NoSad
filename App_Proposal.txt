@@ -1,0 +1,27 @@
+1. 
+Compassion Mountain
+2. 
+Justin Orji, Jaidynn Fohr, Elliot Kwilinski
+3. 
+NoSad
+4. 
+The main purpose is to provide detailed mood tracking that the user can reference. 
+The user should be able to view their trends over various periods of time.
+5. 
+We want to keep track of all user-inputted data (moods, notes, etc).
+This should be stored locally for user privacy.
+6. 
+Notifications (reminders to fill out data)
+Networking (sharing data with others via text/email)
+Microphone & Sound (potentially audio diary recording)
+2D Canvas Graphics (animation for interfaces)
+7. 
+TODO
+8.
+TODO
+9.
+TODO
+10.
+TODO
+11.
+Idea Credit: Claire Gotcher

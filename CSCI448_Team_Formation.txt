@@ -1,0 +1,20 @@
+Team Name:
+- Compassion Mountain
+
+Team Members: 
+- Elliot Kwilinski
+- Jaidynn Fohr
+- Justin Orji
+
+App Idea Creator:
+- Jaidynn Fohr
+
+App Name:
+- NoSad
+
+App Description:
+- This app is intended to provide an easy and entertaining way for people 
+struggling with depression to log and track their emotional state. This will be
+accomplished by providing an interface to record and rate emotions throughout the day,
+display customizable emotion trackers, deliver graphs and statistics of data to identify
+low points, and offer support services by connecting with friends and family.
