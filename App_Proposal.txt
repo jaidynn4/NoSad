@@ -1,27 +1,51 @@
-1. 
-Compassion Mountain
-2. 
-Justin Orji, Jaidynn Fohr, Elliot Kwilinski
-3. 
-NoSad
-4. 
+1. COMPANY NAME
+- Compassion Mountain
+
+2. TEAM MEMBERS
+- Elliot Kwilinski
+- Jaidynn Fohr
+- Justin Orji
+
+3. APP NAME
+- NoSad
+
+4. DESCRIPTION OF THE APP
 The main purpose is to provide detailed mood tracking that the user can reference. 
 The user should be able to view their trends over various periods of time.
-5. 
+They should also be able to choose from various mood tracking charts to fill in with different colors.
+
+5. DATABASE USAGE
 We want to keep track of all user-inputted data (moods, notes, etc).
 This should be stored locally for user privacy.
-6. 
-Notifications (reminders to fill out data)
-Networking (sharing data with others via text/email)
-Microphone & Sound (potentially audio diary recording)
-2D Canvas Graphics (animation for interfaces)
-7. 
+
+6. COMPONENTS/FEATURES OF THE APP
+- Notifications
+  - This feature will be used for reminding users to enter mood information daily.
+- Networking
+  - This feature will allow users to choose to share data with others through text or email.
+- Microphone & Sound
+  - These features will provide uses with the option to create an audio diary recording.
+- 2D Canvas Graphics
+  - This feature is a potential stretch goal that could allow us to have animated interfaces.
+
+7. PLANNED DISTRIBUTION OF LABOR
 TODO
-8.
+
+8. ROAD MAP
 TODO
-9.
+
+9. DELIVERABLE LEADERS
 TODO
-10.
+Storyboards - 
+Alpha Release - 
+Beta Release - 
+Final Release - 
+Website & Video - 
+Final Report - 
+Extra Credit: Deploy to Play Store - 
+
+10. ANTICIPATED CHALLENGES
 TODO
-11.
-Idea Credit: Claire Gotcher
+
+11. SOURCES
+- The team would like to thank Claire Gotcher for providing the initial idea for this app.
