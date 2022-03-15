@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Resources&amp;Past</string>
+
+<!--Records Strings-->
+    <string name="record_title_placeholder">No Records Found</string>
+    <string name="text_entry_placeholder">No Text Found For This Record</string>
+
+<!--Resources Strings-->
 </resources>
