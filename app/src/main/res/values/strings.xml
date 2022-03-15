@@ -3,7 +3,8 @@
 
 <!--Records Strings-->
     <string name="record_title_placeholder">No Records Found</string>
-    <string name="text_entry_placeholder">No Text Found For This Record</string>
+    <string name="record_text_entry_placeholder">No Text Found For This Record</string>
+    <string name="record_audio_display_text">Audio Recording</string>
 
 <!--Resources Strings-->
 </resources>
