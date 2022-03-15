@@ -4,11 +4,14 @@ import android.provider.MediaStore
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.csci448.jorji.resourcespast.R
-import java.time.chrono.ChronoLocalDateTime
+import java.sql.Time
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 
-class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:Date, textTime:Date, audioTime:Date,textEntry:String?, audio:MediaStore.Audio?) {
+class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textTime:LocalTime, audioTime:LocalTime,textEntry:String?, audio:MediaStore.Audio?) {
     private val recordID = id
     private var recordTitle = title
     private var recordDate = date
@@ -28,17 +31,21 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:Date, textTime:D
         }
         return stringResource(id = R.string.record_title_placeholder)
     }
-    
-    fun getDate() : Date{
-        return recordDate
+
+    @Composable
+    fun getDate() : String{
+        return stringResource(id = R.string.record_date_formatter)
+            .format(recordDate.month.toString(),
+                    recordDate.dayOfMonth.toString(),
+                    recordDate.year.toString())
     }
 
-    fun getTextTime() : Long {
-        return recordTextTime.time
+    fun getTextTime() : String {
+        return recordTextTime.truncatedTo(ChronoUnit.MINUTES).toString()
     }
 
-    fun getAudioTime() : Long {
-        return recordAudioTime.time
+    fun getAudioTime() : String {
+        return recordAudioTime.truncatedTo(ChronoUnit.MINUTES).toString()
     }
 
     @Composable
@@ -54,5 +61,21 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:Date, textTime:D
             return recordAudio
         }
         return null
+    }
+
+    fun setText(newText:String){
+        recordText = newText
+    }
+
+    fun setTitle(newTitle:String){
+        recordTitle = newTitle
+    }
+
+    fun setTextTime(newTextTime:LocalTime){
+        recordTextTime = newTextTime
+    }
+
+    fun setAudioTime(newAudioTime:LocalTime){
+        recordAudioTime = newAudioTime
     }
 }

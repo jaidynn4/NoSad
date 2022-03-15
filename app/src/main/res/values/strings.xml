@@ -5,6 +5,7 @@
     <string name="record_title_placeholder">No Records Found</string>
     <string name="record_text_entry_placeholder">No Text Found For This Record</string>
     <string name="record_audio_display_text">Audio Recording</string>
+    <string name="record_date_formatter">%1$s/%2$s/%3$s</string>
 
 <!--Resources Strings-->
 </resources>
