@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">Alpha_Release</string>
+
+    <string name="login_title">Login</string>
+    <string name="email_hint">email</string>
+    <string name="password_hint">password</string>
+    <string name="forgot_password_button_label">forgot password</string>
+    <string name="login_button_label">Login</string>
+    <string name="signup_button_label">Don\'t have an account?</string>
+    <string name="create_screen_title">Create Account</string>
+    <string name="name_hint">name</string>
+    <string name="signup_button_hint">Sign up</string>
+    <string name="signin_button_label">Already have an account?</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="sample_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="month_view_label">Month</string>
+    <string name="week_view_label">Week</string>
+    <string name="day_view_label">Today</string>
+    <string name="mood_label">Mood</string>
+    <string name="sample_mood">Happy</string>
+    <string name="sample_mood_descriptor">Happy: Feeling or showing pleasure or contentment</string>
+    <string name="mood_over_time_label">Mood Specifics</string>
+    <string name="sample_graph_text">Graph goes here</string>
+
+
+
+    <string name="new_entries_label_1">New</string>
+    <string name="new_entries_label_2">Entries</string>
+
+    <string name="recent_additions_label_1">Recent</string>
+    <string name="recent_additions_label_2">Additions</string>
+
+    <string name="weekly_metrics_label_1">Weekly</string>
+    <string name="weekly_metrics_label_2">Metrics</string>
+
+    <string name="your_journal_label_1">Your</string>
+    <string name="your_journal_label_2">Journal</string>
+
+    <string name="support_resources_label_1">Support</string>
+    <string name="support_resources_label_2">Resources</string>
+    
+    <string name="love">Love</string>
+        <string name="love_0">Peaceful</string>
+            <string name="love_0_0">Peaceful</string>
+            <string name="love_0_1">Peaceful</string>
+
+        <string name="love_1">Tenderness</string>
+
+
+        <string name="love_2">Desire</string>
+
+
+        <string name="love_3">Longing</string>
+
+
+        <string name="love_4">Affectionate</string>
+
+    <string name="Joy">Love</string>
+        <string name="joy_0">Enthralled</string>
+
+
+        <string name="joy_1">Elation</string>
+
+
+        <string name="joy_2">Enthusiastic</string>
+
+
+        <string name="joy_3">Optimistic</string>
+
+
+        <string name="joy_4">Proud</string>
+
+
+        <string name="joy_5">Cheerful</string>
+
+
+        <string name="joy_6">Happy</string>
+
+
+        <string name="joy_7">Content</string>
+
+
+    <string name="Surprise">Love</string>
+
+    <string name="Sadness">Love</string>
+
+    <string name="Anger">Love</string>
+
+    <string name="Fear">Love</string>
+
+</resources>
