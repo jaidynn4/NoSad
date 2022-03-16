@@ -102,7 +102,7 @@ private fun TitleAndDescription() {
 }
 
 @Composable
-private fun NewUserScreen() {
+fun NewUserScreen() {
     Column(Modifier.fillMaxSize()) {
         Box(Modifier.weight(1f)) {
             TitleAndDescription()
