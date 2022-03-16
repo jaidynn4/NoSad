@@ -17,65 +17,58 @@ import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 
-//val countriesList = mutableListOf<String>(stringResource(R.string.love), "USA", "Canada", "Germany","Australia")
-val labelChoice: String = ""
 
 @Composable
-private fun EmotionsDropDown(){
+fun EmotionsDropDown(){
+    val emotionsList = mutableListOf<String>(
+        stringResource(R.string.love),
+        stringResource(R.string.Joy),
+        stringResource(R.string.Surprise),
+        stringResource(R.string.Sadness),
+        stringResource(R.string.Anger),
+        stringResource(R.string.Fear)
+    )
+
+    var emotion: String by remember { mutableStateOf(emotionsList[0]) }
     var expanded by remember { mutableStateOf(false)}
-    var emotion: String by remember { mutableStateOf(labelChoice) }
-
-    Column(
-        Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth()
-            .clickable {
-                expanded = !expanded
-            },
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "test",
-            fontSize = 18.sp,
-            modifier = Modifier.padding(end = 8.dp)
-        )
-
-        Icon(imageVector = Icons.Filled.ArrowDropDown,
-            contentDescription = ""
-        )
 
 
-        DropdownMenu(expanded = expanded,
-                    onDismissRequest = {
-                        expanded = false
-                    }
-        ) {
-
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    //emotion = stringResource(id = R.string.love)
+    Box(Modifier.fillMaxWidth(),contentAlignment = Alignment.Center) {
+        Row(
+            Modifier
+                .padding(24.dp)
+                .clickable {
+                    expanded = !expanded
                 }
-            ){
-                Text(text = stringResource(id = R.string.love))
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) { // Anchor view
+            Text(text = emotion,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // Country name label
+            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+
+            //
+            DropdownMenu(expanded = expanded, onDismissRequest = {
+                expanded = false
+            }) {
+                emotionsList.forEach{ emotionChoice->
+                    DropdownMenuItem(onClick = {
+                        expanded = false
+                        emotion = emotionChoice
+                    }) {
+                        Text(text = emotionChoice)
+                    }
+                }
             }
-
-
-        //efficient way to do this - implement as string-array resource later
-//            countriesList.forEach{ country->
-//                DropdownMenuItem(onClick = {
-//                    expanded = false
-//                    countryName = country
-//                }) {
-//                    Text(text = country)
-//                }
-//            }
         }
     }
-}
 
+}
 
 @Preview
 @Composable
 private fun PreviewColorWheelScreen() {
-    NoSad_Scaffold { EmotionsDropDown() }
+    NoSad_Scaffold {
+        EmotionsDropDown()
+    }
 }
