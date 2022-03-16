@@ -29,7 +29,8 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textT
         if(recordTitle != null){
             return recordTitle
         }
-        return stringResource(id = R.string.record_title_placeholder)
+        else if (recordTitle == null && recordAudio != null) return null
+        else return stringResource(id = R.string.record_title_placeholder)
     }
 
     @Composable
@@ -42,21 +43,59 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textT
 
     @Composable
     fun getTextTime() : String {
-        val partOfDay : String
-        val hour : String
-        if(recordTextTime.hour >= 12){
-            partOfDay = "PM"
-            hour = (recordTextTime.hour - 12).toString()
+        if(recordTitle != null)
+        {
+            val partOfDay: String
+            val hour: String
+            val minute: String
+            if (recordTextTime.hour >= 12) {
+                partOfDay = "PM"
+                hour = (recordTextTime.hour - 12).toString()
+            } else {
+                partOfDay = "AM"
+                hour = recordTextTime.hour.toString()
+            }
+            if (recordTextTime.minute <= 9) {
+                minute = "0${recordTextTime.minute}"
+            } else {
+                minute = recordTextTime.minute.toString()
+            }
+            return stringResource(id = R.string.record_time_formatter).format(
+                hour,
+                minute,
+                partOfDay
+            )
         }
-        else{
-            partOfDay = "AM"
-            hour = recordTextTime.hour.toString()
-        }
-        return stringResource(id = R.string.record_time_formatter).format(hour,recordTextTime.minute,partOfDay)
+        else return ""
     }
 
+    @Composable
     fun getAudioTime() : String {
-        return recordAudioTime.truncatedTo(ChronoUnit.MINUTES).toString()
+        if(recordAudio != null) {
+            val partOfDay: String
+            val hour: String
+            val minute: String
+            if (recordAudioTime.hour >= 12) {
+                partOfDay = "PM"
+                hour = (recordAudioTime.hour - 12).toString()
+            } else {
+                partOfDay = "AM"
+                hour = recordAudioTime.hour.toString()
+            }
+            if (recordAudioTime.minute <= 9) {
+                minute = "0${recordAudioTime.minute}"
+            } else {
+                minute = recordAudioTime.minute.toString()
+            }
+            return stringResource(id = R.string.record_time_formatter).format(
+                hour,
+                minute,
+                partOfDay
+            )
+        }
+        else{
+            return ""
+        }
     }
 
     @Composable

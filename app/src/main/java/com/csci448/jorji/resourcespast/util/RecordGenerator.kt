@@ -8,7 +8,7 @@ import java.util.*
 
 object RecordGenerator {
     private fun <T> List<T>.rand() = shuffled().first()
-    private val titles = listOf("Things Going Better","stressed today","Breakup","feeling pretty good :)","Family problems")
+    private val titles = listOf("Things Going Better","stressed today","Breakup","feeling pretty good :)","Family problems", null)
     private val textBodies = listOf("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " +
             "   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
             "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit " +
@@ -23,7 +23,7 @@ object RecordGenerator {
     private val date = LocalDate.now()
     private val textTime = LocalTime.now()
     private val audioTime = LocalTime.now()
-    private val audio = null
+    private val audio = listOf(null,MediaStore.Audio())
 
-    fun generateRandomRecord() = PastRecord(title = titles.rand(), textEntry = textBodies.rand(), date = date, textTime = textTime, audioTime = audioTime, audio = audio)
+    fun generateRandomRecord() = PastRecord(title = titles.rand(), textEntry = textBodies.rand(), date = date, textTime = textTime, audioTime = audioTime, audio = audio.rand())
 }

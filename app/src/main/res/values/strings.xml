@@ -2,6 +2,7 @@
     <string name="app_name">Resources&amp;Past</string>
 
 <!--Records Strings-->
+    <string name="record_screen_title">Past Records</string>
     <string name="record_title_placeholder">No Records Found</string>
     <string name="record_text_entry_placeholder">No Text Found For This Record</string>
     <string name="record_audio_display_text">Audio Recording</string>
