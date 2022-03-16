@@ -40,8 +40,19 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textT
                     recordDate.year.toString())
     }
 
+    @Composable
     fun getTextTime() : String {
-        return recordTextTime.truncatedTo(ChronoUnit.MINUTES).toString()
+        val partOfDay : String
+        val hour : String
+        if(recordTextTime.hour >= 12){
+            partOfDay = "PM"
+            hour = (recordTextTime.hour - 12).toString()
+        }
+        else{
+            partOfDay = "AM"
+            hour = recordTextTime.hour.toString()
+        }
+        return stringResource(id = R.string.record_time_formatter).format(hour,recordTextTime.minute,partOfDay)
     }
 
     fun getAudioTime() : String {
