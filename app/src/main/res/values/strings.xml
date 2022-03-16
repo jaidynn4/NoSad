@@ -27,4 +27,10 @@
     <string name="resources_NSH">1-800-273-8255</string>
     <string name="resources_crisis_2">or a local prevention hotline for immediate help</string>
     <string name="resources_local_hotline">Your Local Hotline: %1$s</string>
+    <string name="resources_socials">Follow Our Socials</string>
+    <string name="resources_fb">FaceBook Link</string>
+    <string name="resources_tw">Twitter Link</string>
+    <string name="resources_red">Reddit Link</string>
+    <string name="resources_insta">Instagram Link</string>
+
 </resources>
