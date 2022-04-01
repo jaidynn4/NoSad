@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -88,7 +89,10 @@ fun ResourceScreen(list : List<Resource>?, onSelectResource : (Resource) -> Unit
 fun ResourceRow(resource: Resource, onSelectResource: (Resource) -> Unit){
     Button(
         onClick = { onSelectResource },
-        Modifier.padding(16.dp)
+        Modifier.padding(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = colorResource(id = R.color.green),
+            contentColor = Color.White)
     )
     {
         Column(

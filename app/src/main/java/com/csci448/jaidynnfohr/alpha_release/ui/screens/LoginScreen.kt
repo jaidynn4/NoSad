@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,14 +22,17 @@ private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
     Column {
         Spacer(modifier = Modifier.padding(12.dp))
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Button(onClick = onLogin , shape = RoundedCornerShape(20.dp)) {
+            Button(onClick = onLogin , shape = RoundedCornerShape(20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = colorResource(id = R.color.green),
+                    contentColor = Color.White)) {
                 Text(text = stringResource(R.string.login_button_label), fontSize = 14.sp)
             }
         }
 
         Spacer(modifier = Modifier.padding(8.dp))
         TextButton(onClick = onCreateAccount , shape = RoundedCornerShape(20.dp)) {
-            Text(text = stringResource(R.string.signup_button_label), fontSize = 10.sp)
+            Text(text = stringResource(R.string.signup_button_label), color = colorResource(id = R.color.green), fontSize = 10.sp)
         }
     }
 }
@@ -57,7 +61,7 @@ fun textFields() {
             )
         Column(modifier = Modifier.align(Alignment.End)) {
             TextButton(onClick = { /*TODO*/ }) {
-                Text(text = stringResource(R.string.forgot_password_button_label), fontSize = 10.sp)
+                Text(text = stringResource(R.string.forgot_password_button_label), fontSize = 10.sp, color = colorResource(id = R.color.green))
             }
 
         }
@@ -68,7 +72,7 @@ fun textFields() {
 fun LoginScreen(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.login_title), fontSize = 20.sp)
+        Text(text = stringResource(R.string.login_title), color = colorResource(id = R.color.green), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
         textFields()
         Buttons(onLogin, onCreateAccount)

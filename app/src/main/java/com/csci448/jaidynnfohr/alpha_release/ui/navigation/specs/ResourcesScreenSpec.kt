@@ -70,7 +70,8 @@ object ResourcesScreenSpec : IScreenSpec {
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
-            onSettings = {}
+            onSettings = {},
+            bottomBarItemNumber = 5
         )
     }
 

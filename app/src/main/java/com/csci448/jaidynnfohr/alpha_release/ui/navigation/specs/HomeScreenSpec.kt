@@ -21,19 +21,22 @@ object HomeScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { ScrollingCards(
-                onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
-                onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
-                onJournal = {},
-                onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())}
-            ) },
+            content = {
+                ScrollingCards(
+                    onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
+                    onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
+                    onJournal = {},
+                    onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())}
+                )
+              },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
             onJournal = {},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
-            onSettings = {}
+            onSettings = {},
+            bottomBarItemNumber = 0
         )
     }
 

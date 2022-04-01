@@ -18,7 +18,8 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                    onJournal: () -> Unit,
                    onSupport: () -> Unit,
                    onHome: () -> Unit,
-                   onSettings: () -> Unit
+                   onSettings: () -> Unit,
+                   bottomBarItemNumber: Int /*1-5 for nav icon enabling, 0 for other screens*/
                    ){
     Scaffold(
         topBar = {
@@ -59,10 +60,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.new_entries_label_1))
+                            Text(stringResource(id = R.string.new_entries_label_short))
                         },
-                        selected = false,
-                        selectedContentColor = colorResource(id = R.color.light_green),
+                        selected = (bottomBarItemNumber == 1),
+                        selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onAddItem
                     )
@@ -74,10 +75,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.recent_additions_label_1))
+                            Text(stringResource(id = R.string.recent_additions_label_short))
                         },
-                        selected = false,
-                        selectedContentColor = colorResource(id = R.color.green),
+                        selected = (bottomBarItemNumber == 2),
+                        selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onRecent
                     )
@@ -89,10 +90,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.weekly_metrics_label_2))
+                            Text(stringResource(id = R.string.metrics_tracker_label_short))
                         },
-                        selected = false,
-                        selectedContentColor = colorResource(id = R.color.green),
+                        selected = (bottomBarItemNumber == 3),
+                        selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onMetrics
                     )
@@ -104,10 +105,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.your_journal_label_2))
+                            Text(stringResource(id = R.string.journal_records_label_short))
                         },
-                        selected = false,
-                        selectedContentColor = colorResource(id = R.color.green),
+                        selected = (bottomBarItemNumber == 4),
+                        selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onJournal
                     )
@@ -119,10 +120,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.support_resources_label_1))
+                            Text(stringResource(id = R.string.support_resources_label_short))
                         },
-                        selected = false,
-                        selectedContentColor = colorResource(id = R.color.green),
+                        selected = (bottomBarItemNumber == 5),
+                        selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onSupport
                     )
