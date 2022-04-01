@@ -2,12 +2,14 @@ package com.csci448.jaidynnfohr.alpha_release.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
@@ -55,37 +57,31 @@ private fun CreateEditTexts() {
 }
 
 @Composable
-private fun CreateButtons() {
+private fun CreateButtons(onCreate: () -> Unit, onAlready: () -> Unit) {
 
     Column {
 
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Button(onClick = { /*TODO*/ }, shape = RoundedCornerShape(20.dp)) {
+            Button(onClick = onCreate, shape = RoundedCornerShape(20.dp)) {
                 Text(text = stringResource(R.string.signup_button_hint), fontSize = 14.sp)
             }
         }
 
         Spacer(modifier = Modifier.padding(8.dp))
-        TextButton(onClick = { /*TODO*/ }, shape = RoundedCornerShape(20.dp)) {
+        TextButton(onClick = onAlready, shape = RoundedCornerShape(20.dp)) {
             Text(text = stringResource(R.string.signin_button_label), fontSize = 10.sp)
         }
     }
 }
 
 @Composable
-private fun CreateAccountScreen() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+fun CreateAccountScreen(onCreate: () -> Unit, onAlready: () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(R.string.create_screen_title), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
         CreateEditTexts()
         Spacer(modifier = Modifier.padding(8.dp))
-        CreateButtons()
+        CreateButtons(onCreate, onAlready)
     }
-}
-
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun CreateAccountScreenPreview() {
-    NoSad_Scaffold { CreateAccountScreen() }
 }

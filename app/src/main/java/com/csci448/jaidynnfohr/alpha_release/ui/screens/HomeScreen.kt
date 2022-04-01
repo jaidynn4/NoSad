@@ -1,5 +1,6 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -18,7 +19,12 @@ import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 
 @Composable
-private fun ScrollingCards(){
+fun ScrollingCards(
+    onNew: () -> Unit,
+    onRecent: () -> Unit,
+    onMetrics: () -> Unit,
+    onJournal: () -> Unit
+    ){
     Column(
         Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -29,7 +35,8 @@ private fun ScrollingCards(){
             Modifier
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
-                .height(96.dp),
+                .height(96.dp)
+                .clickable( onClick = onNew ),
             shape = RoundedCornerShape(20.dp)
         ) {
             Row(
@@ -61,7 +68,8 @@ private fun ScrollingCards(){
             Modifier
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
-                .height(96.dp),
+                .height(96.dp)
+                .clickable( onClick = onRecent ),
             shape = RoundedCornerShape(20.dp)
         ) {
             Row(
@@ -93,7 +101,8 @@ private fun ScrollingCards(){
             Modifier
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
-                .height(96.dp),
+                .height(96.dp)
+                .clickable( onClick = onMetrics ),
             shape = RoundedCornerShape(20.dp)
         ) {
             Row(
@@ -125,7 +134,8 @@ private fun ScrollingCards(){
             Modifier
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
-                .height(96.dp),
+                .height(96.dp)
+                .clickable( onClick = onJournal ),
             shape = RoundedCornerShape(20.dp)
         ) {
             Row(
@@ -188,8 +198,3 @@ private fun ScrollingCards(){
 }
 
 
-@Preview
-@Composable
-private fun PreviewHomeScreen() {
-    NoSad_Scaffold { ScrollingCards() }
-}

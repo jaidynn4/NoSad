@@ -26,7 +26,7 @@ import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun DayWeekMonth() {
+fun DayWeekMonth() {
     val dotTotal = 3
     val pagerState = rememberPagerState(initialPage = 2)
     HorizontalPager(count = dotTotal, state = pagerState) { page ->
@@ -122,10 +122,4 @@ private fun DayView() {
             Text(text = stringResource(id = R.string.sample_graph_text), textAlign = TextAlign.Center)
         }
     }
-}
-
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun MetricsScreenPreview() {
-    NoSad_Scaffold { DayWeekMonth() }
 }

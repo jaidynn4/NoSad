@@ -64,11 +64,3 @@ fun EmotionsDropDown(){
     }
 
 }
-
-@Preview
-@Composable
-private fun PreviewColorWheelScreen() {
-    NoSad_Scaffold {
-        EmotionsDropDown()
-    }
-}

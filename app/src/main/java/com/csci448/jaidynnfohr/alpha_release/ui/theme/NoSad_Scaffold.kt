@@ -1,15 +1,25 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.theme
 
+import androidx.compose.foundation.clickable
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
-fun NoSad_Scaffold(content: @Composable () -> Unit){
+fun NoSad_Scaffold(content: @Composable () -> Unit,
+                   onAddItem: () -> Unit,
+                   onRecent: () -> Unit,
+                   onMetrics: () -> Unit,
+                   onJournal: () -> Unit,
+                   onSupport: () -> Unit,
+                   onHome: () -> Unit,
+                   onSettings: () -> Unit
+                   ){
     Scaffold(
         topBar = {
             TopAppBar(
@@ -18,13 +28,15 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                 navigationIcon = {
                     Icon(
                         imageVector = Icons.Filled.Home,
-                        contentDescription = "Home icon"
+                        contentDescription = "Home icon",
+                        modifier = Modifier.clickable(onClick = onHome)
                     )
                 },
                 actions = {
                     Icon(
                         imageVector = Icons.Filled.Settings,
-                        contentDescription = "Settings icon"
+                        contentDescription = "Settings icon",
+                        modifier = Modifier.clickable(onClick = onSettings)
                     )
                 }
             )
@@ -52,7 +64,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                         selected = false,
                         selectedContentColor = colorResource(id = R.color.light_green),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = { }
+                        onClick = onAddItem
                     )
                     BottomNavigationItem(
                         icon = {
@@ -67,7 +79,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                         selected = false,
                         selectedContentColor = colorResource(id = R.color.green),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = { }
+                        onClick = onRecent
                     )
                     BottomNavigationItem(
                         icon = {
@@ -82,7 +94,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                         selected = false,
                         selectedContentColor = colorResource(id = R.color.green),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = { }
+                        onClick = onMetrics
                     )
                     BottomNavigationItem(
                         icon = {
@@ -97,7 +109,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                         selected = false,
                         selectedContentColor = colorResource(id = R.color.green),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = { }
+                        onClick = onJournal
                     )
                     BottomNavigationItem(
                         icon = {
@@ -112,7 +124,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit){
                         selected = false,
                         selectedContentColor = colorResource(id = R.color.green),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = { }
+                        onClick = onSupport
                     )
                 }
             }

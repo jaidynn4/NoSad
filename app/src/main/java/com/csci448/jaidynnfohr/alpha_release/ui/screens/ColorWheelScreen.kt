@@ -55,10 +55,3 @@ private fun EmotionsWheel(){
 
     }
 }
-
-
-@Preview
-@Composable
-private fun PreviewColorWheelScreen() {
-    NoSad_Scaffold { EmotionsWheel() }
-}

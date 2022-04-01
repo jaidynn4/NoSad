@@ -16,18 +16,18 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 @Composable
-private fun Buttons() {
+private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
 
     Column {
-
+        Spacer(modifier = Modifier.padding(12.dp))
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Button(onClick = { /*TODO*/ }, shape = RoundedCornerShape(20.dp)) {
+            Button(onClick = onLogin , shape = RoundedCornerShape(20.dp)) {
                 Text(text = stringResource(R.string.login_button_label), fontSize = 14.sp)
             }
         }
 
         Spacer(modifier = Modifier.padding(8.dp))
-        TextButton(onClick = { /*TODO*/ }, shape = RoundedCornerShape(20.dp)) {
+        TextButton(onClick = onCreateAccount , shape = RoundedCornerShape(20.dp)) {
             Text(text = stringResource(R.string.signup_button_label), fontSize = 10.sp)
         }
     }
@@ -65,18 +65,18 @@ fun textFields() {
 }
 
 @Composable
-fun LoginScreen() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+fun LoginScreen(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(R.string.login_title), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
         textFields()
-        Buttons()
+        Buttons(onLogin, onCreateAccount)
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun LoginScreenPreview() {
-    NoSad_Scaffold { LoginScreen()}
-}
+//@Preview(showSystemUi = true, showBackground = true)
+//@Composable
+//fun LoginScreenPreview() {
+//    NoSad_Scaffold { LoginScreen()}
+//}

@@ -21,7 +21,7 @@
     <string name="sample_mood_descriptor">Happy: Feeling or showing pleasure or contentment</string>
     <string name="mood_over_time_label">Mood Specifics</string>
     <string name="sample_graph_text">Graph goes here</string>
-
+    <string name="understood_button">Understood</string>
 
 
     <string name="new_entries_label_1">New</string>
@@ -87,5 +87,35 @@
     <string name="Anger">Love</string>
 
     <string name="Fear">Love</string>
+
+    <string name="record_screen_title">Past Records</string>
+    <string name="record_title_placeholder">No Records Found</string>
+    <string name="record_text_entry_placeholder">No Text Found For This Record</string>
+    <string name="record_audio_display_text">Audio Recording</string>
+    <string name="record_date_formatter">%1$s/%2$s/%3$s</string>
+    <string name="record_time_formatter">%1$s:%2$s %3$s</string>
+
+    <string name="resources_screen_title">Resources</string>
+    <string name="resources_medical_title">Find Support</string>
+    <string name="resources_medical_blurb">See Medical Providers in Your Area</string>
+    <string name="resources_best_practices_title">Best Practices</string>
+    <string name="resources_best_practices_blurb">Go-to Self Help for a Better Life</string>
+    <string name="resources_stats_title">All The Stats</string>
+    <string name="resources_stats_blurb">Peer-reviewed Medical Journals for Every Topic Under the Sun</string>
+    <string name="resources_spiritual_title">Food For The Soul</string>
+    <string name="resources_spiritual_blurb">Faith-based Content to Renew Your Soul</string>
+    <string name="resources_psychology_title">Psychology Today</string>
+    <string name="resources_psychology_blurb">See the Latest in Psychology</string>
+    <string name="resources_connect_title">Get Connected</string>
+    <string name="resources_connect_blurb">Meet Others in the NoSad Discord Community!</string>
+    <string name="resources_crisis_1">If you are in CRISIS, please call </string>
+    <string name="resources_NSH">1-800-273-8255</string>
+    <string name="resources_crisis_2">or a local prevention hotline for immediate help</string>
+    <string name="resources_local_hotline">Your Local Hotline: %1$s</string>
+    <string name="resources_socials">Follow Our Socials</string>
+    <string name="resources_fb">FaceBook Link</string>
+    <string name="resources_tw">Twitter Link</string>
+    <string name="resources_red">Reddit Link</string>
+    <string name="resources_insta">Instagram Link</string>
 
 </resources>

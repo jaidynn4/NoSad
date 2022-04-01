@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -102,8 +103,8 @@ private fun TitleAndDescription() {
 }
 
 @Composable
-private fun NewUserScreen() {
-    Column(Modifier.fillMaxSize()) {
+fun NewUserScreen(onUnderstood: () -> Unit) {
+    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Box(Modifier.weight(1f)) {
             TitleAndDescription()
         }
@@ -111,11 +112,18 @@ private fun NewUserScreen() {
         Box(Modifier.weight(2f)) {
             TutorialSlides()
         }
+        Spacer(modifier = Modifier.padding(horizontal = 16.dp))
+        Box(Modifier.weight(1f)) {
+            Button(onClick = onUnderstood, shape = RoundedCornerShape(20.dp)) {
+                Text(text = stringResource(R.string.understood_button), fontSize = 14.sp)
+            }
+        }
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
     }
 }
 
-@Preview(showSystemUi = false, showBackground = true)
-@Composable
-fun NewUserScreenPreview() {
-    NoSad_Scaffold { NewUserScreen() }
-}
+//@Preview(showSystemUi = false, showBackground = true)
+//@Composable
+//fun NewUserScreenPreview() {
+//    NoSad_Scaffold { NewUserScreen() }
+//}
