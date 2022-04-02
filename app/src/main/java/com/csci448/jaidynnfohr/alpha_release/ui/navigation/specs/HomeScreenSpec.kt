@@ -25,16 +25,16 @@ object HomeScreenSpec : IScreenSpec {
                 ScrollingCards(
                     onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
                     onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
-                    onJournal = {},
+                    onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
                     onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())}
                 )
               },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
-            onJournal = {},
+            onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
-            onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
+            onHome = {navController.navigate(navigateTo())},
             onSettings = {},
             bottomBarItemNumber = 0
         )

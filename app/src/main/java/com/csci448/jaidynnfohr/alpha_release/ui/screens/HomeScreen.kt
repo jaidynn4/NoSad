@@ -44,7 +44,7 @@ fun ScrollingCards(
                 Icon(
                     imageVector = Icons.Filled.AddCircle,
                     contentDescription = "Add icon",
-                    tint = colorResource(id = R.color.green),
+                    tint = colorResource(id = R.color.app_green_color),
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp)
@@ -73,7 +73,7 @@ fun ScrollingCards(
                 Icon(
                     imageVector = Icons.Filled.DateRange,
                     contentDescription = "Calendar icon",
-                    tint = colorResource(id = R.color.green),
+                    tint = colorResource(id = R.color.app_green_color),
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp)
@@ -102,7 +102,7 @@ fun ScrollingCards(
                 Icon(
                     imageVector = Icons.Filled.MultilineChart,
                     contentDescription = "Chart icon",
-                    tint = colorResource(id = R.color.green),
+                    tint = colorResource(id = R.color.app_green_color),
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp)
@@ -131,7 +131,7 @@ fun ScrollingCards(
                 Icon(
                     imageVector = Icons.Filled.Book,
                     contentDescription = "Journal icon",
-                    tint = colorResource(id = R.color.green),
+                    tint = colorResource(id = R.color.app_green_color),
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp)
@@ -159,7 +159,7 @@ fun ScrollingCards(
                 Icon(
                     imageVector = Icons.Filled.Search,
                     contentDescription = "Search icon",
-                    tint = colorResource(id = R.color.green),
+                    tint = colorResource(id = R.color.app_green_color),
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp)
