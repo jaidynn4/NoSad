@@ -19,7 +19,7 @@ object DetailScreenSpec : IScreenSpec {
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
-        LoginScreen({navController.navigate(HomeScreenSpec.navigateTo())}, {navController.navigate(CreateScreenSpec.navigateTo())})
+        LoginScreen({navController.navigate(HomeScreenSpec.navigateTo())}, {navController.navigate(CreateScreenSpec.navigateTo())}, {navController.navigate(ForgotPasswordScreenSpec.navigateTo())})
     }
 
 
