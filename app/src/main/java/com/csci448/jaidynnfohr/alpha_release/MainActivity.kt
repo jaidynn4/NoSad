@@ -1,5 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -41,8 +43,10 @@ class MainActivity : ComponentActivity() {
 
     lateinit var noSadViewModel: NoSadViewModel
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Composable
     fun MainActivityContent(noSadViewModel: INoSadViewModel){
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val navController = rememberNavController()
         NoSadNavHost().NoSadNavHost(viewModel = noSadViewModel, navController = navController)
     }
