@@ -31,7 +31,7 @@ object JournalScreenSpec : IScreenSpec {
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
             onSettings = {},
-            bottomBarItemNumber = 3
+            bottomBarItemNumber = 4
         )
     }
 

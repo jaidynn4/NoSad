@@ -22,6 +22,7 @@
     <string name="mood_over_time_label">Mood Specifics</string>
     <string name="sample_graph_text">Graph goes here</string>
     <string name="understood_button">Understood</string>
+    <string name="save_mood_button_label">Save Mood</string>
 
 
     <string name="new_entries_label_short">New</string>
@@ -38,6 +39,10 @@
 
     <string name="support_resources_label_short">Support</string>
     <string name="support_resources_label_long">Support Resources</string>
+
+    <string name="category_dropdown_placeholder">Category</string>
+    <string name="feeling_dropdown_placeholder">Feeling</string>
+    <string name="specification_dropdown_placeholder">Specification</string>
 
     <string-array name="emotions_list">
         <item><string name="love">Love</string></item>

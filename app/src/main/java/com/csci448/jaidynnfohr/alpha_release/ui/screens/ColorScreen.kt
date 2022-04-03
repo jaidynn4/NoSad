@@ -16,11 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun EmotionsDropDown(){
+fun EmotionsDropDown(
+    onSaveMood: () -> Unit
+){
     val emotionsList = mutableListOf<String>()
     stringArrayResource(R.array.emotions_list).forEach {
         item -> emotionsList.add(item)
@@ -102,7 +105,6 @@ fun EmotionsDropDown(){
     list_of_sublists.add(angerSublist)
     list_of_sublists.add(fearSublist)
 
-
     val colorList = mutableListOf<Color>()
     colorList.add(colorResource(R.color.love_red_color))
     colorList.add(colorResource(R.color.joy_yellow_color))
@@ -111,7 +113,11 @@ fun EmotionsDropDown(){
     colorList.add(colorResource(R.color.anger_orange_color))
     colorList.add(colorResource(R.color.fear_purple_color))
 
-    var emotion: String by remember { mutableStateOf(emotionsList[0]) }
+    val placeholder_one = stringResource(id = R.string.category_dropdown_placeholder)
+    val placeholder_two = stringResource(id = R.string.feeling_dropdown_placeholder)
+    val placeholder_three = stringResource(id = R.string.specification_dropdown_placeholder)
+
+    var emotion: String by remember { mutableStateOf(stringResource(R.string.category_dropdown_placeholder)) }
     var emotion_expanded by remember { mutableStateOf(false)}
 
     var secondList: MutableList<String> by remember { mutableStateOf(list_of_lists[0])}
@@ -136,14 +142,13 @@ fun EmotionsDropDown(){
         {
             Row(
                 Modifier
-                    .padding(24.dp)
+                    .padding(18.dp)
                     .clickable {
                         emotion_expanded = !emotion_expanded
                         third_visible = false
                         second_visible = false
                         answer_chosen = false
-                    }
-                    .padding(8.dp),
+                    },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) { // Anchor view
@@ -165,7 +170,7 @@ fun EmotionsDropDown(){
                             third_choice = thirdList[0]
                             color_selection = colorList[i]
                         }) {
-                            Text(text = emotionsList[i])
+                            Text(text = emotionsList[i], color = colorList[i])
                         }
                     }
                 }
@@ -174,17 +179,16 @@ fun EmotionsDropDown(){
             if(second_visible){
                 Row(
                     Modifier
-                        .padding(24.dp)
+                        .padding(18.dp)
                         .clickable {
                             second_expanded = !second_expanded
                             third_visible = false
                             answer_chosen = false
-                        }
-                        .padding(8.dp),
+                        },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) { // Anchor view
-                    Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // emotion name label
+                    Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
                     Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
 
@@ -198,7 +202,7 @@ fun EmotionsDropDown(){
                                 third_visible = true
                                 subListIndex = i * 2
                             }) {
-                                Text(text = secondList[i])
+                                Text(text = secondList[i], color = color_selection)
                             }
                         }
                     }
@@ -208,12 +212,11 @@ fun EmotionsDropDown(){
                 if (third_visible){
                     Row(
                         Modifier
-                            .padding(24.dp)
+                            .padding(18.dp)
                             .clickable {
                                 third_expanded = !third_expanded
                                 answer_chosen = false
-                            }
-                            .padding(8.dp),
+                            },
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
                     ) { // Anchor view
@@ -236,22 +239,20 @@ fun EmotionsDropDown(){
                                 third_choice = thirdList[subListIndex + 1]
                                 answer_chosen = true
                             }) {
-                                Text(text = thirdList[subListIndex + 1])
+                                Text(text = thirdList[subListIndex + 1], color = color_selection)
                             }
                         }
                     }
                 }
             }
 
-
-            Row(
-                Modifier
-                    .padding(24.dp)
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) { // Anchor view
-                if (answer_chosen){
+            if(answer_chosen){
+                Row(
+                    Modifier
+                        .padding(18.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) { // Anchor view
                     Card(
                         Modifier
                             .padding(vertical = 8.dp)
@@ -272,27 +273,32 @@ fun EmotionsDropDown(){
                         }
                     }
                 }
-            }
 
-            Row(
-                Modifier
-                    .padding(24.dp)
-                    .clickable {
-                        second_expanded = !second_expanded
-                        third_visible = false
-                        answer_chosen = false
+                Row(
+                    Modifier
+                        .padding(18.dp)
+                        .clickable {
+                            second_expanded = !second_expanded
+                            third_visible = false
+                            answer_chosen = false
+                        },
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(onClick = onSaveMood, shape = RoundedCornerShape(20.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = colorResource(id = R.color.app_green_color),
+                            contentColor = Color.White)) {
+                        Text(text = stringResource(R.string.save_mood_button_label), fontSize = 14.sp)
                     }
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Button(onClick = {}, shape = RoundedCornerShape(20.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = colorResource(id = R.color.app_green_color),
-                        contentColor = Color.White)) {
-                    Text(text = stringResource(R.string.login_button_label), fontSize = 14.sp)
                 }
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun ColorScreenPreview(){
+    EmotionsDropDown({})
 }
