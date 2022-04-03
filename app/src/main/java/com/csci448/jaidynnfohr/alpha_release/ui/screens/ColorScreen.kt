@@ -117,22 +117,22 @@ fun EmotionsDropDown(
     val placeholder_two = stringResource(id = R.string.feeling_dropdown_placeholder)
     val placeholder_three = stringResource(id = R.string.specification_dropdown_placeholder)
 
-    var emotion: String by remember { mutableStateOf(stringResource(R.string.category_dropdown_placeholder)) }
+    var emotion: String by remember { mutableStateOf(placeholder_one) }
     var emotion_expanded by remember { mutableStateOf(false)}
 
     var secondList: MutableList<String> by remember { mutableStateOf(list_of_lists[0])}
-    var second_choice:String by remember { mutableStateOf(secondList[0])}
+    var second_choice:String by remember { mutableStateOf(placeholder_two)}
     var second_expanded by remember { mutableStateOf(false)}
     var second_visible by remember { mutableStateOf(false)}
     var subListIndex: Int by remember {mutableStateOf(0)}
 
     var thirdList: MutableList<String> by remember { mutableStateOf(list_of_sublists[0])}
-    var third_choice: String by remember { mutableStateOf(thirdList[0])}
+    var third_choice: String by remember { mutableStateOf(placeholder_three)}
     var third_expanded by remember { mutableStateOf(false)}
     var third_visible by remember { mutableStateOf(false)}
 
     var answer_chosen by remember { mutableStateOf(false)}
-    var color_selection by remember { mutableStateOf(colorList[0])}
+    var color_selection by remember { mutableStateOf(Color.White)}
 
     Box(Modifier.fillMaxWidth(),contentAlignment = Alignment.Center) {
         Column(
@@ -152,7 +152,7 @@ fun EmotionsDropDown(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) { // Anchor view
-                Text(text = emotion,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // emotion name label
+                Text(text = emotion, color = color_selection,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // emotion name label
                 Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
                 //
@@ -164,10 +164,8 @@ fun EmotionsDropDown(
                             emotion_expanded = false
                             emotion = emotionsList[i]
                             secondList = list_of_lists[i]
-                            second_choice = secondList[0]
                             second_visible = true
                             thirdList = list_of_sublists[i]
-                            third_choice = thirdList[0]
                             color_selection = colorList[i]
                         }) {
                             Text(text = emotionsList[i], color = colorList[i])
@@ -188,9 +186,13 @@ fun EmotionsDropDown(
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) { // Anchor view
-                    Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
-                    Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+                    if (second_choice == placeholder_two){
+                        Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = Color.White) // emotion name label
+                    } else {
+                        Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
+                    }
 
+                    Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
                     DropdownMenu(expanded = second_expanded, onDismissRequest = {
                         second_expanded = false
@@ -220,7 +222,11 @@ fun EmotionsDropDown(
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
                     ) { // Anchor view
-                        Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // emotion name label
+                        if (third_choice == placeholder_three){
+                            Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = Color.White) // emotion name label
+                        } else {
+                            Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
+                        }
                         Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
 
@@ -232,7 +238,7 @@ fun EmotionsDropDown(
                                 third_choice = thirdList[subListIndex]
                                 answer_chosen = true
                             }) {
-                                Text(text = thirdList[subListIndex])
+                                Text(text = thirdList[subListIndex], color = color_selection)
                             }
                             DropdownMenuItem(onClick = {
                                 third_expanded = false
