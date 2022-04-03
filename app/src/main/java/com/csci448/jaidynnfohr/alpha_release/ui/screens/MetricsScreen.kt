@@ -2,6 +2,8 @@ package com.csci448.jaidynnfohr.alpha_release.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -29,30 +31,25 @@ import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 fun DayWeekMonth() {
     val dotTotal = 3
     val pagerState = rememberPagerState(initialPage = 2)
-    HorizontalPager(count = dotTotal, state = pagerState) { page ->
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        DWM(pagerState.currentPage)
+        Spacer(modifier = Modifier.padding(4.dp))
+        HorizontalPager(count = dotTotal, state = pagerState) { page ->
 
-        when(page) {
-            0 -> MonthView()
-            1 -> WeekView()
-            2 -> DayView()
+            when(page) {
+                0 -> DayView()
+                1 -> DayView()
+                2 -> DayView()
+            }
+
         }
-
     }
+
 }
 
 @Composable
 private fun MonthView() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Row() {
-            Text(text = stringResource(id = R.string.month_view_label), fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.padding(2.dp))
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.week_view_label))
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.day_view_label))
-        }
         
     }
 }
@@ -60,32 +57,14 @@ private fun MonthView() {
 @Composable
 private fun WeekView() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Row() {
-            Text(text = stringResource(id = R.string.month_view_label))
-            Spacer(modifier = Modifier.padding(2.dp))
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.week_view_label), fontWeight = FontWeight.Bold)
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.day_view_label))
-        }
+
     }
 }
 
 @Composable
 private fun DayView() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Row() {
-            Text(text = stringResource(id = R.string.month_view_label))
-            Spacer(modifier = Modifier.padding(2.dp))
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.week_view_label))
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24), contentDescription = "left_arrow")
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(text = stringResource(id = R.string.day_view_label), fontWeight = FontWeight.Bold)
-        }
+
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(id = R.string.mood_label))
         val horizontalGradientBrush = Brush.horizontalGradient(
@@ -122,4 +101,37 @@ private fun DayView() {
             Text(text = stringResource(id = R.string.sample_graph_text), textAlign = TextAlign.Center)
         }
     }
+}
+
+@Composable
+private fun DWM(idx: Int) {
+    val words = listOf("Month", "Week", "Today")
+    LazyRow() {
+        items(3) { index ->
+            when (index) {
+                idx -> {
+                    Row() {
+                        Text(text = words[idx], fontWeight = FontWeight.Bold)
+                    }
+                }
+                else -> {
+                    Text(text = words[index])
+                }
+
+            }
+            Row(horizontalArrangement = Arrangement.Center) {
+                if (index != 3 - 1) {
+                    Row {
+                        Spacer(modifier = Modifier.padding(2.dp))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_baseline_arrow_left_24),
+                            contentDescription = "left_arrow"
+                        )
+                        Spacer(modifier = Modifier.padding(2.dp))
+                    }
+                }
+            }
+        }
+    }
+
 }
