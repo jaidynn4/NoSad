@@ -65,7 +65,7 @@ object ResourcesScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = { ResourceScreen(list = list, onSelectResource = {}) },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
-            onJournal = {},
+            onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},

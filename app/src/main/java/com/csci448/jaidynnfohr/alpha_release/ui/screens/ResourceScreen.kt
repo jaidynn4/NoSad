@@ -91,7 +91,7 @@ fun ResourceRow(resource: Resource, onSelectResource: (Resource) -> Unit){
         onClick = { onSelectResource },
         Modifier.padding(16.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = colorResource(id = R.color.green),
+            backgroundColor = colorResource(id = R.color.app_green_color),
             contentColor = Color.White)
     )
     {

@@ -25,7 +25,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
         topBar = {
             TopAppBar(
                 title = { Text("NoSad") },
-                backgroundColor = colorResource(id = R.color.green),
+                backgroundColor = colorResource(id = R.color.app_green_color),
                 navigationIcon = {
                     Icon(
                         imageVector = Icons.Filled.Home,
@@ -39,7 +39,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                         contentDescription = "Settings icon",
                         modifier = Modifier.clickable(onClick = onSettings)
                     )
-                }
+                },
             )
         },
         content = {
@@ -47,10 +47,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
         },
         bottomBar = {
             BottomAppBar(
-                backgroundColor = colorResource(id = R.color.green)
+                backgroundColor = colorResource(id = R.color.app_green_color)
             ) {
                 BottomNavigation(
-                    backgroundColor = colorResource(id = R.color.green)
+                    backgroundColor = colorResource(id = R.color.app_green_color)
                 ) {
                     BottomNavigationItem(
                         icon = {

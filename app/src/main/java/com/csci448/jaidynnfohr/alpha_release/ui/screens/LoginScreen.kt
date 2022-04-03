@@ -9,11 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
-import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 @Composable
 private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
@@ -21,14 +19,21 @@ private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
     Column {
         Spacer(modifier = Modifier.padding(12.dp))
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Button(onClick = onLogin , shape = RoundedCornerShape(20.dp)) {
+            Button(
+              onClick = onLogin , 
+              shape = RoundedCornerShape(20.dp),
+              colors = ButtonDefaults.buttonColors(
+                    backgroundColor = colorResource(id = R.color.app_green_color),
+                    contentColor = Color.White
+              )
+            ) {
                 Text(text = stringResource(R.string.login_button_label), fontSize = 14.sp)
             }
         }
 
         Spacer(modifier = Modifier.padding(8.dp))
         TextButton(onClick = onCreateAccount , shape = RoundedCornerShape(20.dp)) {
-            Text(text = stringResource(R.string.signup_button_label), fontSize = 10.sp)
+            Text(text = stringResource(R.string.signup_button_label), color = colorResource(id = R.color.app_green_color), fontSize = 10.sp)
         }
     }
 }
@@ -56,10 +61,9 @@ fun textFields(onForget: () -> Unit) {
                 unfocusedIndicatorColor = Color.Transparent)
             )
         Column(modifier = Modifier.align(Alignment.End)) {
-            TextButton(onClick = onForget) {
-                Text(text = stringResource(R.string.forgot_password_button_label), fontSize = 10.sp)
-            }
-
+          TextButton(onClick = onForget) {
+                Text(text = stringResource(R.string.forgot_password_button_label), fontSize = 10.sp, color = colorResource(id = R.color.app_green_color))
+           }
         }
     }
 }
@@ -68,7 +72,7 @@ fun textFields(onForget: () -> Unit) {
 fun LoginScreen(onLogin: () -> Unit, onCreateAccount: () -> Unit, onForget: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.login_title), fontSize = 20.sp)
+        Text(text = stringResource(R.string.login_title), color = colorResource(id = R.color.app_green_color), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
         textFields(onForget = onForget)
         Buttons(onLogin, onCreateAccount)

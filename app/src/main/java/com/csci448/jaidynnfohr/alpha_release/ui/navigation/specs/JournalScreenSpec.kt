@@ -2,16 +2,15 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
-import com.csci448.jaidynnfohr.alpha_release.ui.*
+import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ScrollingCards
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
-object MetricScreenSpec : IScreenSpec {
+object JournalScreenSpec : IScreenSpec {
 
-    override val route = "metrics"
+    override val route = "journal"
     override val arguments: List<NamedNavArgument> = mutableListOf()
 
 
@@ -22,33 +21,19 @@ object MetricScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { DayWeekMonth() },
+            content = {
+                JournalPage()
+              },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
-            onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
+            onJournal = {navController.navigate(navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
             onSettings = {},
-            bottomBarItemNumber = 3
+            bottomBarItemNumber = 4
         )
     }
-
-
-//
-//    @Composable
-//    override fun Content(viewModel: ISamodelkinCharacterViewModel,
-//                         navController: NavController,
-//                         navBackStackEntry: NavBackStackEntry
-//    ) {
-//        val characterList = viewModel.characterListLiveData.observeAsState()
-//        CharacterListScreen(characterList = characterList.value, onSelectCharacter = {
-//                character -> navController.navigate(
-//            DetailScreenSpec.navigateTo(character.id.toString())
-//        )
-//        }
-//        )
-//    }
 
     override fun navigateTo(vararg args: String?): String {
         return route
