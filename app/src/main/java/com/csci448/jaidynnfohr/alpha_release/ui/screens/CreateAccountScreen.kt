@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -78,7 +79,7 @@ private fun CreateButtons(onCreate: () -> Unit, onAlready: () -> Unit) {
 fun CreateAccountScreen(onCreate: () -> Unit, onAlready: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.create_screen_title), fontSize = 20.sp)
+        Text(text = stringResource(R.string.create_screen_title), fontSize = 20.sp, color = colorResource(id = R.color.app_green_color))
         Spacer(modifier = Modifier.padding(24.dp))
         CreateEditTexts()
         Spacer(modifier = Modifier.padding(8.dp))
