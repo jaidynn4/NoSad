@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Alpha_Release</string>
 
+    <!-- Login Strings   -->
     <string name="login_title">Login</string>
     <string name="email_hint">email</string>
     <string name="password_hint">password</string>
@@ -23,7 +24,7 @@
     <string name="sample_graph_text">Graph goes here</string>
     <string name="understood_button">Understood</string>
 
-
+    <!-- Metrics Strings   -->
     <string name="new_entries_label_short">New</string>
     <string name="new_entries_label_long">New Entries</string>
 
@@ -38,7 +39,8 @@
 
     <string name="support_resources_label_short">Support</string>
     <string name="support_resources_label_long">Support Resources</string>
-    
+
+    <!--  Colour Wheel Strings  -->
     <string name="love">Love</string>
 
         <string name="love_0">Peaceful</string>
@@ -195,6 +197,7 @@
             <string name="fear_4_0">Helpless</string>
             <string name="fear_4_1">Frightened</string>
 
+    <!--  Records Strings  -->
     <string name="record_screen_title">Past Records</string>
     <string name="record_title_placeholder">No Records Found</string>
     <string name="record_text_entry_placeholder">No Text Found For This Record</string>
@@ -202,6 +205,7 @@
     <string name="record_date_formatter">%1$s/%2$s/%3$s</string>
     <string name="record_time_formatter">%1$s:%2$s %3$s</string>
 
+    <!--  Resources Strings  -->
     <string name="resources_screen_title">Resources</string>
     <string name="resources_medical_title">Find Support</string>
     <string name="resources_medical_blurb">See Medical Providers in Your Area</string>
@@ -225,4 +229,12 @@
     <string name="resources_red">Reddit Link</string>
     <string name="resources_insta">Instagram Link</string>
 
+    <!--    Settings Strings-->
+    <string name="settings_screen_title">Settings</string>
+    <string name="my_account_title">My Account</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="appearance_title">Appearance</string>
+    <string name="privacy_security_title">Privacy &amp; Security</string>
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="about_title">About</string>
 </resources>
