@@ -226,5 +226,9 @@
     <string name="resources_tw">Twitter Link</string>
     <string name="resources_red">Reddit Link</string>
     <string name="resources_insta">Instagram Link</string>
+    
+    <string name="forgot_password_title">Reset Password</string>
+    <string name="forgot_password_field_hint">email</string>
+    <string name="reset_password_button_label">Send Email</string>
 
 </resources>
