@@ -237,4 +237,11 @@
     <string name="privacy_security_title">Privacy &amp; Security</string>
     <string name="help_support_title">Help &amp; Support</string>
     <string name="about_title">About</string>
+    <string name="account_content_desc">Account Icon</string>
+    <string name="notifs_content_desc">Notification Icon</string>
+    <string name="appearance_content_desc">Appearance Icon</string>
+    <string name="privacy_security_content_desc">Privacy &amp; Security Icon</string>
+    <string name="help_support_content_desc">Help &amp; Support Icon</string>
+    <string name="about_content_desc">About Icon</string>
+    <string name="arrow_desc">Right Arrow indicating to expand</string>
 </resources>

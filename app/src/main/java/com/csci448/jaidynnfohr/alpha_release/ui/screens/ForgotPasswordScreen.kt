@@ -22,15 +22,15 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
             value = emailTextState, onValueChange = { it -> emailTextState = it},
-            placeholder = {Text(text = stringResource(R.string.forgot_password_field_hint))},
-            label = {Text(text = stringResource(R.string.forgot_password_field_hint))},
+//            placeholder = {Text(text = stringResource(R.string.forgot_password_field_hint))},
+//            label = {Text(text = stringResource(R.string.forgot_password_field_hint))},
             shape = RoundedCornerShape(20.dp),
             colors = TextFieldDefaults.textFieldColors(focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent)
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Button(onClick = onForgot , shape = RoundedCornerShape(20.dp)) {
-            Text(text = stringResource(R.string.reset_password_button_label), fontSize = 14.sp)
+//            Text(text = stringResource(R.string.reset_password_button_label), fontSize = 14.sp)
         }
     }
 }
@@ -39,7 +39,7 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
 fun ForgotPasswordScreen(onForgot: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.forgot_password_title), fontSize = 20.sp)
+//        Text(text = stringResource(R.string.forgot_password_title), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
         EditTextAndButtons(onForgot)
     }
