@@ -12,7 +12,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
 fun NoSad_Scaffold(content: @Composable () -> Unit,
-                   onAddItem: () -> Unit,
+                   onAddMood: () -> Unit,
                    onRecent: () -> Unit,
                    onMetrics: () -> Unit,
                    onJournal: () -> Unit,
@@ -60,12 +60,12 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.new_entries_label_short))
+                            Text(stringResource(id = R.string.add_mood_label_short))
                         },
                         selected = (bottomBarItemNumber == 1),
                         selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = onAddItem
+                        onClick = onAddMood
                     )
                     BottomNavigationItem(
                         icon = {

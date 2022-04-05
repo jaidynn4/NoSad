@@ -2,17 +2,12 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
-import com.csci448.jaidynnfohr.alpha_release.ui.CreateAccountScreen
-import com.csci448.jaidynnfohr.alpha_release.ui.LoginScreen
-import com.csci448.jaidynnfohr.alpha_release.ui.NewUserScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.EmotionsDropDown
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.ScrollingCards
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
-object ColorWheelScreenSpec : IScreenSpec {
+object AddMoodScreenSpec : IScreenSpec {
 
     override val route = "wheel"
     override val arguments: List<NamedNavArgument> = mutableListOf()
@@ -26,7 +21,7 @@ object ColorWheelScreenSpec : IScreenSpec {
     ) {
         NoSad_Scaffold(
             content = { EmotionsDropDown(onSaveMood = {}) },
-            onAddItem = {navController.navigate(navigateTo())},
+            onAddMood = {navController.navigate(navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},

@@ -19,7 +19,7 @@ import androidx.compose.material.icons.filled.*
 
 @Composable
 fun ScrollingCards(
-    onNew: () -> Unit,
+    onAddMood: () -> Unit,
     onRecent: () -> Unit,
     onMetrics: () -> Unit,
     onJournal: () -> Unit,
@@ -37,7 +37,7 @@ fun ScrollingCards(
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onNew),
+                    .clickable(onClick = onAddMood),
                 shape = RoundedCornerShape(20.dp)
             ) {
                 Row(
@@ -52,7 +52,7 @@ fun ScrollingCards(
                             .weight(1f)
                             .height(48.dp)
                     )
-                    Text(stringResource(id = R.string.new_entries_label_long),
+                    Text(stringResource(id = R.string.add_mood_label_long),
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
