@@ -26,7 +26,8 @@ object HomeScreenSpec : IScreenSpec {
                     onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
                     onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
                     onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
-                    onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())}
+                    onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
+                    onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())}
                 )
               },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
