@@ -2,7 +2,6 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ScrollingCards
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
@@ -26,10 +25,11 @@ object HomeScreenSpec : IScreenSpec {
                     onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
                     onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
                     onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
-                    onNew = {navController.navigate(ColorWheelScreenSpec.navigateTo())}
+                    onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
+                    onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())}
                 )
               },
-            onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
+            onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},

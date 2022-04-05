@@ -2,10 +2,8 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.*
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.ScrollingCards
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
@@ -23,7 +21,7 @@ object MetricScreenSpec : IScreenSpec {
     ) {
         NoSad_Scaffold(
             content = { DayWeekMonth() },
-            onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
+            onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
