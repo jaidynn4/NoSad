@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val factory = NoSadViewModelFactory()
+        val factory = NoSadViewModelFactory(this)
         noSadViewModel = ViewModelProvider(this, factory)
             .get(factory.getViewModelClass())
         setContent {
