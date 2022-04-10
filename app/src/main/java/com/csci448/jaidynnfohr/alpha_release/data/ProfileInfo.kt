@@ -4,10 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 import java.io.Serializable
-import java.sql.Time
 
 @Entity(tableName = "profile")
 data class ProfileInfo(
+    @PrimaryKey val id: UUID = UUID.randomUUID(),
     val userName: String,
     val passWord: String,
     val tutorialCompletion: Boolean,
@@ -15,9 +15,5 @@ data class ProfileInfo(
     val newsEnabled: Boolean,
     val dailyReminderEnabled: Boolean,
     val scriptureEnabled: Boolean,
-    val notificationTime: Time
-) : Serializable{
-
-    @PrimaryKey
-    var id: UUID = UUID.randomUUID()
-}
+    val notificationTime: Long
+) : Serializable

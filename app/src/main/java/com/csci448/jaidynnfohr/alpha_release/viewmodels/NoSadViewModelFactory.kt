@@ -7,10 +7,11 @@ import com.csci448.jaidynnfohr.alpha_release.data.database.JournalEntryRepositor
 
 class NoSadViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     fun getViewModelClass() = NoSadViewModel::class.java
-
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass
-            .getConstructor(JournalEntryRepository::class.java, Context::class.java)
-            .newInstance(JournalEntryRepository.getInstance(context), context)
+        if (modelClass.isAssignableFrom(getViewModelClass()))
+            return modelClass
+                .getConstructor(JournalEntryRepository::class.java, Context::class.java)
+                .newInstance(JournalEntryRepository.getInstance(context), context)
+        throw IllegalArgumentException("Unknown ViewModel")
     }
 }

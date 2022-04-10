@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val factory = NoSadViewModelFactory(this)
-        noSadViewModel = ViewModelProvider(this, factory)
+        val noSadViewModel = ViewModelProvider(this, factory)
             .get(factory.getViewModelClass())
         setContent {
             Alpha_ReleaseTheme {
@@ -40,8 +40,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-    lateinit var noSadViewModel: NoSadViewModel
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Composable

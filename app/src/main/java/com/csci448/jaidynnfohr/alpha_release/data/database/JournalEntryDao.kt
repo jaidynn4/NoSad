@@ -12,9 +12,9 @@ interface JournalEntryDao {
     @Insert
     fun addEntry(entry: JournalEntry)
 
-    @Query(value = "SELECT * FROM entry")
+    @Query("SELECT * FROM entry")
     fun getEntries(): LiveData<List<JournalEntry>>
 
-    @Query(value = "SELECT * FROM entry WHERE id=(:id)")
+    @Query("SELECT * FROM entry WHERE id=(:id)")
     fun getEntry(id: UUID): LiveData<JournalEntry?>
 }

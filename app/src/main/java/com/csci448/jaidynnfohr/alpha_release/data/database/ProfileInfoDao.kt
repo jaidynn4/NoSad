@@ -12,9 +12,9 @@ interface ProfileInfoDao {
     @Insert
     fun addProfile(profile: ProfileInfo)
 
-    @Query(value = "SELECT * FROM profile")
+    @Query("SELECT * FROM profile")
     fun getProfiles(): LiveData<List<ProfileInfo>>
 
-    @Query(value = "SELECT * FROM profile WHERE id=(:id)")
+    @Query("SELECT * FROM profile WHERE id=(:id)")
     fun getProfile(id: UUID): LiveData<ProfileInfo?>
 }
