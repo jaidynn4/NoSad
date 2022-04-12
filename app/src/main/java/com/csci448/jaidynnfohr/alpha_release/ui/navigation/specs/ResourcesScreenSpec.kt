@@ -3,12 +3,12 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Resource
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ResourceScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
 object ResourcesScreenSpec : IScreenSpec {
 
@@ -18,7 +18,7 @@ object ResourcesScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: INoSadViewModel,
+        viewModel: ViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

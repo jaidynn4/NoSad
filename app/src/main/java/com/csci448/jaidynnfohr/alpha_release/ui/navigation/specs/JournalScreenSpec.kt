@@ -4,10 +4,10 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 import com.csci448.jaidynnfohr.alpha_release.R
 
 object JournalScreenSpec : IScreenSpec {
@@ -18,7 +18,7 @@ object JournalScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: INoSadViewModel,
+        viewModel: ViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
