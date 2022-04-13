@@ -20,7 +20,7 @@ import com.csci448.jaidynnfohr.alpha_release.data.Resource
 fun ResourceScreen(list : List<Resource>?, onSelectResource : (Resource) -> Unit){
     if(list != null) {
         LazyColumn(
-            Modifier.fillMaxWidth(),
+            Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 64.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
@@ -59,7 +59,7 @@ fun ResourceScreen(list : List<Resource>?, onSelectResource : (Resource) -> Unit
                 Text(text= stringResource(id = R.string.resources_socials), fontSize = 16.sp)
                 Spacer(Modifier.height(8.dp))
                 Row(
-                    Modifier.fillMaxWidth().padding(bottom = 20.dp),
+                    Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     Image(
@@ -91,7 +91,7 @@ fun ResourceRow(resource: Resource, onSelectResource: (Resource) -> Unit){
         onClick = { onSelectResource },
         Modifier.padding(16.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = colorResource(id = R.color.green),
+            backgroundColor = colorResource(id = R.color.app_green_color),
             contentColor = Color.White)
     )
     {

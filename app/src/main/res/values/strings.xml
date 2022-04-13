@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Alpha_Release</string>
 
-    <!-- Login Strings   -->
     <string name="login_title">Login</string>
     <string name="email_hint">email</string>
     <string name="password_hint">password</string>
@@ -23,10 +22,13 @@
     <string name="mood_over_time_label">Mood Specifics</string>
     <string name="sample_graph_text">Graph goes here</string>
     <string name="understood_button">Understood</string>
+    <string name="save_mood_button_label">Save Mood</string>
+    <string name="journal_entry_title_hint">Title</string>
+    <string name="journal_entry_thoughts_hint">Thoughts</string>
 
-    <!-- Metrics Strings   -->
-    <string name="new_entries_label_short">New</string>
-    <string name="new_entries_label_long">New Entries</string>
+
+    <string name="add_mood_label_short">Mood</string>
+    <string name="add_mood_label_long">Add Mood</string>
 
     <string name="recent_additions_label_short">Recent</string>
     <string name="recent_additions_label_long">Recent Additions</string>
@@ -40,164 +42,163 @@
     <string name="support_resources_label_short">Support</string>
     <string name="support_resources_label_long">Support Resources</string>
 
-    <!--  Colour Wheel Strings  -->
-    <string name="love">Love</string>
+    <string name="category_dropdown_placeholder">Category</string>
+    <string name="feeling_dropdown_placeholder">Feeling</string>
+    <string name="specification_dropdown_placeholder">Specification</string>
 
-        <string name="love_0">Peaceful</string>
-            <string name="love_0_0">Satisfied</string>
-            <string name="love_0_1">Relieved</string>
+    <string-array name="emotions_list">
+        <item><string name="love">Love</string></item>
+        <item><string name="joy">Joy</string></item>
+        <item><string name="surprise">Surprise</string></item>
+        <item><string name="sadness">Sadness</string></item>
+        <item><string name="anger">Anger</string></item>
+        <item><string name="fear">Fear</string></item>
+    </string-array>
 
-        <string name="love_1">Tender</string>
-            <string name="love_1_0">Compassionate</string>
-            <string name="love_1_1">Caring</string>
+    <string-array name="love_list">
+        <item><string name="love_0">Peaceful</string></item>
+        <item><string name="love_1">Tender</string></item>
+        <item> <string name="love_2">Desiring</string></item>
+        <item><string name="love_3">Longing</string></item>
+        <item><string name="love_4">Affectionate</string></item>
+    </string-array>
 
+    <string-array name="joy_list">
+        <item><string name="joy_0">Enthralled</string></item>
+        <item><string name="joy_1">Elated</string></item>
+        <item><string name="joy_2">Enthusiastic</string></item>
+        <item><string name="joy_3">Optimistic</string></item>
+        <item><string name="joy_4">Proud</string></item>
+        <item><string name="joy_5">Cheerful</string></item>
+        <item><string name="joy_6">Happy</string></item>
+        <item><string name="joy_7">Content</string></item>
+    </string-array>
 
-        <string name="love_2">Desiring</string>
-            <string name="love_2_0">Infatuated</string>
-            <string name="love_2_1">Passionate</string>
+    <string-array name="surprise_list">
+        <item><string name="surprise_0">Moved</string></item>
+        <item><string name="surprise_1">Overcome</string></item>
+        <item><string name="surprise_2">Amazed</string></item>
+        <item><string name="surprise_3">Confused</string></item>
+        <item><string name="surprise_4">Stunned</string></item>
+    </string-array>
 
+    <string-array name="sadness_list">
+        <item><string name="sadness_0">Despairing</string></item>
+        <item><string name="sadness_1">Neglected</string></item>
+        <item><string name="sadness_2">Shameful</string></item>
+        <item><string name="sadness_3">Disappointed</string></item>
+        <item><string name="sadness_4">Saddened</string></item>
+        <item><string name="sadness_5">Suffering</string></item>
+    </string-array>
 
-        <string name="love_3">Longing</string>
-            <string name="love_3_0">Attracted</string>
-            <string name="love_3_1">Sentimental</string>
+    <string-array name="anger_list">
+        <item><string name="anger_0">Disgusted</string></item>
+        <item><string name="anger_1">Envious</string></item>
+        <item><string name="anger_2">Irritable</string></item>
+        <item><string name="anger_3">Exasperated</string></item>
+        <item><string name="anger_4">Enraged</string></item>
+    </string-array>
 
+    <string-array name="fear_list">
+        <item><string name="fear_0">Horrified</string></item>
+        <item><string name="fear_1">Nervous</string></item>
+        <item><string name="fear_2">Insecure</string></item>
+        <item><string name="fear_3">Terrified</string></item>
+        <item><string name="fear_4">Scared</string></item>
+    </string-array>
 
-        <string name="love_4">Affectionate</string>
-            <string name="love_4_0">Fond</string>
-            <string name="love_4_1">Romantic</string>
-
-
-    <string name="joy">Joy</string>
-
-        <string name="joy_0">Enthralled</string>
-            <string name="joy_0_0">Enraptured</string>
-            <string name="joy_0_1">Enchanted</string>
-
-        <string name="joy_1">Elated</string>
-            <string name="joy_1_0">Jubilant</string>
-            <string name="joy_1_1">Euphoric</string>
-
-        <string name="joy_2">Enthusiastic</string>
-            <string name="joy_2_0">Zealous</string>
-            <string name="joy_2_1">Excited</string>
-
-        <string name="joy_3">Optimistic</string>
-            <string name="joy_3_0">Hopeful</string>
-            <string name="joy_3_1">Eager</string>
-
-        <string name="joy_4">Proud</string>
-            <string name="joy_4_0">Illustrious</string>
-            <string name="joy_4_1">Triumphant</string>
-
-
-        <string name="joy_5">Cheerful</string>
-            <string name="joy_5_0">Blissful</string>
-            <string name="joy_5_1">Jovial</string>
-
-
-        <string name="joy_6">Happy</string>
-            <string name="joy_6_0">Delighted</string>
-            <string name="joy_6_1">Amused</string>
-
-        <string name="joy_7">Content</string>
-            <string name="joy_7_0">Satisfied</string>
-            <string name="joy_7_1">Pleased</string>
-
-
-    <string name="surprise">Surprise</string>
-
-        <string name="surprise_0">Moved</string>
-            <string name="surprise_0_0">Touched</string>
-            <string name="surprise_0_1">Stimulated</string>
-
-        <string name="surprise_1">Overcome</string>
-            <string name="surprise_1_0">Astounded</string>
-            <string name="surprise_1_1">Speechless</string>
-
-        <string name="surprise_2">Amazed</string>
-            <string name="surprise_2_0">Awe-struck</string>
-            <string name="surprise_2_1">Astonished</string>
-
-        <string name="surprise_3">Confused</string>
-            <string name="surprise_3_0">Perplexed</string>
-            <string name="surprise_3_1">Disillusioned</string>
-
-        <string name="surprise_4">Stunned</string>
-            <string name="surprise_4_0">Dismayed</string>
-            <string name="surprise_4_1">Shocked</string>
+    <string-array name="love_sublist">
+        <item><string name="love_0_0">Satisfied</string></item>
+        <item><string name="love_0_1">Relieved</string></item>
+        <item><string name="love_1_0">Compassionate</string></item>
+        <item><string name="love_1_1">Caring</string></item>
+        <item><string name="love_2_0">Infatuated</string></item>
+        <item><string name="love_2_1">Passionate</string></item>
+        <item><string name="love_3_0">Attracted</string></item>
+        <item><string name="love_3_1">Sentimental</string></item>
+        <item><string name="love_4_0">Fond</string></item>
+        <item><string name="love_4_1">Romantic</string></item>
+    </string-array>
 
 
-    <string name="sadness">Sadness</string>
+    <string-array name="joy_sublist">
+        <item><string name="joy_0_0">Enraptured</string></item>
+        <item><string name="joy_0_1">Enchanted</string></item>
+        <item><string name="joy_1_0">Jubilant</string></item>
+        <item><string name="joy_1_1">Euphoric</string></item>
+        <item><string name="joy_2_0">Zealous</string></item>
+        <item><string name="joy_2_1">Excited</string></item>
+        <item><string name="joy_3_0">Hopeful</string></item>
+        <item><string name="joy_3_1">Eager</string></item>
+        <item><string name="joy_4_0">Illustrious</string></item>
+        <item><string name="joy_4_1">Triumphant</string></item>
+        <item><string name="joy_5_0">Blissful</string></item>
+        <item><string name="joy_5_1">Jovial</string></item>
+        <item><string name="joy_6_0">Delighted</string></item>
+        <item><string name="joy_6_1">Amused</string></item>
+        <item><string name="joy_7_0">Satisfied</string></item>
+        <item><string name="joy_7_1">Pleased</string></item>
+    </string-array>
 
-        <string name="sadness_0">Despairing</string>
-            <string name="sadness_0_0">Powerless</string>
-            <string name="sadness_0_1">Grieved</string>
 
-        <string name="sadness_1">Neglected</string>
-            <string name="sadness_1_0">Lonely</string>
-            <string name="sadness_1_1">Isolated</string>
+    <string-array name="surprise_sublist">
+        <item><string name="surprise_0_0">Touched</string></item>
+        <item><string name="surprise_0_1">Stimulated</string></item>
+        <item><string name="surprise_1_0">Astounded</string></item>
+        <item><string name="surprise_1_1">Speechless</string></item>
+        <item><string name="surprise_2_0">Awe-struck</string></item>
+        <item> <string name="surprise_2_1">Astonished</string></item>
+        <item><string name="surprise_3_0">Perplexed</string></item>
+        <item><string name="surprise_3_1">Disillusioned</string></item>
+        <item><string name="surprise_4_0">Dismayed</string></item>
+        <item><string name="surprise_4_1">Shocked</string></item>
+    </string-array>
 
-        <string name="sadness_2">Shameful</string>
-            <string name="sadness_2_0">Guilty</string>
-            <string name="sadness_2_1">Regretful</string>
 
-        <string name="sadness_3">Disappointed</string>
-            <string name="sadness_3_0">Displeased</string>
-            <string name="sadness_3_1">Dismayed</string>
+    <string-array name="sadness_sublist">
+        <item><string name="sadness_0_0">Powerless</string></item>
+        <item><string name="sadness_0_1">Grieved</string></item>
+        <item><string name="sadness_1_0">Lonely</string></item>
+        <item><string name="sadness_1_1">Isolated</string></item>
+        <item><string name="sadness_2_0">Guilty</string></item>
+        <item><string name="sadness_2_1">Regretful</string></item>
+        <item><string name="sadness_3_0">Displeased</string></item>
+        <item><string name="sadness_3_1">Dismayed</string></item>
+        <item><string name="sadness_4_0">Sorrowful</string></item>
+        <item><string name="sadness_4_1">Depressed</string></item>
+        <item><string name="sadness_5_0">Hurt</string></item>
+        <item><string name="sadness_5_1">Agonized</string></item>
+    </string-array>
 
-        <string name="sadness_4">Saddened</string>
-            <string name="sadness_4_0">Sorrowful</string>
-            <string name="sadness_4_1">Depressed</string>
 
-        <string name="sadness_5">Suffering</string>
-            <string name="sadness_5_0">Hurt</string>
-            <string name="sadness_5_1">Agonized</string>
 
-    <string name="anger">Anger</string>
+    <string-array name="anger_sublist">
+        <item><string name="anger_0_0">Revolted</string></item>
+        <item><string name="anger_0_1">Contemptful</string></item>
+        <item><string name="anger_1_0">Jealous</string></item>
+        <item><string name="anger_1_1">Resentful</string></item>
+        <item><string name="anger_2_0">Aggravated</string></item>
+        <item><string name="anger_2_1">Annoyed</string></item>
+        <item><string name="anger_3_0">Frustrated</string></item>
+        <item><string name="anger_3_1">Agitated</string></item>
+        <item><string name="anger_4_0">Hostile</string></item>
+        <item><string name="anger_4_1">Hateful</string></item>
+    </string-array>
 
-        <string name="anger_0">Disgusted</string>
-            <string name="anger_0_0">Revolted</string>
-            <string name="anger_0_1">Contemptful</string>
 
-        <string name="anger_1">Envious</string>
-            <string name="anger_1_0">Jealous</string>
-            <string name="anger_1_1">Resentful</string>
+    <string-array name="fear_sublist">
+        <item><string name="fear_0_0">Dread</string></item>
+        <item><string name="fear_0_1">Mortified</string></item>
+        <item><string name="fear_1_0">Anxious</string></item>
+        <item><string name="fear_1_1">Worried</string></item>
+        <item><string name="fear_2_0">Inadequate</string></item>
+        <item><string name="fear_2_1">Inferior</string></item>
+        <item><string name="fear_3_0">Hysterical</string></item>
+        <item><string name="fear_3_1">Panicked</string></item>
+        <item><string name="fear_4_0">Helpless</string></item>
+        <item><string name="fear_4_1">Frightened</string></item>
+    </string-array>
 
-        <string name="anger_2">Irritable</string>
-            <string name="anger_2_0">Aggravated</string>
-            <string name="anger_2_1">Annoyed</string>
-
-        <string name="anger_3">Exasperated</string>
-            <string name="anger_3_0">Frustrated</string>
-            <string name="anger_3_1">Agitated</string>
-
-        <string name="anger_4">Enraged</string>
-            <string name="anger_4_0">Hostile</string>
-            <string name="anger_4_1">Hateful</string>
-
-    <string name="fear">Fear</string>
-
-        <string name="fear_0">Horrified</string>
-            <string name="fear_0_0">Dread</string>
-            <string name="fear_0_1">Mortified</string>
-
-        <string name="fear_1">Nervous</string>
-            <string name="fear_1_0">Anxious</string>
-            <string name="fear_1_1">Worried</string>
-
-        <string name="fear_2">Insecure</string>
-            <string name="fear_2_0">Inadequate</string>
-            <string name="fear_2_1">Inferior</string>
-
-        <string name="fear_3">Terrified</string>
-            <string name="fear_3_0">Hysterical</string>
-            <string name="fear_3_1">Panicked</string>
-
-        <string name="fear_4">Scared</string>
-            <string name="fear_4_0">Helpless</string>
-            <string name="fear_4_1">Frightened</string>
-
-    <!--  Records Strings  -->
     <string name="record_screen_title">Past Records</string>
     <string name="record_title_placeholder">No Records Found</string>
     <string name="record_text_entry_placeholder">No Text Found For This Record</string>
@@ -205,7 +206,6 @@
     <string name="record_date_formatter">%1$s/%2$s/%3$s</string>
     <string name="record_time_formatter">%1$s:%2$s %3$s</string>
 
-    <!--  Resources Strings  -->
     <string name="resources_screen_title">Resources</string>
     <string name="resources_medical_title">Find Support</string>
     <string name="resources_medical_blurb">See Medical Providers in Your Area</string>
@@ -228,29 +228,9 @@
     <string name="resources_tw">Twitter Link</string>
     <string name="resources_red">Reddit Link</string>
     <string name="resources_insta">Instagram Link</string>
+    
+    <string name="forgot_password_title">Reset Password</string>
+    <string name="forgot_password_field_hint">email</string>
+    <string name="reset_password_button_label">Send Email</string>
 
-    <!--    Settings Strings-->
-    <string name="settings_screen_title">Settings</string>
-    <string name="my_account_title">My Account</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="appearance_title">Appearance</string>
-    <string name="privacy_security_title">Privacy &amp; Security</string>
-    <string name="help_support_title">Help &amp; Support</string>
-    <string name="about_title">About</string>
-    <string name="account_content_desc">Account Icon</string>
-    <string name="notifs_content_desc">Notification Icon</string>
-    <string name="appearance_content_desc">Appearance Icon</string>
-    <string name="privacy_security_content_desc">Privacy &amp; Security Icon</string>
-    <string name="help_support_content_desc">Help &amp; Support Icon</string>
-    <string name="about_content_desc">About Icon</string>
-    <string name="arrow_desc">Right Arrow indicating to expand</string>
-    <string name="viewModel_placeholder">TODO: GET INFO FROM VIEWMODEL</string>
-    <string name="arrow_back_content_desc">Back Arrow</string>
-    <string-array name="languages">
-        <item name="language_eng">English</item>
-        <item name="language_esp">Espanol</item>
-        <item name="language_fra">Francois</item>
-        <item name="language_ger">German</item>
-    </string-array>
-    <string name="save_settings">Save Changes</string>
 </resources>

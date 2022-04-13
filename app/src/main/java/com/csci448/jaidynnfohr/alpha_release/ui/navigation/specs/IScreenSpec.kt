@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 sealed interface IScreenSpec {
 
@@ -22,9 +22,10 @@ sealed interface IScreenSpec {
 
 
     @Composable
-    fun Content(viewModel: INoSadViewModel,
-                            navController: NavController,
-                            navBackStackEntry: NavBackStackEntry)
+    fun Content(
+        viewModel: ViewModel,
+        navController: NavController,
+        navBackStackEntry: NavBackStackEntry)
 
     fun navigateTo(vararg args: String?): String
 }

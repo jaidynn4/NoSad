@@ -2,12 +2,9 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.lifecycle.ViewModel
 import androidx.navigation.*
-import com.csci448.jaidynnfohr.alpha_release.ui.CreateAccountScreen
-import com.csci448.jaidynnfohr.alpha_release.ui.LoginScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.NewUserScreen
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
 object WelcomeScreenSpec : IScreenSpec {
 
@@ -17,7 +14,7 @@ object WelcomeScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: INoSadViewModel,
+        viewModel: ViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

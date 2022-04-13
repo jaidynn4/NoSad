@@ -2,16 +2,13 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Resource
-import com.csci448.jaidynnfohr.alpha_release.ui.LoginScreen
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.EmotionsDropDown
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ResourceScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
 object ResourcesScreenSpec : IScreenSpec {
 
@@ -21,7 +18,7 @@ object ResourcesScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: INoSadViewModel,
+        viewModel: ViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
@@ -64,8 +61,8 @@ object ResourcesScreenSpec : IScreenSpec {
         )
         NoSad_Scaffold(
             content = { ResourceScreen(list = list, onSelectResource = {}) },
-            onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
-            onJournal = {},
+            onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
+            onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},

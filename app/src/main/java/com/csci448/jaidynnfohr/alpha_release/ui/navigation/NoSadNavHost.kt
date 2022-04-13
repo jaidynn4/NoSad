@@ -1,17 +1,17 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.IScreenSpec
-import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
 class NoSadNavHost{
     @Composable
     fun NoSadNavHost(
-        viewModel : INoSadViewModel,
+        viewModel : ViewModel,
         navController: NavController
     ) {
         NavHost(
@@ -25,7 +25,8 @@ class NoSadNavHost{
                             arguments = screen.arguments
                         ) {
                             backStackEntry ->
-                                screen.Content(viewModel = viewModel,
+                                screen.Content(
+                                    viewModel = viewModel,
                                 navController = navController,
                                 navBackStackEntry = backStackEntry)
                         }
