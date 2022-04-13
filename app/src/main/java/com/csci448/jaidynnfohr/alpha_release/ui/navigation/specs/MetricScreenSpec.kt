@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.*
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object MetricScreenSpec : IScreenSpec {
 
@@ -15,7 +16,7 @@ object MetricScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

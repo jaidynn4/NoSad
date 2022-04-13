@@ -9,6 +9,7 @@ import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object JournalScreenSpec : IScreenSpec {
 
@@ -18,7 +19,7 @@ object JournalScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

@@ -23,7 +23,7 @@ sealed interface IScreenSpec {
 
     @Composable
     fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry)
 

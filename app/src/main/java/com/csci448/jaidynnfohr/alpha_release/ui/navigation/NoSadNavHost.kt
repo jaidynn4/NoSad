@@ -7,11 +7,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.IScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 class NoSadNavHost{
     @Composable
     fun NoSadNavHost(
-        viewModel : ViewModel,
+        viewModel : NoSadViewModel,
         navController: NavController
     ) {
         NavHost(
@@ -27,8 +28,9 @@ class NoSadNavHost{
                             backStackEntry ->
                                 screen.Content(
                                     viewModel = viewModel,
-                                navController = navController,
-                                navBackStackEntry = backStackEntry)
+                                    navController = navController,
+                                    navBackStackEntry = backStackEntry
+                                )
                         }
                     }
                 }
