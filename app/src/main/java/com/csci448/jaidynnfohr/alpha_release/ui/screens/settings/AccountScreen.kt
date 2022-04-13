@@ -159,7 +159,7 @@ fun Account(
                     language = langState
                 )
                 Toast.makeText(context,"Changes Saved!",Toast.LENGTH_SHORT).show()
-            }
+            }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green, contentColor = Color.Black)
             ) {
                 Text(text = stringResource(R.string.save_settings))
             }
@@ -184,15 +184,15 @@ fun saveChanges(
     // maybe do something with viewModel
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun PreviewAccount(){
-    Account(
-        NoSadViewModel(),
-        Profile(name = "Dwayne Johnson",
-            email = null,
-            phone = null,
-            emergencyContact = null,
-            language = null),
-        {})
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun PreviewAccount(){
+//    Account(
+//        NoSadViewModel(),
+//        Profile(name = "Dwayne Johnson",
+//            email = null,
+//            phone = null,
+//            emergencyContact = null,
+//            language = null),
+//        {})
+//}
