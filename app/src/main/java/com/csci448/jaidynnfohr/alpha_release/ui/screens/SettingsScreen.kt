@@ -21,7 +21,6 @@ import com.csci448.jaidynnfohr.alpha_release.R
 fun Settings(
     onAccountClick : () -> Unit,
     onNotificationsClick : () -> Unit,
-    onAppearanceClick : () -> Unit,
     onPrivacySecurityClick : () -> Unit,
     onHelpSupportClick : () -> Unit,
     onAboutClick : () -> Unit,
@@ -104,27 +103,6 @@ fun Settings(
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable(onClick = onAppearanceClick),
-                horizontalArrangement = Arrangement.Start
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.RemoveRedEye,
-                    contentDescription = stringResource(id = R.string.appearance_content_desc)
-                )
-                Spacer(modifier = Modifier.width(10.dp))
-                Text(text = stringResource(id = R.string.appearance_title))
-                Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    imageVector = Icons.Rounded.KeyboardArrowRight,
-                    contentDescription = stringResource(
-                        id = R.string.arrow_desc
-                    )
-                )
-            }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
                     .clickable(onClick = onPrivacySecurityClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -191,5 +169,5 @@ fun Settings(
 @Preview(showBackground = true)
 @Composable
 private fun PreviewSettings(){
-    Settings({},{},{},{},{},{},{})
+    Settings({},{},{},{},{},{})
 }

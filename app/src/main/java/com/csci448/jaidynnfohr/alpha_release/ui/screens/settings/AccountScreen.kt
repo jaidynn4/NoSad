@@ -27,14 +27,14 @@ import com.csci448.jaidynnfohr.alpha_release.data.Profile
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 @Composable
-fun Account(
+fun AccountScreen(
     viewModel : NoSadViewModel,
     myProfile: Profile,
     onBack : () -> Unit
 ){
     val nameState = remember{ mutableStateOf("")}
+    val pswdState = remember{ mutableStateOf("")}
     val emailState = remember{ mutableStateOf("")}
-    val phoneState = remember{ mutableStateOf("")}
     val emergState = remember{ mutableStateOf("")}
     val langState = remember{ mutableStateOf("")}
     val expanded = remember{ mutableStateOf(false)}
@@ -86,11 +86,11 @@ fun Account(
             Column(
                 horizontalAlignment = Alignment.Start
             ) {
-                Text("Email: ", fontSize = 20.sp)
+                Text("Password: ", fontSize = 20.sp)
                 TextField(
-                    value = emailState.value,
-                    onValueChange = { emailState.value = it },
-                    placeholder = { Text(text = myProfile.getEmail().toString())},
+                    value = pswdState.value,
+                    onValueChange = { pswdState.value = it },
+                    placeholder = { Text(text = myProfile.getPassword().toString())},
                     singleLine = true
                 )
             }
@@ -98,11 +98,11 @@ fun Account(
             Column(
                 horizontalAlignment = Alignment.Start
             ) {
-                Text("Phone: ", fontSize = 20.sp)
+                Text("Email: ", fontSize = 20.sp)
                 TextField(
-                    value = phoneState.value,
-                    onValueChange = { phoneState.value = it },
-                    placeholder = { Text(text = myProfile.getPhone().toString())},
+                    value = emailState.value,
+                    onValueChange = { emailState.value = it },
+                    placeholder = { Text(text = myProfile.getEmail().toString())},
                     singleLine = true
                 )
             }
@@ -154,9 +154,9 @@ fun Account(
                     viewModel = viewModel,
                     name = nameState,
                     email = emailState,
-                    phone = phoneState,
                     emergency = emergState,
-                    language = langState
+                    language = langState,
+                    password = pswdState
                 )
                 Toast.makeText(context,"Changes Saved!",Toast.LENGTH_SHORT).show()
             }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green, contentColor = Color.Black)
@@ -172,13 +172,13 @@ fun saveChanges(
     viewModel: NoSadViewModel,
     name : MutableState<String>,
     email : MutableState<String>,
-    phone : MutableState<String>,
     emergency : MutableState<String>,
-    language : MutableState<String>
+    language : MutableState<String>,
+    password : MutableState<String>
 ){
     if(profile.getName() != name.value) profile.setName(name.value)
+    if(profile.getPassword() != password.value) profile.setPassword(password.value)
     if(profile.getEmail() != email.value) profile.setEmail(email.value)
-    if(profile.getPhone() != phone.value) profile.setPhone(phone.value)
     if(profile.getEmergContact() != emergency.value) profile.setEmergContact(emergency.value)
     if(profile.getLanguage() != language.value) profile.setLanguage(language.value)
     // maybe do something with viewModel

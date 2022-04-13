@@ -20,10 +20,9 @@ object SettingsScreenSpec : IScreenSpec {
 
       Settings(
           onAccountClick = { navController.navigate(AccountScreenSpec.navigateTo()) },
-          onNotificationsClick = { /*TODO*/ },
-          onAppearanceClick = { /*TODO*/ },
-          onPrivacySecurityClick = { /*TODO*/ },
-          onHelpSupportClick = { /*TODO*/ },
+          onNotificationsClick = { navController.navigate(NotificationsScreenSpec.navigateTo()) },
+          onPrivacySecurityClick = { navController.navigate(PrivacySupportScreenSpec.navigateTo()) },
+          onHelpSupportClick = { navController.navigate(HelpSupportScreenSpec.navigateTo()) },
           onAboutClick = { /*TODO*/},
           onBack = { navController.popBackStack() }
       )

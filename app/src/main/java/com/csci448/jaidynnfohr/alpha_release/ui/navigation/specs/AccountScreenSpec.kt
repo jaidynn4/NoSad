@@ -8,7 +8,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Profile
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.settings.Account
+import com.csci448.jaidynnfohr.alpha_release.ui.screens.settings.AccountScreen
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object AccountScreenSpec : IScreenSpec {
@@ -21,13 +21,13 @@ object AccountScreenSpec : IScreenSpec {
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
-        Account(viewModel = viewModel as NoSadViewModel,
+        AccountScreen(viewModel = viewModel as NoSadViewModel,
             myProfile = Profile(
                 language = stringResource(id = R.string.viewModel_placeholder),
                 email = stringResource(id = R.string.viewModel_placeholder),
                 name = stringResource(id = R.string.viewModel_placeholder),
-                phone = stringResource(id = R.string.viewModel_placeholder),
-                emergencyContact = stringResource(id = R.string.viewModel_placeholder)),
+                emergencyContact = stringResource(id = R.string.viewModel_placeholder),
+                password = stringResource(id = R.string.viewModel_placeholder)),
             onBack = { navController.popBackStack() })
     }
 
