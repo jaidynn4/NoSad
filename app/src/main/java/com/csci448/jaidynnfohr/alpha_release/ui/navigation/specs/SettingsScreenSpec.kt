@@ -1,19 +1,16 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
-
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.navigation.*
-import com.csci448.jaidynnfohr.alpha_release.ui.*
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.ScrollingCards
+import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
+import com.csci448.jaidynnfohr.alpha_release.ui.screens.Settings
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
-object MetricScreenSpec : IScreenSpec {
-
-    override val route = "metrics"
+object SettingsScreenSpec : IScreenSpec {
+    override val route: String = "settings"
     override val arguments: List<NamedNavArgument> = mutableListOf()
-
 
     @Composable
     override fun Content(
@@ -22,7 +19,15 @@ object MetricScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { DayWeekMonth() },
+            content = {
+                      Settings(
+                          onAccountClick = { /*TODO*/ },
+                          onNotificationsClick = { /*TODO*/ },
+                          onAppearanceClick = { /*TODO*/ },
+                          onPrivacySecurityClick = { /*TODO*/ },
+                          onHelpSupportClick = { /*TODO*/ },
+                          onAboutClick = { /*TODO*/})
+            },
             onAddItem = {navController.navigate(ColorWheelScreenSpec.navigateTo())},
             onJournal = {},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
@@ -30,25 +35,9 @@ object MetricScreenSpec : IScreenSpec {
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
             onSettings = {navController.navigate(SettingsScreenSpec.navigateTo())},
-            bottomBarItemNumber = 3
+            bottomBarItemNumber = 4
         )
     }
-
-
-//
-//    @Composable
-//    override fun Content(viewModel: ISamodelkinCharacterViewModel,
-//                         navController: NavController,
-//                         navBackStackEntry: NavBackStackEntry
-//    ) {
-//        val characterList = viewModel.characterListLiveData.observeAsState()
-//        CharacterListScreen(characterList = characterList.value, onSelectCharacter = {
-//                character -> navController.navigate(
-//            DetailScreenSpec.navigateTo(character.id.toString())
-//        )
-//        }
-//        )
-//    }
 
     override fun navigateTo(vararg args: String?): String {
         return route

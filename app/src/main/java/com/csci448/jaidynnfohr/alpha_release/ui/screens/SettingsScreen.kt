@@ -18,7 +18,14 @@ import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
-fun Settings(){
+fun Settings(
+    onAccountClick : () -> Unit,
+    onNotificationsClick : () -> Unit,
+    onAppearanceClick : () -> Unit,
+    onPrivacySecurityClick : () -> Unit,
+    onHelpSupportClick : () -> Unit,
+    onAboutClick : () -> Unit
+){
     Column(
         Modifier.fillMaxHeight().fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -39,7 +46,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onAccountClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -60,7 +67,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onNotificationsClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -81,7 +88,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onAppearanceClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -102,7 +109,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onPrivacySecurityClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -123,7 +130,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onHelpSupportClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -144,7 +151,7 @@ fun Settings(){
                 Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
-                    .clickable { },
+                    .clickable(onClick = onAboutClick),
                 horizontalArrangement = Arrangement.Start
             ) {
                 Icon(
@@ -168,5 +175,5 @@ fun Settings(){
 @Preview(showBackground = true)
 @Composable
 private fun PreviewSettings(){
-    Settings()
+//    Settings()
 }

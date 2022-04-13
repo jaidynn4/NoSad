@@ -244,4 +244,8 @@
     <string name="help_support_content_desc">Help &amp; Support Icon</string>
     <string name="about_content_desc">About Icon</string>
     <string name="arrow_desc">Right Arrow indicating to expand</string>
+    <string name="language_eng">English</string>
+    <string name="language_esp">Espanol</string>
+    <string name="language_fra">Francois</string>
+    <string name="language_ger">German</string>
 </resources>
