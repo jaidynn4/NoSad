@@ -1,10 +1,13 @@
 package com.csci448.jaidynnfohr.alpha_release.data
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.csci448.jaidynnfohr.alpha_release.R
 import java.util.*
 
 class Profile(id: UUID=UUID.randomUUID(),
-              language: Int = R.string.language_eng,
+              language: String?,
               email: String?,
               name: String?,
               phone: String?,
@@ -17,7 +20,7 @@ class Profile(id: UUID=UUID.randomUUID(),
     private var profilePhone = phone
     private var profileEmergContact = emergencyContact
 
-    fun setLanguage(newLanguage : Int){
+    fun setLanguage(newLanguage : String){
         chosenLanguage = newLanguage
     }
     fun setEmail(newEmail : String){
@@ -33,4 +36,23 @@ class Profile(id: UUID=UUID.randomUUID(),
         profileEmergContact = newContact
     }
 
+    fun getID() : UUID{
+        return profileID
+    }
+
+    fun getLanguage() : String? {
+        return chosenLanguage
+    }
+    fun getName() : String?{
+        return profileName
+    }
+    fun getEmail() : String?{
+        return profileEmail
+    }
+    fun getPhone() : String?{
+        return profilePhone
+    }
+    fun getEmergContact() : String?{
+        return profileEmergContact
+    }
 }
