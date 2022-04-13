@@ -4,12 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import com.csci448.jaidynnfohr.alpha_release.ui.screens.Settings
-import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
+import com.csci448.jaidynnfohr.alpha_release.ui.screens.settings.Account
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.INoSadViewModel
 
-object SettingsScreenSpec : IScreenSpec {
-    override val route: String = "settings"
+object AccountScreenSpec : IScreenSpec {
+    override val route: String = "account"
     override val arguments: List<NamedNavArgument> = mutableListOf()
 
     @Composable
@@ -18,16 +17,9 @@ object SettingsScreenSpec : IScreenSpec {
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
-
-      Settings(
-          onAccountClick = { navController.navigate(AccountScreenSpec.navigateTo()) },
-          onNotificationsClick = { /*TODO*/ },
-          onAppearanceClick = { /*TODO*/ },
-          onPrivacySecurityClick = { /*TODO*/ },
-          onHelpSupportClick = { /*TODO*/ },
-          onAboutClick = { /*TODO*/},
-          onBack = { navController.popBackStack() }
-      )
+//        Account(viewModel = viewModel, myProfile = ) {
+//
+//        }
     }
 
     override fun navigateTo(vararg args: String?): String {

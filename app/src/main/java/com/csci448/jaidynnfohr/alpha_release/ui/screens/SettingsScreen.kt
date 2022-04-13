@@ -24,17 +24,33 @@ fun Settings(
     onAppearanceClick : () -> Unit,
     onPrivacySecurityClick : () -> Unit,
     onHelpSupportClick : () -> Unit,
-    onAboutClick : () -> Unit
+    onAboutClick : () -> Unit,
+    onBack : () -> Unit
 ){
     Column(
-        Modifier.fillMaxHeight().fillMaxWidth(),
+        Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Column(
+            Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.Start
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.KeyboardArrowLeft,
+                contentDescription = stringResource(id = R.string.arrow_back_content_desc),
+                modifier = Modifier
+                    .clickable(onClick = onBack)
+                    .size(40.dp),
+            )
+        }
         Text(
             text = stringResource(id = R.string.settings_screen_title),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
+        Spacer(Modifier.height(16.dp))
         Column(
             Modifier
                 .fillMaxWidth()
@@ -175,5 +191,5 @@ fun Settings(
 @Preview(showBackground = true)
 @Composable
 private fun PreviewSettings(){
-//    Settings()
+    Settings({},{},{},{},{},{},{})
 }
