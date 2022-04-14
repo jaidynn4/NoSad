@@ -148,6 +148,8 @@ fun EmotionsDropDown(
                         third_visible = false
                         second_visible = false
                         answer_chosen = false
+                        second_choice = placeholder_two
+                        color_selection = Color.White
                     },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -182,6 +184,7 @@ fun EmotionsDropDown(
                             second_expanded = !second_expanded
                             third_visible = false
                             answer_chosen = false
+                            third_choice = placeholder_three
                         },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
@@ -221,8 +224,8 @@ fun EmotionsDropDown(
                             },
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
-                    ) { // Anchor view
-                        if (third_choice == placeholder_three){
+                    ) {
+                        if (third_choice == stringResource(id = R.string.specification_dropdown_placeholder)){
                             Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = Color.White) // emotion name label
                         } else {
                             Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
@@ -282,12 +285,7 @@ fun EmotionsDropDown(
 
                 Row(
                     Modifier
-                        .padding(18.dp)
-                        .clickable {
-                            second_expanded = !second_expanded
-                            third_visible = false
-                            answer_chosen = false
-                        },
+                        .padding(18.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -299,7 +297,7 @@ fun EmotionsDropDown(
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = colorResource(id = R.color.app_green_color),
                             contentColor = Color.White)) {
-                        Text(text = stringResource(R.string.save_mood_button_label), fontSize = 14.sp)
+                        Text(text = stringResource(R.string.make_journal_entry_button_label), fontSize = 14.sp)
                     }
                 }
             }

@@ -12,13 +12,13 @@ import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
 fun NoSad_Scaffold(content: @Composable () -> Unit,
-                   onAddMood: () -> Unit,
-                   onRecent: () -> Unit,
-                   onMetrics: () -> Unit,
-                   onJournal: () -> Unit,
-                   onSupport: () -> Unit,
                    onHome: () -> Unit,
                    onSettings: () -> Unit,
+                   onAddMood: () -> Unit,
+                   onJournal: () -> Unit,
+                   onRecent: () -> Unit,
+                   onMetrics: () -> Unit,
+                   onSupport: () -> Unit,
                    bottomBarItemNumber: Int /*1-5 for nav icon enabling, 0 for other screens*/
                    ){
     Scaffold(
@@ -70,6 +70,21 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                     BottomNavigationItem(
                         icon = {
                             Icon(
+                                imageVector = Icons.Filled.Book,
+                                contentDescription = "Journal icon"
+                            )
+                        },
+                        label = {
+                            Text(stringResource(id = R.string.journal_records_label_short))
+                        },
+                        selected = (bottomBarItemNumber == 2),
+                        selectedContentColor = colorResource(id = R.color.white),
+                        unselectedContentColor = colorResource(id = R.color.black),
+                        onClick = onJournal
+                    )
+                    BottomNavigationItem(
+                        icon = {
+                            Icon(
                                 imageVector = Icons.Filled.DateRange,
                                 contentDescription = "Calendar icon"
                             )
@@ -77,7 +92,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                         label = {
                             Text(stringResource(id = R.string.recent_additions_label_short))
                         },
-                        selected = (bottomBarItemNumber == 2),
+                        selected = (bottomBarItemNumber == 3),
                         selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
                         onClick = onRecent
@@ -92,25 +107,10 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                         label = {
                             Text(stringResource(id = R.string.metrics_tracker_label_short))
                         },
-                        selected = (bottomBarItemNumber == 3),
-                        selectedContentColor = colorResource(id = R.color.white),
-                        unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = onMetrics
-                    )
-                    BottomNavigationItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Filled.Book,
-                                contentDescription = "Journal icon"
-                            )
-                        },
-                        label = {
-                            Text(stringResource(id = R.string.journal_records_label_short))
-                        },
                         selected = (bottomBarItemNumber == 4),
                         selectedContentColor = colorResource(id = R.color.white),
                         unselectedContentColor = colorResource(id = R.color.black),
-                        onClick = onJournal
+                        onClick = onMetrics
                     )
                     BottomNavigationItem(
                         icon = {

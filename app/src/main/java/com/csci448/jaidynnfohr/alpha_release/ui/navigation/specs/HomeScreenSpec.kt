@@ -23,10 +23,10 @@ object HomeScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = {
                 ScrollingCards(
+                    onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
+                    onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
                     onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
                     onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
-                    onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
-                    onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
                     onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())}
                 )
               },

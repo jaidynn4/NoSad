@@ -68,6 +68,37 @@ fun ScrollingCards(
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
+                    .clickable(onClick = onJournal),
+                shape = RoundedCornerShape(20.dp)
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Icon(
+                        imageVector = Icons.Filled.Book,
+                        contentDescription = "Journal icon",
+                        tint = colorResource(id = R.color.app_green_color),
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(48.dp)
+                    )
+                    Text(stringResource(id = R.string.journal_records_label_long),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp, vertical = 4.dp)
+                            .weight(1f)
+                    )
+                }
+            }
+        }
+
+        item {
+            Card(
+                Modifier
+                    .padding(vertical = 8.dp)
+                    .fillMaxWidth()
+                    .height(72.dp)
                     .clickable(onClick = onRecent),
                 shape = RoundedCornerShape(20.dp)
             ) {
@@ -115,37 +146,6 @@ fun ScrollingCards(
                             .height(48.dp)
                     )
                     Text(stringResource(id = R.string.metrics_tracker_label_long),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(horizontal = 4.dp, vertical = 4.dp)
-                            .weight(1f)
-                    )
-                }
-            }
-        }
-
-        item {
-            Card(
-                Modifier
-                    .padding(vertical = 8.dp)
-                    .fillMaxWidth()
-                    .height(72.dp)
-                    .clickable(onClick = onJournal),
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Icon(
-                        imageVector = Icons.Filled.Book,
-                        contentDescription = "Journal icon",
-                        tint = colorResource(id = R.color.app_green_color),
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(48.dp)
-                    )
-                    Text(stringResource(id = R.string.journal_records_label_long),
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
