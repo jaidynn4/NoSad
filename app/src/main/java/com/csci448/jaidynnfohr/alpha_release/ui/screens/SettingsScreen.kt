@@ -60,7 +60,7 @@ fun Settings(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .clickable(onClick = onAccountClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -68,7 +68,7 @@ fun Settings(
                     imageVector = Icons.Rounded.AccountCircle,
                     contentDescription = stringResource(R.string.account_content_desc)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = stringResource(id = R.string.my_account_title))
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
@@ -81,7 +81,7 @@ fun Settings(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .clickable(onClick = onNotificationsClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -89,7 +89,7 @@ fun Settings(
                     imageVector = Icons.Rounded.Notifications,
                     contentDescription = stringResource(id = R.string.notifs_content_desc)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = stringResource(id = R.string.notifications_title))
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
@@ -102,7 +102,7 @@ fun Settings(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .clickable(onClick = onPrivacySecurityClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -110,7 +110,7 @@ fun Settings(
                     imageVector = Icons.Rounded.Lock,
                     contentDescription = stringResource(id = R.string.privacy_security_content_desc)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = stringResource(id = R.string.privacy_security_title))
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
@@ -123,7 +123,7 @@ fun Settings(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .clickable(onClick = onHelpSupportClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -131,7 +131,7 @@ fun Settings(
                     imageVector = Icons.Rounded.Headset,
                     contentDescription = stringResource(id = R.string.help_support_content_desc)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = stringResource(id = R.string.help_support_title))
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
@@ -144,7 +144,7 @@ fun Settings(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 10.dp, end = 10.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .clickable(onClick = onAboutClick),
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -152,7 +152,7 @@ fun Settings(
                     imageVector = Icons.Rounded.Info,
                     contentDescription = stringResource(id = R.string.about_content_desc)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = stringResource(id = R.string.about_title))
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(

@@ -274,5 +274,7 @@
         Mountain© does not claim responsibility for any adverse side effects that users experience while using the
         NoSad™ app. Please refer to Privacy &amp; Security statement for more information.
     </string>
-
+    <string name="news_button">News Reminders</string>
+    <string name="mood_button">Daily Mood Reminders</string>
+    <string name="scripture_button">Scripture Notifications</string>
 </resources>

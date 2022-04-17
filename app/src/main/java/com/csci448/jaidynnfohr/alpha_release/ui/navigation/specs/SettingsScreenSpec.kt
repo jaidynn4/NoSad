@@ -23,7 +23,7 @@ object SettingsScreenSpec : IScreenSpec {
           onNotificationsClick = { navController.navigate(NotificationsScreenSpec.navigateTo()) },
           onPrivacySecurityClick = { navController.navigate(PrivacySupportScreenSpec.navigateTo()) },
           onHelpSupportClick = { navController.navigate(HelpSupportScreenSpec.navigateTo()) },
-          onAboutClick = { /*TODO*/},
+          onAboutClick = { navController.navigate(AboutScreenSpec.navigateTo()) },
           onBack = { navController.popBackStack() }
       )
     }
