@@ -257,6 +257,22 @@
         <item name="language_ger">German</item>
     </string-array>
     <string name="save_settings">Save Changes</string>
-
+    <string name="about_blurb_one">
+        NoSad™ is a therapeutical app designed to aid those struggling with mental health issues, namely depression
+        and anxiety. This goal of this app is NOT to replace any form of professional medical help, but rather to
+        provide extra resources to the user alongside professional processes. For further information on the correct usage
+        of this app, please refer to the tutorial.
+    </string>
+    <string name="about_blurb_two">
+        Compassion Mountain© is a non-profit organization started by three Colorado School of Mines Computer
+        Science students. Compassion Mountain© is dedicated to the design, creation, development, and maintenance
+        of software solutions that are representative of our core beliefs. For further information about our company
+        and what we value, please visit our website.
+    </string>
+    <string name="about_disclaimer">
+        Compassion Mountain© is not responsible for any potential misuse of the NoSad™ app in word or deed. Compassion
+        Mountain© does not claim responsibility for any adverse side effects that users experience while using the
+        NoSad™ app. Please refer to Privacy &amp; Security statement for more information.
+    </string>
 
 </resources>
