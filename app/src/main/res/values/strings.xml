@@ -277,4 +277,27 @@
     <string name="news_button">News Reminders</string>
     <string name="mood_button">Daily Mood Reminders</string>
     <string name="scripture_button">Scripture Notifications</string>
+    <string name="push_button">Push Notifications</string>
+    <string name="news_dialogue_title">Enable News Notifications?</string>
+    <string name="news_dialogue_content">
+        Choose yes to be sent notifications from new posts in our Resources
+        page!
+    </string>
+    <string name="mood_dialogue_title">Enable Mood Notifications?</string>
+    <string name="mood_dialogue_content">
+        Choose yes to be sent notifications for logging your mood for the day!
+    </string>
+    <string name="scripture_dialogue_title">Enable Scripture Notifications?</string>
+    <string name="scriptire_dialogue_content">
+        Choose yes to be sent daily Scripture references!
+    </string>
+    <string name="news_channel_name">News Notifications</string>
+    <string name="news_channel_description">Notifies the user of new resources within the Resources section.</string>
+    <string name="news_channel_id">News</string>
+    <string name="mood_channel_name">Mood Notifications</string>
+    <string name="mood_channel_description">Notifies the user to log their mood for the day.</string>
+    <string name="mood_channel_id">Mood</string>
+    <string name="scripture_channel_name">Scripture Notifications</string>
+    <string name="scripture_channel_description">Notifies the user of the selected daily Bible verse.</string>
+    <string name="scripture_channel_id">Scripture</string>
 </resources>
