@@ -324,4 +324,14 @@
     <string name="contact_mini_title">Contact Information:</string>
     <string name="company_email">support@compassionmountain.com</string>
     <string name="company_phone">555-420-6969</string>
+    <string name="mood_month_label">Most Frequent Mood</string>
+    <string name="mood_over_month_label">Past 30 Moods</string>
+    <string name="mood_week_label">Past 7 Moods</string>
+    <string name="love_description">an intense feeling of deep affection.</string>
+    <string name="joy_description">a feeling of great pleasure and happiness.</string>
+    <string name="sadness_description">feeling or showing sorrow; unhappy.</string>
+    <string name="fear_description">a feeling of anxiety concerning the outcome of something or the safety and well-being of someone.</string>
+    <string name="anger_description">a strong feeling of annoyance, displeasure, or hostility.</string>
+    <string name="surprise_description">a feeling of mild astonishment or shock caused by something unexpected.</string>
+    <string name="default_mood_description">no mood added</string>
 </resources>
