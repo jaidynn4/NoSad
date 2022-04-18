@@ -2,7 +2,6 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.*
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
@@ -21,14 +20,14 @@ object MetricScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { DayWeekMonth() },
+            content = { DayWeekMonth(viewModel.metricsColorList, viewModel.metricsMoodList) },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
-            onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
+            onMetrics = {navController.navigate(navigateTo())},
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
-            onSettings = {navController.navigate(SettingsScreenSpec.navigateTo())},
+            onSettings = {},
             bottomBarItemNumber = 3
         )
     }
