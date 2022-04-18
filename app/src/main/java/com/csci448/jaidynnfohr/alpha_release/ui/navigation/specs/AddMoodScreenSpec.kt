@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.EmotionsDropDown
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object AddMoodScreenSpec : IScreenSpec {
 
@@ -15,12 +16,18 @@ object AddMoodScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { EmotionsDropDown(onSaveMood = {}) },
+            content = {
+                EmotionsDropDown(onSaveMood = { color, string ->
+                        viewModel.colorList.add(color)
+                        viewModel.moodList.add(string)
+                        navController.navigate(JournalScreenSpec.navigateTo())
+                })
+                      },
             onAddMood = {navController.navigate(navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},

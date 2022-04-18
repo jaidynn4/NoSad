@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.NewUserScreen
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object WelcomeScreenSpec : IScreenSpec {
 
@@ -14,7 +15,7 @@ object WelcomeScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

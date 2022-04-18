@@ -9,6 +9,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Resource
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ResourceScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object ResourcesScreenSpec : IScreenSpec {
 
@@ -18,7 +19,7 @@ object ResourcesScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

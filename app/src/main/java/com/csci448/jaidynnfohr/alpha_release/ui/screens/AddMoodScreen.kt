@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun EmotionsDropDown(
-    onSaveMood: () -> Unit
+    onSaveMood: (Color, String) -> Unit
 ){
     val emotionsList = mutableListOf<String>()
     stringArrayResource(R.array.emotions_list).forEach {
@@ -291,7 +291,11 @@ fun EmotionsDropDown(
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Button(onClick = onSaveMood, shape = RoundedCornerShape(20.dp),
+                    Button(
+                        onClick = {
+                            onSaveMood(color_selection, third_choice)
+                        },
+                        shape = RoundedCornerShape(20.dp),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = colorResource(id = R.color.app_green_color),
                             contentColor = Color.White)) {
@@ -306,5 +310,5 @@ fun EmotionsDropDown(
 @Preview
 @Composable
 fun ColorScreenPreview(){
-    EmotionsDropDown({})
+    EmotionsDropDown({color, string -> {}})
 }

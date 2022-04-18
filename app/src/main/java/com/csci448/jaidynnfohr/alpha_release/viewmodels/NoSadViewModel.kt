@@ -2,7 +2,9 @@ package com.csci448.jaidynnfohr.alpha_release.viewmodels
 
 import android.content.Context
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.data.database.JournalEntryRepository
 import com.csci448.jaidynnfohr.alpha_release.data.database.ProfileInfoRepository
@@ -25,4 +27,6 @@ class NoSadViewModel(
     val metricsMoodList = mutableListOf<String>()
 
     val recordsList = mutableListOf<PastRecord>()
+
+    fun getRecords(): LiveData<List<JournalEntry>> = journalEntryRepository.getEntries()
 }
