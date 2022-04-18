@@ -1,13 +1,10 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens.settings
 
-import android.Manifest
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -17,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -26,19 +25,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import com.csci448.jaidynnfohr.alpha_release.R
+
+
+val newsState : Boolean = false
+val moodState : Boolean = false
+val scriptureState : Boolean = false
+val newsAlertState : Boolean = false
+val moodAlertState : Boolean = false
+val scriptureAlertState : Boolean = false
 
 @Composable
 fun NotificationsScreen(
     onBack : () -> Unit,
 ){
     val context = LocalContext.current
-    val newsButton = remember{ mutableStateOf(false)}
-    val moodButton = remember { mutableStateOf(false)}
-    val scriptureButton = remember { mutableStateOf(false)}
+    val newsButton = rememberSaveable{ mutableStateOf(newsState) }
+    val moodButton = rememberSaveable{ mutableStateOf(moodState) }
+    val scriptureButton = rememberSaveable{ mutableStateOf(scriptureState) }
     val pushButton = remember {
         mutableStateOf(
             NotificationManagerCompat
@@ -46,9 +51,9 @@ fun NotificationsScreen(
                 .areNotificationsEnabled()
         )
     }
-    val scriptureAlert = remember{ mutableStateOf(false)}
-    val moodAlert = remember{ mutableStateOf(false)}
-    val newsAlert = remember{ mutableStateOf(false)}
+    val scriptureAlert = rememberSaveable{ mutableStateOf(newsAlertState) }
+    val moodAlert = rememberSaveable{ mutableStateOf(moodAlertState) }
+    val newsAlert = rememberSaveable{ mutableStateOf(scriptureAlertState) }
 
     Column(
         Modifier
@@ -251,7 +256,7 @@ private fun alertProcess(
                 )
                 alert.value = !alert.value
             }) {
-                Text(text="Yes")
+                Text(text="Yes", color = Color.Green)
             }
         },
         dismissButton = {
@@ -259,11 +264,11 @@ private fun alertProcess(
                 alert.value = !alert.value
                 button.value = !button.value
             }) {
-                Text(text="No")
+                Text(text="No", color = Color.Green)
             }
         },
-        title = { Text(text = stringResource(id = dialogTitle)) },
-        text = { Text(text = stringResource(id = dialogContent))}
+        title = { Text(text = stringResource(id = dialogTitle), color = Color.Green) },
+        text = { Text(text = stringResource(id = dialogContent), color = Color.Green)}
     )
 }
 
