@@ -93,7 +93,7 @@ fun PrivacySecurityScreen(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween
         ){
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(onClick = { getUserInfo() }) {
                 Text(text = stringResource(id = R.string.request_data), fontSize = 16.sp)
             }
             Spacer(Modifier.height(16.dp))
@@ -149,6 +149,10 @@ fun PrivacySecurityScreen(
             Spacer(Modifier.height(24.dp))
         }
     }
+}
+
+private fun getUserInfo(){
+
 }
 
 @Preview(showBackground = true)

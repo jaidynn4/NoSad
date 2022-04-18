@@ -6,6 +6,7 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.settings.PrivacySecurityScreen
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object PrivacySupportScreenSpec : IScreenSpec {
     override val route: String = "privacy"
@@ -13,7 +14,7 @@ object PrivacySupportScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {

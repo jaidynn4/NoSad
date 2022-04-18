@@ -6,6 +6,7 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.Settings
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object SettingsScreenSpec : IScreenSpec {
     override val route: String = "settings"
@@ -13,7 +14,7 @@ object SettingsScreenSpec : IScreenSpec {
 
     @Composable
     override fun Content(
-        viewModel: ViewModel,
+        viewModel: NoSadViewModel,
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
