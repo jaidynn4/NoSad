@@ -248,6 +248,8 @@
     <string name="help_support_content_desc">Help &amp; Support Icon</string>
     <string name="about_content_desc">About Icon</string>
     <string name="arrow_desc">Right Arrow indicating to expand</string>
+
+    <!--  My Account Strings  -->
     <string name="viewModel_placeholder">TODO: GET INFO FROM VIEWMODEL</string>
     <string name="arrow_back_content_desc">Back Arrow</string>
     <string-array name="languages">
@@ -257,6 +259,8 @@
         <item name="language_ger">German</item>
     </string-array>
     <string name="save_settings">Save Changes</string>
+
+    <!--  About Screen Strings  -->
     <string name="about_blurb_one">
         NoSad™ is a therapeutical app designed to aid those struggling with mental health issues, namely depression
         and anxiety. This goal of this app is NOT to replace any form of professional medical help, but rather to
@@ -274,6 +278,9 @@
         Mountain© does not claim responsibility for any adverse side effects that users experience while using the
         NoSad™ app. Please refer to Privacy &amp; Security statement for more information.
     </string>
+    <string name="app_version">Version 0.0.1</string>
+
+    <!-- Notifications Screen Strings   -->
     <string name="news_button">News Reminders</string>
     <string name="mood_button">Daily Mood Reminders</string>
     <string name="scripture_button">Scripture Notifications</string>
@@ -300,4 +307,9 @@
     <string name="scripture_channel_name">Scripture Notifications</string>
     <string name="scripture_channel_description">Notifies the user of the selected daily Bible verse.</string>
     <string name="scripture_channel_id">Scripture</string>
+
+    <!-- Privacy & Security Strings   -->
+    <string name="request_data">Request Data</string>
+    <string name="policy_title">Privacy Policy</string>
+    <string name="terms_conditions_title">Terms &amp; Conditions</string>
 </resources>

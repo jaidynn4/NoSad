@@ -67,6 +67,8 @@ fun AboutScreen(
                     text = stringResource(R.string.about_disclaimer),
                     fontSize = 16.sp
                 )
+                Spacer(Modifier.height(16.dp))
+                Text(text = stringResource(R.string.app_version), fontSize = 16.sp)
                 Spacer(Modifier.height(24.dp))
             }
         }
