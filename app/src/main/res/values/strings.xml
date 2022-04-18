@@ -12,7 +12,7 @@
     <string name="signup_button_hint">Sign up</string>
     <string name="signin_button_label">Already have an account?</string>
     <string name="welcome_title">Welcome</string>
-    <string name="sample_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="sample_description_text">Welcome to NoSad! Thank you for choosing our app. The goal of NoSad is to help you track your moods over time. Swipe through the images below for some hints on navigating and using the app.</string>
     <string name="month_view_label">Month</string>
     <string name="week_view_label">Week</string>
     <string name="day_view_label">Today</string>
@@ -334,4 +334,7 @@
     <string name="anger_description">a strong feeling of annoyance, displeasure, or hostility.</string>
     <string name="surprise_description">a feeling of mild astonishment or shock caused by something unexpected.</string>
     <string name="default_mood_description">no mood added</string>
+    <string name="top_bar_hint">Select the house icon to go home. Select the gear icon to access settings.</string>
+    <string name="bottom_bar_hint">These are the main icons for navigation. Be sure to explore each one. They are accessible from the home screen as well.</string>
+    <string name="resources_hint">If you ever need someone to talk to, follow the Support icon to this page.</string>
 </resources>

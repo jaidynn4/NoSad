@@ -1,5 +1,6 @@
 package com.csci448.jaidynnfohr.alpha_release.ui
 
+import androidx.compose.animation.core.animateIntSizeAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,31 +36,55 @@ private fun TutorialSlides() {
 
     val pagerState = rememberPagerState(initialPage = 0)
     val dotTotal = 3
-    Box() {
+
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             HorizontalPager(count = dotTotal, state = pagerState) { page ->
-                Image(
-                    painter = painterResource(
-                        when (page) {
-                            0 -> R.drawable.barry_b__benson
-                            1 -> R.drawable.barry_b__benson
-                            2 -> R.drawable.barry_b__benson
-                            else -> throw IllegalStateException("image not provided for page $page")
-                        }
-                    ), contentDescription = null,
-                    modifier = Modifier.shadow(
-                        elevation = 8.dp,
-                        shape = RoundedCornerShape(16.dp),
-                        clip = true
-                    )
 
-                )
+                Column {
+                    Card(
+                        elevation = 8.dp, shape = RoundedCornerShape(20.dp),
+                        modifier = Modifier
+                            .size(320.dp, 200.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(
+                                when (page) {
+                                    0 -> R.drawable.top_bar
+                                    1 -> R.drawable.bottom_bar
+                                    2 -> R.drawable.resources
+                                    else -> throw IllegalStateException("image not provided for page $page")
+                                }
+                            ), contentDescription = null
+
+                        )
+                    }
+                    Spacer(modifier = Modifier.padding(4.dp))
+                    Card(
+                        elevation = 8.dp, shape = RoundedCornerShape(20.dp),
+                        modifier = Modifier
+                            .size(320.dp, 100.dp)
+                    ) {
+                        Text(modifier = Modifier.padding(8.dp),
+                            text = when (page) {
+                                0 -> stringResource(R.string.top_bar_hint)
+                                1 -> stringResource(R.string.bottom_bar_hint)
+                                2 -> stringResource(R.string.resources_hint)
+                                else -> stringResource(R.string.default_mood_description)
+                            },
+                            fontSize = 14.sp
+                        )
+                    }
+                }
+
             }
-            Spacer(modifier = Modifier.padding(4.dp))
+
+            Spacer(modifier = Modifier.padding(8.dp))
             Dots(dotTotal, pagerState.currentPage)
         }
-    }
+
 }
+
+
 
 @Composable
 private fun Dots(dotTotal: Int, idx: Int) {
@@ -70,7 +96,7 @@ private fun Dots(dotTotal: Int, idx: Int) {
                         modifier = Modifier
                             .size(5.dp)
                             .clip(CircleShape)
-                            .background(Color.Black)
+                            .background(colorResource(id = R.color.app_green_color))
                     )
                 }
                 else -> {
@@ -78,7 +104,7 @@ private fun Dots(dotTotal: Int, idx: Int) {
                         modifier = Modifier
                             .size(4.dp)
                             .clip(CircleShape)
-                            .background(Color.DarkGray)
+                            .background(Color.White)
                     )
                 }
             }
@@ -94,26 +120,27 @@ private fun TitleAndDescription() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = stringResource(id = R.string.welcome_title), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-        Card(elevation = 8.dp,
-            shape = RoundedCornerShape(20.dp)
-            ) {
+        Card(elevation = 8.dp, shape = RoundedCornerShape(20.dp),
+            modifier = Modifier
+                .size(320.dp, 100.dp)) {
             Text(modifier = Modifier.padding(8.dp), text = stringResource(id = R.string.sample_description_text), fontSize = 14.sp)
         }
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
     }
 }
 
 @Composable
 fun NewUserScreen(onUnderstood: () -> Unit) {
-    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(Modifier.weight(1f)) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box() {
             TitleAndDescription()
         }
         Spacer(modifier = Modifier.padding(horizontal = 16.dp))
-        Box(Modifier.weight(2f)) {
+        Box() {
             TutorialSlides()
         }
         Spacer(modifier = Modifier.padding(horizontal = 16.dp))
-        Box(Modifier.weight(1f)) {
+        Box() {
             Button(onClick = onUnderstood, shape = RoundedCornerShape(20.dp)) {
                 Text(text = stringResource(R.string.understood_button), fontSize = 14.sp)
             }
