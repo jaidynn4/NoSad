@@ -1,8 +1,13 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens.settings
 
+import android.Manifest
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.ContextWrapper
+import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -21,12 +26,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
 fun NotificationsScreen(
-    onBack : () -> Unit
+    onBack : () -> Unit,
 ){
     val context = LocalContext.current
     val newsButton = remember{ mutableStateOf(false)}
@@ -103,10 +110,11 @@ fun NotificationsScreen(
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
                     .height(20.dp)
-                    .clickable { if(!newsButton.value) {
-                        newsAlert.value = !newsAlert.value
-                    } else newsButton.value = !newsButton.value
-                               },
+                    .clickable {
+                        if (!newsButton.value) {
+                            newsAlert.value = !newsAlert.value
+                        } else newsButton.value = !newsButton.value
+                    },
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text =
@@ -267,16 +275,28 @@ private fun onChange(
     channelID: Int,
     context: Context
 ){
-    if(!isPush){
+//    when {
+//        ContextCompat.checkSelfPermission(
+//            context,
+//            Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED -> {
+//                // do nothing
+//        }
+//        context.getActivity()?.let { ActivityCompat.shouldShowRequestPermissionRationale(it, Manifest.permission.ACCESS_NOTIFICATION_POLICY) } -> {
+//
+//        }
+//        else -> requestPermissionLauncher.launch(
+//            Manifest.permission.REQUESTED_PERMISSION
+//
+//        )
+//
+//    }
+    if(!isPush) {
         createNotificationChannel(
             context = context,
             channelName = channelName,
             channelDescription = channelDescription,
             channelID = channelID
         )
-    }
-    else{
-//        NotificationManagerCompat.from(context).
     }
     notifChange.value = !notifChange.value
 }
@@ -290,6 +310,12 @@ private fun createNotificationChannel(context: Context, channelName : Int, chann
     val notificationManager : NotificationManager = context.getSystemService(
         Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.createNotificationChannel(channel)
+}
+
+private fun Context.getActivity() : Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.getActivity()
+    else -> null
 }
 
 @Preview(showBackground = true)
