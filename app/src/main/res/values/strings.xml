@@ -312,4 +312,16 @@
     <string name="request_data">Request Data</string>
     <string name="policy_title">Privacy Policy</string>
     <string name="terms_conditions_title">Terms &amp; Conditions</string>
+
+    <!--  Help & Support Strings  -->
+    <string name="help_blurb">
+        If you have any questions or concerns about the usage of NoSad™ that is not covered within the tutorial, please
+        feel free to contact us! We are always available by email or phone to answer your vital questions about this app.
+        Additionally, if you think that there are any improvements that could be made, or any bugs you have found, please
+        let us know! For any requests regarding data collection, account information, and/or privacy, please refer to the Privacy
+        &amp; Security page.
+    </string>
+    <string name="contact_mini_title">Contact Information:</string>
+    <string name="company_email">support@compassionmountain.com</string>
+    <string name="company_phone">555-420-6969</string>
 </resources>

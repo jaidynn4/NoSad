@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -94,7 +95,11 @@ fun PrivacySecurityScreen(
             verticalArrangement = Arrangement.SpaceBetween
         ){
             TextButton(onClick = { getUserInfo() }) {
-                Text(text = stringResource(id = R.string.request_data), fontSize = 16.sp)
+                Text(
+                    text = stringResource(id = R.string.request_data),
+                    fontSize = 16.sp,
+                    color = colorResource(id = R.color.app_green_color)
+                )
             }
             Spacer(Modifier.height(16.dp))
             Row(
@@ -117,7 +122,7 @@ fun PrivacySecurityScreen(
                     },
                     style = TextStyle(
                         fontSize = 16.sp,
-                        color = Color.Blue
+                        color = colorResource(id = R.color.app_green_color)
                     ),
                 )
             }
@@ -142,7 +147,7 @@ fun PrivacySecurityScreen(
                     },
                     style = TextStyle(
                         fontSize = 16.sp,
-                        color = Color.Blue
+                        color = colorResource(id = R.color.app_green_color)
                     ),
                 )
             }
