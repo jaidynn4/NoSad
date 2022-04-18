@@ -1,7 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
-
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.*
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
@@ -20,7 +20,13 @@ object MetricScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry
     ) {
         NoSad_Scaffold(
-            content = { DayWeekMonth(viewModel.metricsColorList, viewModel.metricsMoodList) },
+            content = {
+                if(viewModel.metricsColorList.isEmpty()) {
+                    for(i in 1..30) {
+                        viewModel.metricsColorList.add(Color.DarkGray)
+                    }
+                }
+                DayWeekMonth(viewModel.metricsColorList, viewModel.metricsMoodList) },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(navigateTo())},

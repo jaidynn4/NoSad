@@ -56,7 +56,7 @@ private fun MonthView(metricsColorList: MutableList<Color>, metricsMoodList: Mut
 
         Spacer(modifier = Modifier.padding(8.dp))
         val brush = shimmer(colorList = metricsColorList)
-        Text(text = stringResource(id = R.string.mood_month_label))
+        Text(text = stringResource(id = R.string.mood_over_month_label))
 
         Spacer(modifier = Modifier.padding(4.dp))
         Card(elevation = 8.dp, shape = RoundedCornerShape(20.dp),
@@ -74,7 +74,7 @@ private fun MonthView(metricsColorList: MutableList<Color>, metricsMoodList: Mut
         val mostFrequentColor = getMostFrequentColor(metricsColorList)
 
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(id = R.string.mood_over_month_label))
+        Text(text = stringResource(id = R.string.mood_month_label))
         Spacer(modifier = Modifier.padding(4.dp))
         if(mostFrequentColor != null) {
             Card(
@@ -114,7 +114,7 @@ private fun WeekView(metricsColorList: MutableList<Color>, metricsMoodList: Muta
         val mostFrequentColor = getMostFrequentColor(metricsColorList.takeLast(7))
 
         Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(id = R.string.mood_over_month_label))
+        Text(text = stringResource(id = R.string.mood_month_label))
         Spacer(modifier = Modifier.padding(4.dp))
         if(mostFrequentColor != null) {
             Card(
