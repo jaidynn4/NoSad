@@ -132,7 +132,9 @@ private fun WeekView(metricsColorList: MutableList<Color>, metricsMoodList: Muta
 }
 
 fun getMostFrequentColor(metricsColorList: List<Color>): Color? {
-    val colorCount = metricsColorList.groupingBy { it }.eachCount()
+    val filteredColorList = metricsColorList.filter { it != Color.DarkGray }
+    
+    val colorCount = filteredColorList.groupingBy { it }.eachCount()
     return colorCount.maxByOrNull { it.value }?.key
 }
 
