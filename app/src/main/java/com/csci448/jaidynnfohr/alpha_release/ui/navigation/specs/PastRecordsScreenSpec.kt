@@ -25,7 +25,7 @@ object PastRecordsScreenSpec : IScreenSpec {
             list.add(RecordGenerator.generateRandomRecord())
         }
         NoSad_Scaffold(
-            content = {PastRecordScreen(list = list, onSelectRecord = {})},
+            content = {PastRecordScreen(list = viewModel.recordsList, onSelectRecord = {})},
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},

@@ -30,7 +30,14 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
                 unfocusedIndicatorColor = Color.Transparent)
         )
         Spacer(modifier = Modifier.padding(8.dp))
-        Button(onClick = onForgot , shape = RoundedCornerShape(20.dp)) {
+        Button(
+            onClick = onForgot,
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = colorResource(id = R.color.app_green_color),
+                contentColor = Color.White
+            )
+        ) {
             Text(text = stringResource(R.string.reset_password_button_label), fontSize = 14.sp)
         }
     }

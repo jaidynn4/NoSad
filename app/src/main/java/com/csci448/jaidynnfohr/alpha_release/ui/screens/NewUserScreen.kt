@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,7 +66,9 @@ private fun TutorialSlides() {
                         modifier = Modifier
                             .size(320.dp, 100.dp)
                     ) {
-                        Text(modifier = Modifier.padding(8.dp),
+                        Text(
+                            modifier = Modifier.padding(8.dp),
+                            textAlign = TextAlign.Center,
                             text = when (page) {
                                 0 -> stringResource(R.string.top_bar_hint)
                                 1 -> stringResource(R.string.bottom_bar_hint)
@@ -118,34 +122,47 @@ private fun Dots(dotTotal: Int, idx: Int) {
 @Composable
 private fun TitleAndDescription() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = stringResource(id = R.string.welcome_title), fontSize = 20.sp)
-        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(id = R.string.welcome_title),
+            fontSize = 20.sp,
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
         Card(elevation = 8.dp, shape = RoundedCornerShape(20.dp),
             modifier = Modifier
-                .size(320.dp, 100.dp)) {
+                .size(320.dp, 100.dp)
+                .padding(vertical = 8.dp)
+        ) {
             Text(modifier = Modifier.padding(8.dp), text = stringResource(id = R.string.sample_description_text), fontSize = 14.sp)
         }
-        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
     }
 }
 
 @Composable
 fun NewUserScreen(onUnderstood: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box() {
+        Box(
+            modifier = Modifier.padding(vertical = 8.dp)
+        ) {
             TitleAndDescription()
         }
-        Spacer(modifier = Modifier.padding(horizontal = 16.dp))
-        Box() {
+        Box(
+            modifier = Modifier.padding(vertical = 8.dp)
+        ) {
             TutorialSlides()
         }
-        Spacer(modifier = Modifier.padding(horizontal = 16.dp))
         Box() {
-            Button(onClick = onUnderstood, shape = RoundedCornerShape(20.dp)) {
+            Button(
+                onClick = onUnderstood,
+                shape = RoundedCornerShape(20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = colorResource(id = R.color.app_green_color),
+                    contentColor = Color.White
+                )
+            ) {
                 Text(text = stringResource(R.string.understood_button), fontSize = 14.sp)
             }
         }
-        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Spacer(modifier = Modifier.padding(vertical = 16.dp))
     }
 }
 

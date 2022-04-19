@@ -2,6 +2,7 @@ package com.csci448.jaidynnfohr.alpha_release.data
 
 import android.provider.MediaStore
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.csci448.jaidynnfohr.alpha_release.R
 
@@ -12,7 +13,7 @@ import java.time.temporal.ChronoUnit
 import java.util.*
 
 
-class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textTime:LocalTime, audioTime:LocalTime,textEntry:String?, audio:MediaStore.Audio?) {
+class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textTime:LocalTime, audioTime:LocalTime,textEntry:String?, audio:MediaStore.Audio?, moodColor: Color) {
     private val recordID = id
     private var recordTitle = title
     private var recordDate = date
@@ -20,6 +21,7 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textT
     private var recordAudio = audio
     private var recordTextTime = textTime
     private var recordAudioTime = audioTime
+    private var recordMoodColor = moodColor
 
     fun getID() : UUID{
         return recordID
@@ -27,11 +29,22 @@ class PastRecord(id:UUID=UUID.randomUUID(), title:String?, date:LocalDate, textT
 
     @Composable
     fun getTitle() : String?{
-        if(recordTitle != null){
-            return recordTitle
+        return if(recordTitle != null){
+            recordTitle
+        } else if (recordTitle == null && recordAudio != null){
+            null
+        } else {
+            stringResource(id = R.string.record_title_placeholder)
         }
-        else if (recordTitle == null && recordAudio != null) return null
-        else return stringResource(id = R.string.record_title_placeholder)
+    }
+
+    @Composable
+    fun getColor() : Color{
+        return if (recordMoodColor != null){
+            recordMoodColor
+        } else {
+            Color.White
+        }
     }
 
     @Composable

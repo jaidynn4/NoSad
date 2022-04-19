@@ -1,6 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release.util
 
 import android.provider.MediaStore
+import androidx.compose.ui.graphics.Color
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import java.time.LocalDate
 import java.time.LocalTime
@@ -25,5 +26,5 @@ object RecordGenerator {
     private val audioTime = LocalTime.now()
     private val audio = listOf(null,MediaStore.Audio())
 
-    fun generateRandomRecord() = PastRecord(title = titles.rand(), textEntry = textBodies.rand(), date = date, textTime = textTime, audioTime = audioTime, audio = audio.rand())
+    fun generateRandomRecord() = PastRecord(title = titles.rand(), textEntry = textBodies.rand(), date = date, textTime = textTime, audioTime = audioTime, audio = audio.rand(), moodColor = Color.White)
 }

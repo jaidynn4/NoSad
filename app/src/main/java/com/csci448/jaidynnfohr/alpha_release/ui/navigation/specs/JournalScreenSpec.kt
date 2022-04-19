@@ -38,7 +38,9 @@ object JournalScreenSpec : IScreenSpec {
                         //todo save a record as well
                         viewModel.colorList.add(color)
                         viewModel.moodList.add(string)
-                        //PastRecord(title = title)
+                        viewModel.recordsList.add(0,
+                            PastRecord(title = title, date = date, textTime = textTime, audioTime = audioTime, textEntry = textEntry, audio = audio, moodColor = color)
+                        )
                         navController.navigate(PastRecordsScreenSpec.navigateTo())
                     }
                 )

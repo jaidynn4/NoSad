@@ -9,16 +9,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
-import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 
 @Composable
 private fun CreateEditTexts() {
@@ -58,18 +55,32 @@ private fun CreateEditTexts() {
 }
 
 @Composable
-private fun CreateButtons(onCreate: () -> Unit, onAlready: () -> Unit) {
+private fun CreateButtons(onCreate: () -> Unit, onAllReady: () -> Unit) {
 
     Column {
 
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Button(onClick = onCreate, shape = RoundedCornerShape(20.dp)) {
+            Button(
+                onClick = onCreate,
+                shape = RoundedCornerShape(20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = colorResource(id = R.color.app_green_color),
+                    contentColor = Color.White
+                )
+            ) {
                 Text(text = stringResource(R.string.signup_button_hint), fontSize = 14.sp)
             }
         }
 
         Spacer(modifier = Modifier.padding(8.dp))
-        TextButton(onClick = onAlready, shape = RoundedCornerShape(20.dp)) {
+        TextButton(
+            onClick = onAllReady,
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = colorResource(id = R.color.app_green_color),
+                contentColor = Color.White
+            )
+        ) {
             Text(text = stringResource(R.string.signin_button_label), fontSize = 10.sp)
         }
     }

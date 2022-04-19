@@ -29,7 +29,7 @@ fun ResourceScreen(list : List<Resource>?, onSelectResource : (Resource) -> Unit
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Divider(thickness = 2.dp, color = colorResource(id = R.color.black))
+                Divider(thickness = 2.dp, color = colorResource(id = R.color.app_green_color))
                 Spacer(Modifier.height(24.dp))
                 Text(
                     text = stringResource(id = R.string.resources_crisis_1),
