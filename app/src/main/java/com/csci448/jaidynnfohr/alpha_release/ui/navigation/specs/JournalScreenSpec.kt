@@ -10,6 +10,7 @@ import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object JournalScreenSpec : IScreenSpec {
@@ -33,10 +34,11 @@ object JournalScreenSpec : IScreenSpec {
                         viewModel.tempStringStorage = ""
                         navController.navigate(AddMoodScreenSpec.navigateTo())
                     },
-                    onSaveJournalEntry = { color, string ->
+                    onSaveJournalEntry = {color, string, title, date, textTime, audioTime, textEntry, audio ->
                         //todo save a record as well
                         viewModel.colorList.add(color)
                         viewModel.moodList.add(string)
+                        //PastRecord(title = title)
                         navController.navigate(PastRecordsScreenSpec.navigateTo())
                     }
                 )

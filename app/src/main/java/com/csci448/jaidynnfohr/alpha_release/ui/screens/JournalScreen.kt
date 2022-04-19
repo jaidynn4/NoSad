@@ -1,5 +1,6 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens
 
+import android.provider.MediaStore
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,18 +19,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.sp
+import java.time.LocalDate
+import java.time.LocalTime
 
 @Composable
 fun JournalPage(
     mood_choice: String,
     color_selection: Color,
     onAddMood: () -> Unit,
-    onSaveJournalEntry: (Color, String) -> Unit
+    onSaveJournalEntry: (Color, String, String, LocalDate, LocalTime, LocalTime, String, MediaStore.Audio?) -> Unit
 ) {
 
-    var mood_set: Boolean by remember { mutableStateOf(color_selection != Color.White) }
+    val mood_set: Boolean by remember { mutableStateOf(color_selection != Color.White) }
     var title_set: Boolean by remember { mutableStateOf(false) }
     var entry_set: Boolean by remember { mutableStateOf(false)}
+    var title_text: String by remember {mutableStateOf("")}
+    var entry_text: String by remember {mutableStateOf("")}
 
     LazyColumn(
         Modifier
@@ -78,6 +83,7 @@ fun JournalPage(
                     onValueChange = {
                         textState.value = it
                         title_set = (it != "")
+                        title_text = it
                     },
                     placeholder = {
                         Text(stringResource(id = R.string.journal_entry_title_hint))
@@ -102,6 +108,7 @@ fun JournalPage(
                     onValueChange = {
                         textState.value = it
                         entry_set = (it != "")
+                        entry_text = it
                     },
                     placeholder = {
                         Text(stringResource(id = R.string.journal_entry_thoughts_hint))
@@ -119,7 +126,7 @@ fun JournalPage(
             ) {
                 Button(
                     onClick = {
-                        onSaveJournalEntry(color_selection, mood_choice)
+                        onSaveJournalEntry(color_selection, mood_choice, title_text, LocalDate.now(), LocalTime.now(), LocalTime.now(), entry_text, null)
                     },
                     enabled = (mood_set && title_set && entry_set),
                     shape = RoundedCornerShape(20.dp),
