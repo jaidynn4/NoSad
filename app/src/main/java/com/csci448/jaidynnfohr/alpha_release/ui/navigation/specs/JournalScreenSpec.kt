@@ -49,7 +49,7 @@ object JournalScreenSpec : IScreenSpec {
             onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
-            onSettings = {},
+            onSettings = {navController.navigate(SettingsScreenSpec.navigateTo())},
             bottomBarItemNumber = 2
         )
     }

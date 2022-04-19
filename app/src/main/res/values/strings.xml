@@ -12,7 +12,7 @@
     <string name="signup_button_hint">Sign up</string>
     <string name="signin_button_label">Already have an account?</string>
     <string name="welcome_title">Welcome</string>
-    <string name="sample_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="sample_description_text">Welcome to NoSad! Thank you for choosing our app. The goal of NoSad is to help you track your moods over time. Swipe through the images below for some hints on navigating and using the app.</string>
     <string name="month_view_label">Month</string>
     <string name="week_view_label">Week</string>
     <string name="day_view_label">Today</string>
@@ -234,4 +234,108 @@
     <string name="forgot_password_field_hint">email</string>
     <string name="reset_password_button_label">Send Email</string>
 
+    <!--    Settings Strings-->
+    <string name="settings_screen_title">Settings</string>
+    <string name="my_account_title">My Account</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="appearance_title">Appearance</string>
+    <string name="privacy_security_title">Privacy &amp; Security</string>
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="about_title">About</string>
+    <string name="account_content_desc">Account Icon</string>
+    <string name="notifs_content_desc">Notification Icon</string>
+    <string name="appearance_content_desc">Appearance Icon</string>
+    <string name="privacy_security_content_desc">Privacy &amp; Security Icon</string>
+    <string name="help_support_content_desc">Help &amp; Support Icon</string>
+    <string name="about_content_desc">About Icon</string>
+    <string name="arrow_desc">Right Arrow indicating to expand</string>
+
+    <!--  My Account Strings  -->
+    <string name="viewModel_placeholder">TODO: GET INFO FROM VIEWMODEL</string>
+    <string name="arrow_back_content_desc">Back Arrow</string>
+    <string-array name="languages">
+        <item name="language_eng">English</item>
+        <item name="language_esp">Espanol</item>
+        <item name="language_fra">Francois</item>
+        <item name="language_ger">German</item>
+    </string-array>
+    <string name="save_settings">Save Changes</string>
+
+    <!--  About Screen Strings  -->
+    <string name="about_blurb_one">
+        NoSad™ is a therapeutical app designed to aid those struggling with mental health issues, namely depression
+        and anxiety. This goal of this app is NOT to replace any form of professional medical help, but rather to
+        provide extra resources to the user alongside professional processes. For further information on the correct usage
+        of this app, please refer to the tutorial.
+    </string>
+    <string name="about_blurb_two">
+        Compassion Mountain© is a non-profit organization started by three Colorado School of Mines Computer
+        Science students. Compassion Mountain© is dedicated to the design, creation, development, and maintenance
+        of software solutions that are representative of our core beliefs. For further information about our company
+        and what we value, please visit our website.
+    </string>
+    <string name="about_disclaimer">
+        Compassion Mountain© is not responsible for any potential misuse of the NoSad™ app in word or deed. Compassion
+        Mountain© does not claim responsibility for any adverse side effects that users experience while using the
+        NoSad™ app. Please refer to Privacy &amp; Security statement for more information.
+    </string>
+    <string name="app_version">Version 0.0.1</string>
+
+    <!-- Notifications Screen Strings   -->
+    <string name="news_button">News Reminders</string>
+    <string name="mood_button">Daily Mood Reminders</string>
+    <string name="scripture_button">Scripture Notifications</string>
+    <string name="push_button">Push Notifications</string>
+    <string name="news_dialogue_title">Enable News Notifications?</string>
+    <string name="news_dialogue_content">
+        Choose yes to be sent notifications from new posts in our Resources
+        page!
+    </string>
+    <string name="mood_dialogue_title">Enable Mood Notifications?</string>
+    <string name="mood_dialogue_content">
+        Choose yes to be sent notifications for logging your mood for the day!
+    </string>
+    <string name="scripture_dialogue_title">Enable Scripture Notifications?</string>
+    <string name="scriptire_dialogue_content">
+        Choose yes to be sent daily Scripture references!
+    </string>
+    <string name="news_channel_name">News Notifications</string>
+    <string name="news_channel_description">Notifies the user of new resources within the Resources section.</string>
+    <string name="news_channel_id">News</string>
+    <string name="mood_channel_name">Mood Notifications</string>
+    <string name="mood_channel_description">Notifies the user to log their mood for the day.</string>
+    <string name="mood_channel_id">Mood</string>
+    <string name="scripture_channel_name">Scripture Notifications</string>
+    <string name="scripture_channel_description">Notifies the user of the selected daily Bible verse.</string>
+    <string name="scripture_channel_id">Scripture</string>
+
+    <!-- Privacy & Security Strings   -->
+    <string name="request_data">Request Data</string>
+    <string name="policy_title">Privacy Policy</string>
+    <string name="terms_conditions_title">Terms &amp; Conditions</string>
+
+    <!--  Help & Support Strings  -->
+    <string name="help_blurb">
+        If you have any questions or concerns about the usage of NoSad™ that is not covered within the tutorial, please
+        feel free to contact us! We are always available by email or phone to answer your vital questions about this app.
+        Additionally, if you think that there are any improvements that could be made, or any bugs you have found, please
+        let us know! For any requests regarding data collection, account information, and/or privacy, please refer to the Privacy
+        &amp; Security page.
+    </string>
+    <string name="contact_mini_title">Contact Information:</string>
+    <string name="company_email">support@compassionmountain.com</string>
+    <string name="company_phone">555-420-6969</string>
+    <string name="mood_month_label">Most Frequent Mood</string>
+    <string name="mood_over_month_label">Past 30 Moods</string>
+    <string name="mood_week_label">Past 7 Moods</string>
+    <string name="love_description">an intense feeling of deep affection.</string>
+    <string name="joy_description">a feeling of great pleasure and happiness.</string>
+    <string name="sadness_description">feeling or showing sorrow; unhappy.</string>
+    <string name="fear_description">a feeling of anxiety concerning the outcome of something or the safety and well-being of someone.</string>
+    <string name="anger_description">a strong feeling of annoyance, displeasure, or hostility.</string>
+    <string name="surprise_description">a feeling of mild astonishment or shock caused by something unexpected.</string>
+    <string name="default_mood_description">no mood added</string>
+    <string name="top_bar_hint">Select the house icon to go home. Select the gear icon to access settings.</string>
+    <string name="bottom_bar_hint">These are the main icons for navigation. Be sure to explore each one. They are accessible from the home screen as well.</string>
+    <string name="resources_hint">If you ever need someone to talk to, follow the Support icon to this page.</string>
 </resources>
