@@ -29,11 +29,11 @@ object PastRecordsScreenSpec : IScreenSpec {
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},
-            onRecent = {navController.navigate(PastRecordsScreenSpec.navigateTo())},
+            onRecent = {navController.navigate(navigateTo())},
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
             onSettings = {navController.navigate(SettingsScreenSpec.navigateTo())},
-            bottomBarItemNumber = 2
+            bottomBarItemNumber = 3
         )
     }
 

@@ -2,6 +2,7 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
@@ -9,13 +10,13 @@ import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 object JournalScreenSpec : IScreenSpec {
 
     override val route = "journal"
     override val arguments: List<NamedNavArgument> = mutableListOf()
-
 
     @Composable
     override fun Content(
@@ -26,10 +27,20 @@ object JournalScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = {
                 JournalPage(
-                    //TODO set equal to the state of AddMoodScreen choices when they are set
-                    mood_choice = stringResource(id = R.string.add_mood_label_long),
-                    color_selection = colorResource(id = R.color.app_green_color),
-                    onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())}
+                    mood_choice = if (viewModel.tempStringStorage != "") viewModel.tempStringStorage else stringResource(id = R.string.add_mood_label_long),
+                    color_selection = if (viewModel.tempColorStorage != Color.Unspecified) viewModel.tempColorStorage else Color.White,
+                    onAddMood = {
+                        viewModel.tempColorStorage = Color.Unspecified
+                        viewModel.tempStringStorage = ""
+                        navController.navigate(AddMoodScreenSpec.navigateTo())
+                    },
+                    onSaveJournalEntry = {color, string, title, date, textTime, audioTime, textEntry, audio ->
+                        //todo save a record as well
+                        viewModel.colorList.add(color)
+                        viewModel.moodList.add(string)
+                        //PastRecord(title = title)
+                        navController.navigate(PastRecordsScreenSpec.navigateTo())
+                    }
                 )
               },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
@@ -39,7 +50,7 @@ object JournalScreenSpec : IScreenSpec {
             onSupport = {navController.navigate(ResourcesScreenSpec.navigateTo())},
             onHome = {navController.navigate(HomeScreenSpec.navigateTo())},
             onSettings = {navController.navigate(SettingsScreenSpec.navigateTo())},
-            bottomBarItemNumber = 4
+            bottomBarItemNumber = 2
         )
     }
 
