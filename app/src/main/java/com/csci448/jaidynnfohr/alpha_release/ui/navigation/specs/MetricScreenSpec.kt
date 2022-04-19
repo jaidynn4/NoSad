@@ -21,12 +21,12 @@ object MetricScreenSpec : IScreenSpec {
     ) {
         NoSad_Scaffold(
             content = {
-                if(viewModel.metricsColorList.isEmpty()) {
+                if(viewModel.colorList.isEmpty()) {
                     for(i in 1..30) {
-                        viewModel.metricsColorList.add(Color.DarkGray)
+                        viewModel.colorList.add(Color.DarkGray)
                     }
                 }
-                DayWeekMonth(viewModel.metricsColorList, viewModel.metricsMoodList) },
+                DayWeekMonth(viewModel.colorList, viewModel.moodList) },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(navigateTo())},
