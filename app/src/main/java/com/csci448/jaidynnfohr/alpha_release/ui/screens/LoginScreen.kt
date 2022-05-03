@@ -18,7 +18,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
 
     Column {
-        Spacer(modifier = Modifier.padding(12.dp))
+        Spacer(modifier = Modifier.padding(20.dp))
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Button(
               onClick = onLogin , 

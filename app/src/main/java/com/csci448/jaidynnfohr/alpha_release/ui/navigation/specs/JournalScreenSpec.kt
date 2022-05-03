@@ -27,11 +27,15 @@ object JournalScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = {
                 JournalPage(
-                    mood_choice = if (viewModel.tempStringStorage != "") viewModel.tempStringStorage else stringResource(id = R.string.add_mood_label_long),
+                    mood_choice = if (viewModel.tempStringStorage != "") viewModel.tempStringStorage else stringResource(id = R.string.select_a_mood_label),
                     color_selection = if (viewModel.tempColorStorage != Color.Unspecified) viewModel.tempColorStorage else Color.White,
-                    onAddMood = {
+                    title_text = if (viewModel.tempTitleStorage != "") viewModel.tempTitleStorage else "",
+                    thoughts_text = if(viewModel.tempThoughtsStorage != "") viewModel.tempThoughtsStorage else "",
+                    onAddMood = {title, thoughts ->
                         viewModel.tempColorStorage = Color.Unspecified
                         viewModel.tempStringStorage = ""
+                        viewModel.tempTitleStorage = title
+                        viewModel.tempThoughtsStorage = thoughts
                         navController.navigate(AddMoodScreenSpec.navigateTo())
                     },
                     onSaveJournalEntry = {color, string, title, date, textTime, audioTime, textEntry, audio ->
@@ -41,6 +45,11 @@ object JournalScreenSpec : IScreenSpec {
                         viewModel.recordsList.add(0,
                             PastRecord(title = title, date = date, textTime = textTime, audioTime = audioTime, textEntry = textEntry, audio = audio, moodColor = color)
                         )
+                        //Reset the temp viewModel variables
+                        viewModel.tempColorStorage = Color.Unspecified
+                        viewModel.tempStringStorage = ""
+                        viewModel.tempTitleStorage = ""
+                        viewModel.tempThoughtsStorage = ""
                         navController.navigate(PastRecordsScreenSpec.navigateTo())
                     }
                 )

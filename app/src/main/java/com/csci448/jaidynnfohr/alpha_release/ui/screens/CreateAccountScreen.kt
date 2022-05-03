@@ -75,13 +75,9 @@ private fun CreateButtons(onCreate: () -> Unit, onAllReady: () -> Unit) {
         Spacer(modifier = Modifier.padding(8.dp))
         TextButton(
             onClick = onAllReady,
-            shape = RoundedCornerShape(20.dp),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = colorResource(id = R.color.app_green_color),
-                contentColor = Color.White
-            )
+            shape = RoundedCornerShape(20.dp)
         ) {
-            Text(text = stringResource(R.string.signin_button_label), fontSize = 10.sp)
+            Text(text = stringResource(R.string.signin_button_label), color = colorResource(id = R.color.app_green_color), fontSize = 10.sp)
         }
     }
 }

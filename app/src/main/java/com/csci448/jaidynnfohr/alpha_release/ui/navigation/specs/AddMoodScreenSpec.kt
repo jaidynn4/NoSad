@@ -22,12 +22,14 @@ object AddMoodScreenSpec : IScreenSpec {
     ) {
         NoSad_Scaffold(
             content = {
-                EmotionsDropDown(onSaveMood = { color, string ->
+                EmotionsDropDown(
+                    onSaveMood = { color, string ->
                         viewModel.tempColorStorage = color
                         viewModel.tempStringStorage = string
                         navController.navigate(JournalScreenSpec.navigateTo())
-                })
-                      },
+                    }
+                )
+            },
             onAddMood = {navController.navigate(navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(MetricScreenSpec.navigateTo())},

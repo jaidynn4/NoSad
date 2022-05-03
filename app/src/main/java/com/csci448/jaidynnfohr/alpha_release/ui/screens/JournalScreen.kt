@@ -12,12 +12,8 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import androidx.compose.material.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material.icons.*
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.sp
 import java.time.LocalDate
 import java.time.LocalTime
@@ -26,15 +22,17 @@ import java.time.LocalTime
 fun JournalPage(
     mood_choice: String,
     color_selection: Color,
-    onAddMood: () -> Unit,
+    title_text: String,
+    thoughts_text: String,
+    onAddMood: (String, String) -> Unit,
     onSaveJournalEntry: (Color, String, String, LocalDate, LocalTime, LocalTime, String, MediaStore.Audio?) -> Unit
 ) {
 
     val mood_set: Boolean by remember { mutableStateOf(color_selection != Color.White) }
-    var title_set: Boolean by remember { mutableStateOf(false) }
-    var entry_set: Boolean by remember { mutableStateOf(false)}
-    var title_text: String by remember {mutableStateOf("")}
-    var entry_text: String by remember {mutableStateOf("")}
+    var journalTitle: String = title_text
+    var title_set: Boolean by remember { mutableStateOf(journalTitle != "") }
+    var journalThoughts: String = thoughts_text
+    var entry_set: Boolean by remember { mutableStateOf(journalThoughts != "")}
 
     LazyColumn(
         Modifier
@@ -43,15 +41,17 @@ fun JournalPage(
         verticalArrangement = Arrangement.Center
     ){
         item{
-            Row(
-
-            ) { // Anchor view
+            Row(){ // Anchor view
                 Card(
                     Modifier
                         .padding(vertical = 8.dp)
                         .fillMaxWidth()
                         .height(84.dp)
-                        .clickable(onClick = onAddMood),
+                        .clickable(
+                            onClick = {
+                                onAddMood(journalTitle, journalThoughts)
+                            }
+                        ),
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Row(
@@ -69,21 +69,21 @@ fun JournalPage(
         }
 
         item{
-            val journalEntryTitle: String = ""
+
 
             Row(
                 Modifier.padding(top = 8.dp, bottom = 8.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ){
-                val textState = remember { mutableStateOf(journalEntryTitle) }
+                val textState = remember { mutableStateOf(journalTitle) }
                 TextField(
                     modifier = Modifier.height(56.dp),
                     value = textState.value,
                     onValueChange = {
                         textState.value = it
                         title_set = (it != "")
-                        title_text = it
+                        journalTitle = it
                     },
                     placeholder = {
                         Text(stringResource(id = R.string.journal_entry_title_hint))
@@ -93,22 +93,20 @@ fun JournalPage(
         }
 
         item{
-            val journalEntry: String = ""
-
             Row(
                 Modifier
                     .padding(vertical = 8.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ){
-                val textState = remember { mutableStateOf(journalEntry) }
+                val textState = remember { mutableStateOf(journalThoughts) }
                 TextField(
                     modifier = Modifier.height(200.dp),
                     value = textState.value,
                     onValueChange = {
                         textState.value = it
                         entry_set = (it != "")
-                        entry_text = it
+                        journalThoughts = it
                     },
                     placeholder = {
                         Text(stringResource(id = R.string.journal_entry_thoughts_hint))
@@ -126,7 +124,7 @@ fun JournalPage(
             ) {
                 Button(
                     onClick = {
-                        onSaveJournalEntry(color_selection, mood_choice, title_text, LocalDate.now(), LocalTime.now(), LocalTime.now(), entry_text, null)
+                        onSaveJournalEntry(color_selection, mood_choice, journalTitle, LocalDate.now(), LocalTime.now(), LocalTime.now(), journalThoughts, null)
                     },
                     enabled = (mood_set && title_set && entry_set),
                     shape = RoundedCornerShape(20.dp),

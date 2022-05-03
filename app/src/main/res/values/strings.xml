@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Alpha_Release</string>
+    <string name="app_name">NoSad</string>
 
     <string name="login_title">Login</string>
     <string name="email_hint">email</string>
@@ -199,6 +199,8 @@
         <item><string name="fear_4_0">Helpless</string></item>
         <item><string name="fear_4_1">Frightened</string></item>
     </string-array>
+
+    <string name="select_a_mood_label">Select a Mood</string>
 
     <string name="record_screen_title">Past Records</string>
     <string name="record_title_placeholder">No Records Found.</string>

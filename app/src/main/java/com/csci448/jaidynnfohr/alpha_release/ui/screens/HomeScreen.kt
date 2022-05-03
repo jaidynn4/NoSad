@@ -33,12 +33,12 @@ fun ScrollingCards(
     ) {
         item {
             Card(
-                Modifier
+                shape = RoundedCornerShape(20.dp),
+                modifier = Modifier
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onAddMood),
-                shape = RoundedCornerShape(20.dp)
+                    .clickable(onClick = onAddMood)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
@@ -64,12 +64,12 @@ fun ScrollingCards(
 
         item {
             Card(
-                Modifier
+                shape = RoundedCornerShape(20.dp),
+                modifier = Modifier
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onJournal),
-                shape = RoundedCornerShape(20.dp)
+                    .clickable(onClick = onJournal)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
@@ -95,12 +95,12 @@ fun ScrollingCards(
 
         item {
             Card(
-                Modifier
+                shape = RoundedCornerShape(20.dp),
+                modifier = Modifier
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onRecent),
-                shape = RoundedCornerShape(20.dp)
+                    .clickable(onClick = onRecent)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
@@ -126,12 +126,12 @@ fun ScrollingCards(
 
         item {
             Card(
-                Modifier
+                shape = RoundedCornerShape(20.dp),
+                modifier = Modifier
                     .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onMetrics),
-                shape = RoundedCornerShape(20.dp)
+                    .clickable(onClick = onMetrics)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
@@ -157,12 +157,12 @@ fun ScrollingCards(
 
         item {
             Card(
-                Modifier
-                    .padding(top = 8.dp, bottom = 60.dp)
+                shape = RoundedCornerShape(20.dp),
+                modifier = Modifier
+                    .padding(vertical = 8.dp)
                     .fillMaxWidth()
                     .height(72.dp)
-                    .clickable(onClick = onSupport),
-                shape = RoundedCornerShape(20.dp)
+                    .clickable(onClick = onSupport)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,

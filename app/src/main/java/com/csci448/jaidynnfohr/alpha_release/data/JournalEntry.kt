@@ -1,5 +1,6 @@
 package com.csci448.jaidynnfohr.alpha_release.data
 
+import android.provider.MediaStore
 import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,5 +14,7 @@ data class JournalEntry(
     val journal_entry: String,
     val journal_timestamp: Date,
     val mood_selected: String,
-    val mood_color: Int //getResources().getColor(mood_color)
+    val mood_color: Int//, //USAGE: getResources().getColor(mood_color)
+    //val audio: MediaStore.Audio,
+    //val audioTime: Date
 ) : Serializable

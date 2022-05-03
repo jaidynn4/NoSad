@@ -6,18 +6,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
+import com.csci448.jaidynnfohr.alpha_release.data.ProfileInfo
 
-@Database(entities=[JournalEntry::class], version=1)
+@Database(entities=[JournalEntry::class, ProfileInfo::class], version=1)
 @TypeConverters(NoSadTypeConverters::class)
-abstract class JournalEntryDatabase: RoomDatabase() {
+abstract class NoSadDatabase: RoomDatabase() {
     companion object {
-        @Volatile private var INSTANCE: JournalEntryDatabase? = null
-        fun getInstance(context: Context): JournalEntryDatabase {
+        @Volatile private var INSTANCE: NoSadDatabase? = null
+        fun getInstance(context: Context): NoSadDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {
-                    instance = Room.databaseBuilder(context, JournalEntryDatabase::class.java,
-                        "journal-entry-database").build()
+                    instance = Room.databaseBuilder(context, NoSadDatabase::class.java,
+                        "no-sad-database").build()
                     INSTANCE = instance
                 }
                 return instance
@@ -25,5 +26,5 @@ abstract class JournalEntryDatabase: RoomDatabase() {
         }
     }
 
-    abstract val journalEntryDao: JournalEntryDao
+    abstract val noSadDao: NoSadDao
 }

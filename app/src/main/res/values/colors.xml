@@ -8,14 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="app_green_color">#02bf36</color>
+    <color name="app_green_color">#16a63d</color>
 
     <color name="love_red_color">#ff0000</color>
     <color name="joy_yellow_color">#ffff00</color>
     <color name="surprise_green_color">#04ff00</color>
     <color name="sadness_blue_color">#007BFF</color>
     <color name="anger_orange_color">#ff7300</color>
-    <color name="fear_purple_color">#6f00ff</color>
+    <color name="fear_purple_color">#A363F7</color>
 
     <color name="nav_selection">#197330</color>
 

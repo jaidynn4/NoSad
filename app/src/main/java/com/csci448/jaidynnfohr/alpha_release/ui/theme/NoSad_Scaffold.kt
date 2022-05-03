@@ -1,6 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.theme
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.csci448.jaidynnfohr.alpha_release.R
 
 @Composable
@@ -30,14 +32,18 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                     Icon(
                         imageVector = Icons.Filled.Home,
                         contentDescription = "Home icon",
-                        modifier = Modifier.clickable(onClick = onHome)
+                        modifier = Modifier
+                            .clickable(onClick = onHome)
+                            .padding(all = 8.dp)
                     )
                 },
                 actions = {
                     Icon(
                         imageVector = Icons.Filled.Settings,
                         contentDescription = "Settings icon",
-                        modifier = Modifier.clickable(onClick = onSettings)
+                        modifier = Modifier
+                            .clickable(onClick = onSettings)
+                            .padding(all = 8.dp)
                     )
                 },
             )
