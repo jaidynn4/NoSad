@@ -36,7 +36,9 @@ import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
             )
             Spacer(Modifier.height(24.dp))
             if (list != null) {
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.padding(bottom = 64.dp)
+                ) {
                     items(list) { record ->
                         RecordRow(record = record, onSelectRecord = onSelectRecord)
                     }

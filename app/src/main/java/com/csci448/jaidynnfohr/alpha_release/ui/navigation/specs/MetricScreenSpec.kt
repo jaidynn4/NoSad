@@ -1,6 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.ui.*
@@ -19,6 +20,7 @@ object MetricScreenSpec : IScreenSpec {
         navController: NavController,
         navBackStackEntry: NavBackStackEntry
     ) {
+        val journalEntryList = viewModel.journalEntriesListLiveData.observeAsState()
         NoSad_Scaffold(
             content = {
                 if(viewModel.colorIdList.isEmpty()) {
@@ -26,7 +28,9 @@ object MetricScreenSpec : IScreenSpec {
                         viewModel.colorIdList.add(R.color.metrics_dark_grey_color)
                     }
                 }
-                DayWeekMonth(viewModel.colorIdList, viewModel.moodList) },
+                //DayWeekMonth(viewModel.colorIdList, viewModel.moodList) },
+                DayWeekMonth(metricsColorIdList = journalEntryList.value, metricsMoodList = viewModel.moodList)
+            },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(navigateTo())},

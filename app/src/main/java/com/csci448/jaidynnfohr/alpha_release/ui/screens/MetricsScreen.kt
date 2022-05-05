@@ -26,14 +26,19 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun DayWeekMonth(metricsColorIdList: MutableList<Int>, metricsMoodList: MutableList<String>) {
-
+fun DayWeekMonth(metricsColorIdList: List<JournalEntry>?, metricsMoodList: MutableList<String>) {
     val metricsColorList = mutableListOf<Color>()
-    for(i in metricsColorIdList){
-        metricsColorList.add(colorResource(id = i))
+    for(i in 0..30){
+        metricsColorList.add(colorResource(id = R.color.metrics_dark_grey_color))
+    }
+    if (metricsColorIdList != null) {
+        for(entry in metricsColorIdList){
+            metricsColorList.add(colorResource(id = entry.mood_color_id))
+        }
     }
     
     val dotTotal = 3
@@ -59,7 +64,7 @@ private fun MonthView(metricsColorList: MutableList<Color>, metricsMoodList: Mut
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         Spacer(modifier = Modifier.padding(8.dp))
-        val brush = shimmer(colorList = metricsColorList)
+        val brush = shimmer(colorList = metricsColorList.takeLast(30))
         Text(text = stringResource(id = R.string.mood_over_month_label))
 
         Spacer(modifier = Modifier.padding(4.dp))
@@ -148,7 +153,10 @@ private fun DayView(metricsColorList: MutableList<Color>, metricsMoodList: Mutab
 
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(id = R.string.mood_label))
-        val brush = shimmer(colorList = listOf(metricsColorList.last(),metricsColorList.last(), metricsColorList.last(), Color.DarkGray ))
+        val brush = shimmer(colorList = listOf(
+            colorResource(id = R.color.metrics_dark_grey_color),
+            metricsColorList.last()
+        ))
 
         Spacer(modifier = Modifier.padding(4.dp))
         Card(elevation = 8.dp, shape = RoundedCornerShape(20.dp),
