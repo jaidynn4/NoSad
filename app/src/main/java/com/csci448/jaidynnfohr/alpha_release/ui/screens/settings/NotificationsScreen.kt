@@ -103,9 +103,9 @@ fun NotificationsScreen(
                     text = stringResource(R.string.push_button),
                     fontSize = 16.sp
                 )
-                RadioButton(
-                    selected = pushButton.value,
-                    onClick = {
+                Switch(
+                    checked = pushButton.value,
+                    onCheckedChange = {
                         onChange(pushButton, isPush = true, 0,0,0,
                         context = context)
                               },
@@ -130,9 +130,9 @@ fun NotificationsScreen(
                         stringResource(R.string.news_button),
                         fontSize = 16.sp
                     )
-                    RadioButton(
-                        selected = newsButton.value,
-                        onClick = {
+                    Switch(
+                        checked = newsButton.value,
+                        onCheckedChange = {
                             if (!newsButton.value) {
                                 newsAlert.value = !newsAlert.value
                             } else newsButton.value = !newsButton.value
@@ -170,9 +170,9 @@ fun NotificationsScreen(
                         text = stringResource(R.string.mood_button),
                         fontSize = 16.sp
                     )
-                    RadioButton(
-                        selected = moodButton.value,
-                        onClick = {
+                    Switch(
+                        checked = moodButton.value,
+                        onCheckedChange = {
                             if (!moodButton.value) {
                                 moodAlert.value = !moodAlert.value
                             } else {
@@ -210,9 +210,9 @@ fun NotificationsScreen(
                         text = stringResource(R.string.scripture_button),
                         fontSize = 16.sp
                     )
-                    RadioButton(
-                        selected = scriptureButton.value,
-                        onClick = {
+                    Switch(
+                        checked = scriptureButton.value,
+                        onCheckedChange = {
                             if (!scriptureButton.value) {
                                 scriptureAlert.value = !scriptureAlert.value
                             } else scriptureButton.value = !scriptureButton.value
