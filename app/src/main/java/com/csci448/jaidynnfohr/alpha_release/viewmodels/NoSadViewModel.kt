@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.data.database.NoSadRepository
@@ -16,8 +17,8 @@ class NoSadViewModel(
     context: Context
 ) : ViewModel() {
 
-    //Store the in-progress color and string values from Add Mood page for transference to Journal Page
-    var tempColorStorage: Color = Color.Unspecified
+    //Store the in-progress color id and string values from Add Mood page for transference to Journal Page
+    var tempColorIdStorage: Int = R.color.white
     var tempStringStorage: String = ""
 
     //Store the in-progress title and thoughts values from Journal page for transference to Add Mood Page
@@ -43,17 +44,34 @@ class NoSadViewModel(
 
 
     //Store lists of color and string mood values added from Journal Page for access by Metrics
-    //TODO refactor to be getting these amounts from the entries themselves?
-    val colorList = mutableListOf<Color>()
+    //TODO refactor to be getting these amounts from the entries themselves
+    val colorIdList = mutableListOf<Int>()
     val moodList = mutableListOf<String>()
 
-    val metricsColorList = mutableListOf<Color>()
+
+
+
+    val metricsColorIdList = mutableListOf<Int>()
     val metricsMoodList = mutableListOf<String>()
+
+    //TODO delete eventually
+    init{
+        for(i in 1..30) {
+            colorIdList.add(R.color.metrics_dark_grey_color)
+        }
+        metricsColorIdList.add(R.color.love_red_color)
+        metricsColorIdList.add(R.color.anger_orange_color)
+        metricsColorIdList.add(R.color.anger_orange_color)
+        metricsColorIdList.add(R.color.surprise_green_color)
+        metricsColorIdList.add(R.color.joy_yellow_color)
+        metricsColorIdList.add(R.color.anger_orange_color)
+    }
 
     val recordsList = mutableListOf<PastRecord>()
 
     fun getRecords(): LiveData<List<JournalEntry>> = repository.getEntries()
 
+    val journalEntriesListLiveData = repository.getEntries()
 
     fun addJournalEntry(entry: JournalEntry){
         repository.addEntry(entry)

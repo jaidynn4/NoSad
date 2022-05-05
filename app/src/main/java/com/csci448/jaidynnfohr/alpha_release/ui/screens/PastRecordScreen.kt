@@ -1,6 +1,5 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens
 
-import android.provider.MediaStore
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,14 +17,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
-import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
 
-    @Composable
-    fun PastRecordScreen(list : List<PastRecord>?, onSelectRecord:(PastRecord) -> Unit){
+@Composable
+    fun PastRecordScreen(list : List<JournalEntry>?, onSelectRecord:(PastRecord) -> Unit){
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = stringResource(id = R.string.record_screen_title),
+                text = stringResource(id = R.string.record_history_label_long),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -47,7 +46,7 @@ import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
     }
 
     @Composable
-    fun RecordRow(record: PastRecord,onSelectRecord: (PastRecord) -> Unit){
+    fun RecordRow(record: JournalEntry,onSelectRecord: (PastRecord) -> Unit){
         Card(modifier =
         Modifier
             .clickable { onSelectRecord }
@@ -67,18 +66,21 @@ import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = record.getDate())
+                    //Text(text = record.getDate())
+                    Text(text = record.journal_timestamp.date.toString())
                     Spacer(Modifier.width(8.dp))
-                    Text(text = record.getTextTime())
+                    //Text(text = record.getTextTime())
+                    Text(text = record.journal_timestamp.time.toString())
                     Column {
 
                     }
                 }
 
                 var title = ""
-                record.getTitle()?.let {
-                    title = it
-                }
+//                record.getTitle()?.let {
+//                    title = it
+//                }
+                title = record.journal_title
                 Row(
                     Modifier
                         .padding(8.dp)
@@ -87,24 +89,26 @@ import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
                     verticalAlignment = Alignment.CenterVertically
                 )
                 {
-                    var color = record.getColor()
+                    //var color = record.getColor()
+                    var color = colorResource(id = record.mood_color_id)
                     Text(text = title, color = color)
                 }
 
-                record.getAudio()?.let {
-                    System.out.println("got audio")
-                    //TODO
-                }
-                Row(
-                    Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = stringResource(id = R.string.record_audio_display_text))
-                    Text(text = record.getAudioTime())
-                }
+                //TODO this section is commented until a JournalEntry stores audio
+//                record.getAudio()?.let {
+//                    System.out.println("got audio")
+//                    //TODO
+//                }
+//                Row(
+//                    Modifier
+//                        .padding(8.dp)
+//                        .fillMaxWidth(),
+//                    horizontalArrangement = Arrangement.SpaceEvenly,
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Text(text = stringResource(id = R.string.record_audio_display_text))
+//                    Text(text = record.getAudioTime())
+//                }
 
             }
         }
@@ -115,9 +119,9 @@ import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
     private fun PreviewRecordList(){
 //        val instance = PastRecordViewModel.getInstance()
 //        val state = instance.DataLiveList.observeAsState()
-        val list = mutableListOf<PastRecord>()
+        val list = mutableListOf<JournalEntry>()
         for(i in 1..20){
-            list.add(RecordGenerator.generateRandomRecord())
+            //list.add(RecordGenerator.generateRandomRecord())
         }
         PastRecordScreen(list = list, onSelectRecord = {})
     }

@@ -31,14 +31,14 @@
     <string name="add_mood_label_short">Mood</string>
     <string name="add_mood_label_long">Add Mood</string>
 
-    <string name="recent_additions_label_short">Recent</string>
-    <string name="recent_additions_label_long">Recent Additions</string>
+    <string name="record_history_label_short">History</string>
+    <string name="record_history_label_long">Record History</string>
 
     <string name="metrics_tracker_label_short">Metrics</string>
     <string name="metrics_tracker_label_long">Metrics Tracker</string>
 
-    <string name="journal_records_label_short">Journal</string>
-    <string name="journal_records_label_long">Journal Records</string>
+    <string name="journal_entry_label_short">Journal</string>
+    <string name="journal_entry_label_long">Journal Entry</string>
 
     <string name="support_resources_label_short">Support</string>
     <string name="support_resources_label_long">Support Resources</string>

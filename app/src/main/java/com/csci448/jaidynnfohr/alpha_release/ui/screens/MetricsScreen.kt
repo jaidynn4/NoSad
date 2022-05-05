@@ -29,14 +29,13 @@ import com.csci448.jaidynnfohr.alpha_release.R
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun DayWeekMonth(metricsColorList: MutableList<Color>, metricsMoodList: MutableList<String>) {
-    metricsColorList.add(colorResource(id = R.color.love_red_color))
-    metricsColorList.add(colorResource(id = R.color.anger_orange_color))
-    metricsColorList.add(colorResource(id = R.color.anger_orange_color))
-    metricsColorList.add(colorResource(id = R.color.surprise_green_color))
-    metricsColorList.add(colorResource(id = R.color.joy_yellow_color))
-    metricsColorList.add(colorResource(id = R.color.anger_orange_color))
+fun DayWeekMonth(metricsColorIdList: MutableList<Int>, metricsMoodList: MutableList<String>) {
 
+    val metricsColorList = mutableListOf<Color>()
+    for(i in metricsColorIdList){
+        metricsColorList.add(colorResource(id = i))
+    }
+    
     val dotTotal = 3
     val pagerState = rememberPagerState(initialPage = 2)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -14,7 +14,9 @@ data class JournalEntry(
     val journal_entry: String,
     val journal_timestamp: Date,
     val mood_selected: String,
-    val mood_color: Int//, //USAGE: getResources().getColor(mood_color)
+    val mood_color_id: Int//, //USAGE: getResources().getColor(mood_color)
     //val audio: MediaStore.Audio,
     //val audioTime: Date
 ) : Serializable
+
+//TODO type converters for Audio
