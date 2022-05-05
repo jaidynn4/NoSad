@@ -17,7 +17,9 @@
             android:theme="@style/Theme.Alpha_Release.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="nosad.csci448.edu" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

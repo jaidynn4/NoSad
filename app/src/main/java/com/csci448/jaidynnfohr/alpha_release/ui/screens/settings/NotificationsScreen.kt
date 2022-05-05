@@ -105,127 +105,132 @@ fun NotificationsScreen(
                 )
                 RadioButton(
                     selected = pushButton.value,
-                    onClick = { onChange(pushButton, isPush = true, 0,0,0,
-                        context = context) },
+                    onClick = {
+                        onChange(pushButton, isPush = true, 0,0,0,
+                        context = context)
+                              },
                     enabled = true
                 )
             }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!newsButton.value) {
-                            newsAlert.value = !newsAlert.value
-                        } else newsButton.value = !newsButton.value
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text =
-                stringResource(R.string.news_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = newsButton.value,
-                    onClick = {
-                        if(!newsButton.value) {
-                            newsAlert.value = !newsAlert.value
-                        } else newsButton.value = !newsButton.value
-                              },
-                    enabled = pushButton.value
-                )
-                if(newsAlert.value){
-                    alertProcess(
-                        button = newsButton,
-                        context = context,
-                        channelName = R.string.news_channel_name,
-                        channelDescription = R.string.news_channel_description,
-                        channelID = R.string.news_channel_id,
-                        dialogTitle = R.string.news_dialogue_title,
-                        dialogContent = R.string.news_dialogue_content,
-                        alert = newsAlert
+            if(pushButton.value) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!newsButton.value) {
+                                newsAlert.value = !newsAlert.value
+                            } else newsButton.value = !newsButton.value
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text =
+                        stringResource(R.string.news_button),
+                        fontSize = 16.sp
                     )
+                    RadioButton(
+                        selected = newsButton.value,
+                        onClick = {
+                            if (!newsButton.value) {
+                                newsAlert.value = !newsAlert.value
+                            } else newsButton.value = !newsButton.value
+                        },
+                        enabled = pushButton.value
+                    )
+                    if (newsAlert.value) {
+                        alertProcess(
+                            button = newsButton,
+                            context = context,
+                            channelName = R.string.news_channel_name,
+                            channelDescription = R.string.news_channel_description,
+                            channelID = R.string.news_channel_id,
+                            dialogTitle = R.string.news_dialogue_title,
+                            dialogContent = R.string.news_dialogue_content,
+                            alert = newsAlert
+                        )
+                    }
                 }
-            }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!moodButton.value) {
-                            moodAlert.value = !moodAlert.value
-                        } else {
-                            moodButton.value = !moodButton.value
-                        }
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(R.string.mood_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = moodButton.value,
-                    onClick = {
-                        if(!moodButton.value) {
-                            moodAlert.value = !moodAlert.value
-                        } else{
-                            moodButton.value = !moodButton.value
-                        }
-                              },
-                    enabled = pushButton.value)
-                if(moodAlert.value){
-                    alertProcess(
-                        button = moodButton,
-                        context = context,
-                        channelName = R.string.mood_channel_name,
-                        channelDescription = R.string.mood_channel_description,
-                        channelID = R.string.mood_channel_id,
-                        dialogTitle = R.string.mood_dialogue_title,
-                        dialogContent = R.string.mood_dialogue_content,
-                        alert = moodAlert
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!moodButton.value) {
+                                moodAlert.value = !moodAlert.value
+                            } else {
+                                moodButton.value = !moodButton.value
+                            }
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(R.string.mood_button),
+                        fontSize = 16.sp
                     )
+                    RadioButton(
+                        selected = moodButton.value,
+                        onClick = {
+                            if (!moodButton.value) {
+                                moodAlert.value = !moodAlert.value
+                            } else {
+                                moodButton.value = !moodButton.value
+                            }
+                        },
+                        enabled = pushButton.value
+                    )
+                    if (moodAlert.value) {
+                        alertProcess(
+                            button = moodButton,
+                            context = context,
+                            channelName = R.string.mood_channel_name,
+                            channelDescription = R.string.mood_channel_description,
+                            channelID = R.string.mood_channel_id,
+                            dialogTitle = R.string.mood_dialogue_title,
+                            dialogContent = R.string.mood_dialogue_content,
+                            alert = moodAlert
+                        )
+                    }
                 }
-            }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!scriptureButton.value) {
-                            scriptureAlert.value = !scriptureAlert.value
-                        } else scriptureButton.value = !scriptureButton.value
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(R.string.scripture_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = scriptureButton.value,
-                    onClick = {
-                                if (!scriptureButton.value) {
-                                    scriptureAlert.value = !scriptureAlert.value
-                                }
-                                else scriptureButton.value = !scriptureButton.value
-                              },
-                    enabled = pushButton.value,
-                )
-                if(scriptureAlert.value){
-                    alertProcess(
-                        button = scriptureButton,
-                        context = context,
-                        channelName = R.string.scripture_channel_name,
-                        channelDescription = R.string.scripture_channel_description,
-                        channelID = R.string.scripture_channel_id,
-                        dialogTitle = R.string.scripture_dialogue_title,
-                        dialogContent = R.string.scriptire_dialogue_content,
-                        alert = scriptureAlert
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!scriptureButton.value) {
+                                scriptureAlert.value = !scriptureAlert.value
+                            } else scriptureButton.value = !scriptureButton.value
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(R.string.scripture_button),
+                        fontSize = 16.sp
                     )
+                    RadioButton(
+                        selected = scriptureButton.value,
+                        onClick = {
+                            if (!scriptureButton.value) {
+                                scriptureAlert.value = !scriptureAlert.value
+                            } else scriptureButton.value = !scriptureButton.value
+                        },
+                        enabled = pushButton.value,
+                    )
+                    if (scriptureAlert.value) {
+                        alertProcess(
+                            button = scriptureButton,
+                            context = context,
+                            channelName = R.string.scripture_channel_name,
+                            channelDescription = R.string.scripture_channel_description,
+                            channelID = R.string.scripture_channel_id,
+                            dialogTitle = R.string.scripture_dialogue_title,
+                            dialogContent = R.string.scriptire_dialogue_content,
+                            alert = scriptureAlert
+                        )
+                    }
                 }
             }
         }
@@ -303,7 +308,9 @@ private fun onChange(
             channelID = channelID
         )
     }
+
     notifChange.value = !notifChange.value
+
 }
 
 

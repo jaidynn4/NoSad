@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,14 +34,14 @@ fun AccountScreen(
     myProfile: Profile,
     onBack : () -> Unit
 ){
-    val nameState = remember{ mutableStateOf("")}
-    val pswdState = remember{ mutableStateOf("")}
-    val emailState = remember{ mutableStateOf("")}
-    val emergState = remember{ mutableStateOf("")}
-    val langState = remember{ mutableStateOf("")}
-    val expanded = remember{ mutableStateOf(false)}
+    val nameState = rememberSaveable{ mutableStateOf("")}
+    val pswdState = rememberSaveable{ mutableStateOf("")}
+    val emailState = rememberSaveable{ mutableStateOf("")}
+    val emergState = rememberSaveable{ mutableStateOf("")}
+    val langState = rememberSaveable{ mutableStateOf("")}
+    val expanded = rememberSaveable{ mutableStateOf(false)}
     val languages = stringArrayResource(id = R.array.languages).toList()
-    val selectedIndex = remember{ mutableStateOf(0) }
+    val selectedIndex = rememberSaveable{ mutableStateOf(0) }
     val context = LocalContext.current
 
     Column(
