@@ -116,6 +116,50 @@ import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
         }
     }
 
+
+@Composable
+fun RecordAlertDialog(entry: JournalEntry) {
+    AlertDialog(
+        onDismissRequest = {
+              //TODO click outside dialog or back button should close dialog
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    //TODO close dialog
+                }
+            ){
+                Text(text = stringResource(id = R.string.dialog_ok_button_label))
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = {
+                    //TODO close dialog and delete record
+                }
+            ){
+                Text(text = stringResource(id = R.string.dialog_delete_button_label))
+            }
+        },
+        title = {
+            TextButton(
+                onClick = {
+
+                }
+            ){
+                Text(
+                    text = entry.journal_title,
+                    color = colorResource(id = entry.mood_color_id)
+                )
+            }
+        },
+        text = {
+            Text(text = entry.journal_entry)
+        }
+    )
+}
+
+
     @Preview(showBackground = true)
     @Composable
     private fun PreviewRecordList(){

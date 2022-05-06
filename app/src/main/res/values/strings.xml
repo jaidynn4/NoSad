@@ -27,6 +27,8 @@
     <string name="journal_entry_title_hint">Title</string>
     <string name="journal_entry_thoughts_hint">Thoughts</string>
 
+    <string name="dialog_ok_button_label">OK</string>
+    <string name="dialog_delete_button_label">Delete</string>
 
     <string name="add_mood_label_short">Mood</string>
     <string name="add_mood_label_long">Add Mood</string>
