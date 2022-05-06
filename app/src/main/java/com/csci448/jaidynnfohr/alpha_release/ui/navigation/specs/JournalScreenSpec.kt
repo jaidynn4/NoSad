@@ -2,6 +2,7 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.JournalPage
@@ -10,6 +11,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 import java.util.*
+import com.google.firebase.auth.FirebaseAuth
 
 object JournalScreenSpec : IScreenSpec {
 
@@ -20,7 +22,8 @@ object JournalScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
         NoSad_Scaffold(
             content = {

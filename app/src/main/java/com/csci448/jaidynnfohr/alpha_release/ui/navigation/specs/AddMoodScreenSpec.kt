@@ -6,6 +6,7 @@ import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.EmotionsDropDown
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object AddMoodScreenSpec : IScreenSpec {
 
@@ -17,7 +18,8 @@ object AddMoodScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
         NoSad_Scaffold(
             content = {

@@ -9,6 +9,7 @@ import com.csci448.jaidynnfohr.alpha_release.ui.screens.PastRecordScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object PastRecordsScreenSpec : IScreenSpec {
 
@@ -19,7 +20,8 @@ object PastRecordsScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
         val list = mutableListOf<PastRecord>()
         for(i in 1..20){

@@ -7,6 +7,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.ui.*
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object MetricScreenSpec : IScreenSpec {
 
@@ -18,7 +19,8 @@ object MetricScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
         val journalEntryList = viewModel.journalEntriesListLiveData.observeAsState()
         NoSad_Scaffold(

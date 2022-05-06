@@ -2,20 +2,27 @@ package com.csci448.jaidynnfohr.alpha_release.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.android.gms.tasks.OnSuccessListener
 
 @Composable
 fun Settings(
@@ -24,8 +31,19 @@ fun Settings(
     onPrivacySecurityClick : () -> Unit,
     onHelpSupportClick : () -> Unit,
     onAboutClick : () -> Unit,
-    onBack : () -> Unit
+    onBack : () -> Unit,
+    onLogout: () -> Unit,
+    onLogoutSuccessfull: () -> Unit,
+    avm: NoSadViewModel
 ){
+    val logged = avm.isLoggedIn.observeAsState()
+    LaunchedEffect(logged.value) {
+        if(logged.value == false) {
+            onLogoutSuccessfull()
+        }
+    }
+
+
     Column(
         Modifier
             .fillMaxHeight()
@@ -162,12 +180,9 @@ fun Settings(
                     )
                 )
             }
+            TextButton(onClick = onLogout , shape = RoundedCornerShape(20.dp)) {
+                Text(text = stringResource(R.string.logout_hint), color = colorResource(id = R.color.app_green_color), fontSize = 10.sp)
+            }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun PreviewSettings(){
-    Settings({},{},{},{},{},{})
 }

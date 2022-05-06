@@ -1,19 +1,20 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.IScreenSpec
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class NoSadNavHost{
     @Composable
     fun NoSadNavHost(
-        viewModel : NoSadViewModel,
-        navController: NavController
+        viewModel: NoSadViewModel,
+        navController: NavController,
+        auth: FirebaseAuth
     ) {
         NavHost(
             navController = navController as NavHostController,
@@ -29,7 +30,8 @@ class NoSadNavHost{
                                 screen.Content(
                                     viewModel = viewModel,
                                     navController = navController,
-                                    navBackStackEntry = backStackEntry
+                                    navBackStackEntry = backStackEntry,
+                                    auth = auth
                                 )
                         }
                     }
