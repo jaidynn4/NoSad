@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
@@ -46,9 +48,19 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
 @Composable
 fun ForgotPasswordScreen(onForgot: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
-        Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.forgot_password_title), color = colorResource(id = R.color.app_green_color), fontSize = 20.sp)
-        Spacer(modifier = Modifier.padding(24.dp))
+        Spacer(modifier = Modifier.padding(top = 64.dp))
+        Text(
+            text = stringResource(id = R.string.forgot_password_title),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Divider(
+            thickness = 2.dp,
+            color = colorResource(id = R.color.app_green_color)
+        )
+        Spacer(modifier = Modifier.padding(16.dp))
         EditTextAndButtons(onForgot)
     }
 }
