@@ -28,9 +28,11 @@ object SettingsScreenSpec : IScreenSpec {
           onAboutClick = { navController.navigate(AboutScreenSpec.navigateTo()) },
           onBack = { navController.popBackStack() },
           onLogout = {
-              viewModel.signOut()
+              viewModel.triggerRestart()
           },
-          onLogoutSuccessfull = { navController.navigate(DetailScreenSpec.navigateTo()) },
+          onLogoutSuccessful = {
+
+          },
           avm = viewModel
       )
     }

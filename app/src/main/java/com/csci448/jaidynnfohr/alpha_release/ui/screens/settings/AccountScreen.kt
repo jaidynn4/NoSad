@@ -1,5 +1,6 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens.settings
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,7 +33,8 @@ import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 fun AccountScreen(
     viewModel : NoSadViewModel,
     myProfile: Profile,
-    onBack : () -> Unit
+    onBack : () -> Unit,
+    avm: NoSadViewModel
 ){
     val nameState = rememberSaveable{ mutableStateOf("")}
     val pswdState = rememberSaveable{ mutableStateOf("")}
@@ -67,20 +69,26 @@ fun AccountScreen(
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
+
+        val updateEmail = remember { mutableStateOf(false) }
+        val updatePassword = remember { mutableStateOf(false) }
+        val emailTextState = avm.userEmail.value
+        val passwordTextState = avm.password.value
         Column(
             Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceAround
         ){
-            Spacer(modifier = Modifier.height(16.dp))
             Column(
                 horizontalAlignment = Alignment.Start
             ) {
-                Text("Name: ", fontSize = 20.sp)
+                Text("Email: ", fontSize = 20.sp)
                 TextField(
-                    value = nameState.value,
-                    onValueChange = { nameState.value = it },
-                    placeholder = { Text(text = myProfile.getName().toString())},
+                    value = emailTextState,
+                    onValueChange = {
+                        updateEmail.value = true
+                        avm.setUserEmail(it) },
+                    placeholder = { Text(text = myProfile.getEmail().toString())},
                     singleLine = true
                 )
             }
@@ -90,33 +98,11 @@ fun AccountScreen(
             ) {
                 Text("Password: ", fontSize = 20.sp)
                 TextField(
-                    value = pswdState.value,
-                    onValueChange = { pswdState.value = it },
+                    value = passwordTextState,
+                    onValueChange = {
+                        updatePassword.value = true
+                        avm.setPassword(it) },
                     placeholder = { Text(text = myProfile.getPassword().toString())},
-                    singleLine = true
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            Column(
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text("Email: ", fontSize = 20.sp)
-                TextField(
-                    value = emailState.value,
-                    onValueChange = { emailState.value = it },
-                    placeholder = { Text(text = myProfile.getEmail().toString())},
-                    singleLine = true
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            Column(
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text("Emergency Contact: ", fontSize = 20.sp)
-                TextField(
-                    value = emergState.value,
-                    onValueChange = { emergState.value = it },
-                    placeholder = { Text(text = myProfile.getEmergContact().toString())},
                     singleLine = true
                 )
             }
@@ -151,16 +137,21 @@ fun AccountScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick =
             {
-                saveChanges(
-                    profile = myProfile,
-                    viewModel = viewModel,
-                    name = nameState,
-                    email = emailState,
-                    emergency = emergState,
-                    language = langState,
-                    password = pswdState
-                )
-                Toast.makeText(context,"Changes Saved!",Toast.LENGTH_SHORT).show()
+                Log.e("UPDATE", updatePassword.toString())
+                when {
+                    updateEmail.value and updatePassword.value -> {
+                        avm.updateBoth()
+                    }
+                    updateEmail.value -> {
+                        updateEmail.value = false
+                        avm.updateAccountEmail()
+                    }
+                    updatePassword.value -> {
+                        updatePassword.value = false
+                        avm.updateAccountPassword()
+                    }
+                }
+
             }, colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.app_green_color), contentColor = Color.White)
             ) {
                 Text(text = stringResource(R.string.save_settings))

@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
-
+//Note: this screen could have a future update to be an animated wheel with 2D Canvas Graphics
 @Composable
 fun EmotionsDropDown(
     onSaveMood: (Int, String) -> Unit
