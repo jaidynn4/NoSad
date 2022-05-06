@@ -11,7 +11,7 @@ import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class NoSadNavHost{
-    private val BASE_URI = "https://nosad.csci448.edu"
+    private val URI = "https://nosad.csci448.edu"
     @Composable
     fun NoSadNavHost(
         viewModel: NoSadViewModel,
@@ -27,7 +27,7 @@ class NoSadNavHost{
                         composable(
                             route = screen.route,
                             arguments = screen.arguments,
-                            deepLinks = listOf(navDeepLink { uriPattern = "$BASE_URI/${screen.route}" })
+                            deepLinks = listOf(navDeepLink { uriPattern = "$URI/${screen.route}" })
                         )
                         {
                             backStackEntry ->

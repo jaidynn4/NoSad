@@ -26,11 +26,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
-<<<<<<< Updated upstream
 
     private lateinit var auth: FirebaseAuth
 
-=======
     companion object{
         private val BASE_URI = "https://nosad.csci448.edu"
         fun createPendingIntent(context : Context, targetScreen: String) : PendingIntent{
@@ -48,7 +46,6 @@ class MainActivity : ComponentActivity() {
             return deepLinkPendingIntent
         }
     }
->>>>>>> Stashed changes
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
