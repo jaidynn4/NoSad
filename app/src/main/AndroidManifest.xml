@@ -7,6 +7,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_mountain"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_mountain"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alpha_Release">
         <activity
@@ -16,10 +17,12 @@
             android:theme="@style/Theme.Alpha_Release.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="nosad.csci448.edu" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
