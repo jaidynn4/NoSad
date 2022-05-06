@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.*
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Resource
 
-
 @Composable
 fun ResourceScreen(list : List<Resource>?, onSelectResource : (Resource) -> Unit){
     if(list != null) {
