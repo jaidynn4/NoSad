@@ -156,7 +156,7 @@ class NoSadViewModel(
             _loginSuccessful.value = false
             _error.value = task.exception?.localizedMessage ?: "Unknown error"
             val toast = Toast(context)
-            toast.setText("Invalid Email or Password")
+            toast.setText("Sign-in Error")
             toast.duration = Toast.LENGTH_SHORT
             toast.show()
             Log.w("AUTH", "SignInWithEmail:failure", task.exception)
@@ -182,6 +182,53 @@ class NoSadViewModel(
         _loginSuccessful.value = false
     }
 
+    fun updateAccountEmail() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updateEmail(userEmail.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Email Updated")
+                        } else {
+                            toast.setText("Failed to Update Email")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
+
+    fun updateAccountPassword() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updatePassword(password.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Password Updated")
+                        } else {
+                            toast.setText("Failed to Update Password")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+
+
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
+
     fun signOut() {
         viewModelScope.launch {
             try {
@@ -194,6 +241,49 @@ class NoSadViewModel(
             } catch (e: Exception) {
                 _error.value = e.localizedMessage ?: "Unknown error"
                 Log.d("AUTH", "Sign out fail: $e")
+            }
+        }
+    }
+
+    fun updateBoth() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updateEmail(userEmail.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Email Updated")
+                        } else {
+                            toast.setText("Failed to Update Email")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+                        viewModelScope.launch {
+                            try {
+                                _error.value = ""
+                                Firebase.auth.currentUser?.updatePassword(password.value)
+                                    ?.addOnCompleteListener { task ->
+                                        val toast = Toast(context)
+                                        if (task.isSuccessful) {
+                                            toast.setText("Password Updated")
+                                        } else {
+                                            toast.setText("Failed to Update Password")
+                                        }
+                                        toast.duration = Toast.LENGTH_SHORT
+                                        toast.show()
+
+
+                                    }
+                            } catch (e: Exception) {
+                                _error.value = e.localizedMessage ?: "Unknown error"
+                                Log.d("AUTH", "Sign in fail: $e")
+                            }
+                        }
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
             }
         }
     }
