@@ -2,10 +2,11 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.CreateAccountScreen
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object CreateScreenSpec : IScreenSpec {
 
@@ -17,9 +18,17 @@ object CreateScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
-        CreateAccountScreen({navController.navigate(WelcomeScreenSpec.navigateTo())},{navController.navigate(DetailScreenSpec.navigateTo())})
+        val loginSuccessful = viewModel.loginSuccessful.observeAsState()
+        CreateAccountScreen(
+            onCreate = {
+                viewModel.createUserWithEmailAndPassword()
+                       },
+            {navController.navigate(DetailScreenSpec.navigateTo())},
+            avm = viewModel
+        ) { navController.navigate(WelcomeScreenSpec.navigateTo()) }
     }
 
 

@@ -340,4 +340,6 @@
     <string name="top_bar_hint">Select the house icon to go home. Select the gear icon to access settings.</string>
     <string name="bottom_bar_hint">These are the main icons for navigation. Be sure to explore each one. They are accessible from the home screen as well.</string>
     <string name="resources_hint">If you ever need someone to talk to, follow the Support icon to this page.</string>
+
+    <string name="logout_hint">Logout</string>
 </resources>

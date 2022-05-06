@@ -13,15 +13,22 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import kotlinx.coroutines.launch
 
 @Composable
-private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
+private fun Buttons(
+    onLogin: () -> Unit,
+    onCreateAccount: () -> Unit,
+    avm: NoSadViewModel
+) {
 
     Column {
         Spacer(modifier = Modifier.padding(20.dp))
         Column(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Button(
-              onClick = onLogin , 
+                enabled = avm.isValidEmailAndPassword(),
+              onClick = onLogin ,
               shape = RoundedCornerShape(20.dp),
               colors = ButtonDefaults.buttonColors(
                     backgroundColor = colorResource(id = R.color.app_green_color),
@@ -40,12 +47,18 @@ private fun Buttons(onLogin: () -> Unit, onCreateAccount: () -> Unit) {
 }
 
 @Composable
-fun textFields(onForget: () -> Unit) {
-    var emailTextState by remember { mutableStateOf(TextFieldValue("")) }
-    var passwordTextState by remember { mutableStateOf(TextFieldValue("")) }
+fun textFields(
+    onForget: () -> Unit,
+    avm: NoSadViewModel,
+    onLogin: () -> Unit,
+    onCreateAccount: () -> Unit
+) {
+
+    val emailTextState = avm.userEmail.value
+    val passwordTextState = avm.password.value
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
-            value = emailTextState, onValueChange = { it -> emailTextState = it},
+            value = emailTextState, onValueChange = { avm.setUserEmail(it)},
             placeholder = {Text(text = stringResource(R.string.email_hint))},
             label = {Text(text = stringResource(R.string.email_hint))},
             shape = RoundedCornerShape(20.dp),
@@ -54,7 +67,7 @@ fun textFields(onForget: () -> Unit) {
         )
         Spacer(modifier = Modifier.padding(8.dp))
         TextField(
-            value = passwordTextState, onValueChange = { it -> passwordTextState = it},
+            value = passwordTextState, onValueChange = { avm.setPassword(it)},
             placeholder = {Text(text = stringResource(R.string.password_hint))},
             label = {Text(text = stringResource(R.string.password_hint))},
             shape = RoundedCornerShape(20.dp),
@@ -70,13 +83,27 @@ fun textFields(onForget: () -> Unit) {
 }
 
 @Composable
-fun LoginScreen(onLogin: () -> Unit, onCreateAccount: () -> Unit, onForget: () -> Unit) {
+fun LoginScreen(
+    onLogin: () -> Unit,
+    onCreateAccount: () -> Unit,
+    onForget: () -> Unit,
+    avm: NoSadViewModel,
+    onLoginSuccess: () -> Unit,
+    loginSuccessful: State<Boolean?>
+) {
+    val scope = rememberCoroutineScope()
+    LaunchedEffect(loginSuccessful.value) {
+        if (loginSuccessful.value == true) {
+            onLoginSuccess()
+        }
+    }
+
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(R.string.login_title), color = colorResource(id = R.color.app_green_color), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
-        textFields(onForget = onForget)
-        Buttons(onLogin, onCreateAccount)
+        textFields(onForget = onForget, avm = avm, onLogin, onCreateAccount )
+        Buttons(onLogin, onCreateAccount, avm = avm)
     }
 }
 

@@ -6,6 +6,7 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 sealed interface IScreenSpec {
 
@@ -25,7 +26,9 @@ sealed interface IScreenSpec {
     fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry)
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
+    )
 
     fun navigateTo(vararg args: String?): String
 }

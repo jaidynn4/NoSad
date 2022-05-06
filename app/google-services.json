@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "771390555938",
+    "project_id": "nosad-3fa0f",
+    "storage_bucket": "nosad-3fa0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771390555938:android:8cad041987bd96212e877b",
+        "android_client_info": {
+          "package_name": "com.csci448.jaidynnfohr.alpha_release"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771390555938-5o67431ib6u8iqsu404eiu5937c362dq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkWtuzDwWLQvHNON8hFkqEK-mk86dFBrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771390555938-5o67431ib6u8iqsu404eiu5937c362dq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
