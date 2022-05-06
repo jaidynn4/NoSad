@@ -42,17 +42,7 @@ object JournalScreenSpec : IScreenSpec {
                     onSaveJournalEntry = {colorId, string, title, date, textTime, audioTime, textEntry, audio ->
                         viewModel.colorIdList.add(colorId)
                         viewModel.moodList.add(string)
-//                        viewModel.recordsList.add(0,
-//                            PastRecord(
-//                                title = title,
-//                                date = date,
-//                                textTime = textTime,
-//                                audioTime = audioTime,
-//                                textEntry = textEntry,
-//                                audio = audio,
-//                                moodColor = colorId
-//                            )
-//                        )
+
                         //TODO get rid of all other past record calls
                         viewModel.addJournalEntry(
                             JournalEntry(
