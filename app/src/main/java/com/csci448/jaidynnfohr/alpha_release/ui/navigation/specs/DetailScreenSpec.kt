@@ -2,10 +2,13 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.ui.LoginScreen
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
 object DetailScreenSpec : IScreenSpec {
 
@@ -17,28 +20,25 @@ object DetailScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
-        LoginScreen({navController.navigate(HomeScreenSpec.navigateTo())}, {navController.navigate(CreateScreenSpec.navigateTo())}, {navController.navigate(ForgotPasswordScreenSpec.navigateTo())})
+        val loginSuccessful = viewModel.loginSuccessful.observeAsState()
+        val scope = rememberCoroutineScope()
+        LoginScreen(
+            onLogin = {
+                viewModel.signInWithEmailAndPassword()
+                      },
+            {navController.navigate(CreateScreenSpec.navigateTo())},
+            {navController.navigate(ForgotPasswordScreenSpec.navigateTo())},
+            avm = viewModel,
+            onLoginSuccess = { navController.navigate(HomeScreenSpec.navigateTo())  },
+            loginSuccessful = loginSuccessful
+            )
     }
-
-
-//
-//    @Composable
-//    override fun Content(viewModel: ISamodelkinCharacterViewModel,
-//                         navController: NavController,
-//                         navBackStackEntry: NavBackStackEntry
-//    ) {
-//        val characterList = viewModel.characterListLiveData.observeAsState()
-//        CharacterListScreen(characterList = characterList.value, onSelectCharacter = {
-//                character -> navController.navigate(
-//            DetailScreenSpec.navigateTo(character.id.toString())
-//        )
-//        }
-//        )
-//    }
 
     override fun navigateTo(vararg args: String?): String {
         return route
     }
+
 }

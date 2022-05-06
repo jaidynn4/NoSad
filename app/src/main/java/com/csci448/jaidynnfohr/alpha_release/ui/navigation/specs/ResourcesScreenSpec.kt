@@ -3,13 +3,13 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.data.Resource
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.ResourceScreen
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object ResourcesScreenSpec : IScreenSpec {
 
@@ -21,7 +21,8 @@ object ResourcesScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
         val list = mutableListOf<Resource>()
         list.add(

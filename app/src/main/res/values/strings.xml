@@ -27,18 +27,20 @@
     <string name="journal_entry_title_hint">Title</string>
     <string name="journal_entry_thoughts_hint">Thoughts</string>
 
+    <string name="dialog_ok_button_label">OK</string>
+    <string name="dialog_delete_button_label">Delete</string>
 
     <string name="add_mood_label_short">Mood</string>
     <string name="add_mood_label_long">Add Mood</string>
 
-    <string name="recent_additions_label_short">Recent</string>
-    <string name="recent_additions_label_long">Recent Additions</string>
+    <string name="record_history_label_short">History</string>
+    <string name="record_history_label_long">Record History</string>
 
     <string name="metrics_tracker_label_short">Metrics</string>
     <string name="metrics_tracker_label_long">Metrics Tracker</string>
 
-    <string name="journal_records_label_short">Journal</string>
-    <string name="journal_records_label_long">Journal Records</string>
+    <string name="journal_entry_label_short">Journal</string>
+    <string name="journal_entry_label_long">Journal Entry</string>
 
     <string name="support_resources_label_short">Support</string>
     <string name="support_resources_label_long">Support Resources</string>
@@ -340,4 +342,6 @@
     <string name="top_bar_hint">Select the house icon to go home. Select the gear icon to access settings.</string>
     <string name="bottom_bar_hint">These are the main icons for navigation. Be sure to explore each one. They are accessible from the home screen as well.</string>
     <string name="resources_hint">If you ever need someone to talk to, follow the Support icon to this page.</string>
+
+    <string name="logout_hint">Logout</string>
 </resources>

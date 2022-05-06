@@ -1,11 +1,13 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.*
+import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.ui.*
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object MetricScreenSpec : IScreenSpec {
 
@@ -17,16 +19,20 @@ object MetricScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
+        val journalEntryList = viewModel.journalEntriesListLiveData.observeAsState()
         NoSad_Scaffold(
             content = {
-                if(viewModel.colorList.isEmpty()) {
+                if(viewModel.colorIdList.isEmpty()) {
                     for(i in 1..30) {
-                        viewModel.colorList.add(Color.DarkGray)
+                        viewModel.colorIdList.add(R.color.metrics_dark_grey_color)
                     }
                 }
-                DayWeekMonth(viewModel.colorList, viewModel.moodList) },
+                //DayWeekMonth(viewModel.colorIdList, viewModel.moodList) },
+                DayWeekMonth(metricsColorIdList = journalEntryList.value, metricsMoodList = viewModel.moodList)
+            },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
             onMetrics = {navController.navigate(navigateTo())},

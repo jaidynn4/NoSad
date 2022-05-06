@@ -1,12 +1,12 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.Settings
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 object SettingsScreenSpec : IScreenSpec {
     override val route: String = "settings"
@@ -16,7 +16,8 @@ object SettingsScreenSpec : IScreenSpec {
     override fun Content(
         viewModel: NoSadViewModel,
         navController: NavController,
-        navBackStackEntry: NavBackStackEntry
+        navBackStackEntry: NavBackStackEntry,
+        auth: FirebaseAuth
     ) {
 
       Settings(
@@ -25,7 +26,12 @@ object SettingsScreenSpec : IScreenSpec {
           onPrivacySecurityClick = { navController.navigate(PrivacySupportScreenSpec.navigateTo()) },
           onHelpSupportClick = { navController.navigate(HelpSupportScreenSpec.navigateTo()) },
           onAboutClick = { navController.navigate(AboutScreenSpec.navigateTo()) },
-          onBack = { navController.popBackStack() }
+          onBack = { navController.popBackStack() },
+          onLogout = {
+              viewModel.signOut()
+          },
+          onLogoutSuccessfull = { navController.navigate(DetailScreenSpec.navigateTo()) },
+          avm = viewModel
       )
     }
 
