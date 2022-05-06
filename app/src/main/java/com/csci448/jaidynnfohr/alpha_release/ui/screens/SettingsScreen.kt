@@ -17,12 +17,10 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
-import com.google.android.gms.tasks.OnSuccessListener
 
 @Composable
 fun Settings(
@@ -33,13 +31,13 @@ fun Settings(
     onAboutClick : () -> Unit,
     onBack : () -> Unit,
     onLogout: () -> Unit,
-    onLogoutSuccessfull: () -> Unit,
+    onLogoutSuccessful: () -> Unit,
     avm: NoSadViewModel
 ){
     val logged = avm.isLoggedIn.observeAsState()
     LaunchedEffect(logged.value) {
         if(logged.value == false) {
-            onLogoutSuccessfull()
+            onLogoutSuccessful()
         }
     }
 

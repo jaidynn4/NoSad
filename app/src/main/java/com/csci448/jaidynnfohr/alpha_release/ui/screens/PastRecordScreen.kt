@@ -15,7 +15,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
@@ -44,9 +43,9 @@ import kotlinx.coroutines.flow.asStateFlow
                 LazyColumn(
                     modifier = Modifier.padding(bottom = 64.dp)
                 ) {
-                    items(list) { record ->
+                    items(list) { entry ->
                         val showDialog = MutableStateFlow(false)
-                        RecordRow(entry = record, viewModel = viewModel, showDialog = showDialog)
+                        RecordRow(entry = entry, viewModel = viewModel, showDialog = showDialog)
                     }
                 }
             }
@@ -78,17 +77,15 @@ import kotlinx.coroutines.flow.asStateFlow
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val day = record.journal_timestamp.date.toString()
-                    val mon = record.journal_timestamp.month.toString()
-                    val yr = (record.journal_timestamp.year - 100).toString()
-                    val hr = record.journal_timestamp.hours.toString()
-                    val min = record.journal_timestamp.minutes.toString()
-                    val sec = record.journal_timestamp.seconds.toString()
-                    //Text(text = record.getDate())
+                    val day = entry.journal_timestamp.date.toString()
+                    val mon = entry.journal_timestamp.month.toString()
+                    val yr = (entry.journal_timestamp.year - 100).toString()
+                    val hr = entry.journal_timestamp.hours.toString()
+                    val min = entry.journal_timestamp.minutes.toString()
+                    val sec = entry.journal_timestamp.seconds.toString()
 
                     Text(text = "${mon}/${day}/${yr}")
                     Spacer(Modifier.width(8.dp))
-                    //Text(text = record.getTextTime())
                     Text(text = "${hr}:${min}:${sec}")
                     Column {
 
@@ -96,9 +93,6 @@ import kotlinx.coroutines.flow.asStateFlow
                 }
 
                 var title = ""
-//                record.getTitle()?.let {
-//                    title = it
-//                }
                 title = entry.journal_title
                 Row(
                     Modifier
@@ -106,15 +100,13 @@ import kotlinx.coroutines.flow.asStateFlow
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
-                )
-                {
-                    //var color = record.getColor()
+                ) {
                     var color = colorResource(id = entry.mood_color_id)
                     Text(text = title, color = color)
                 }
 
                 //TODO this section is commented until a JournalEntry stores audio
-//                record.getAudio()?.let {
+//                entry.getAudio()?.let {
 //                    System.out.println("got audio")
 //                    //TODO
 //                }
@@ -125,8 +117,8 @@ import kotlinx.coroutines.flow.asStateFlow
 //                    horizontalArrangement = Arrangement.SpaceEvenly,
 //                    verticalAlignment = Alignment.CenterVertically
 //                ) {
-//                    Text(text = stringResource(id = R.string.record_audio_display_text))
-//                    Text(text = record.getAudioTime())
+//                    Text(text = stringResource(id = R.string.entry_audio_display_text))
+//                    Text(text = entry.getAudioTime())
 //                }
                 
                 RecordAlertDialog(
@@ -196,17 +188,3 @@ fun RecordAlertDialog(
         )
     }
 }
-
-
-//    @Preview(showBackground = true)
-//    @Composable
-//    private fun PreviewRecordList(){
-////        val instance = PastRecordViewModel.getInstance()
-////        val state = instance.DataLiveList.observeAsState()
-//        val list = mutableListOf<JournalEntry>()
-//        for(i in 1..20){
-//            //list.add(RecordGenerator.generateRandomRecord())
-//        }
-//        PastRecordScreen(list = list, viewmodel = /**no preview viewmodel made/)
-//    }
-//
