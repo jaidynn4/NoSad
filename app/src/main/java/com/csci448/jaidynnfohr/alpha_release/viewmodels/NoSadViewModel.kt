@@ -304,4 +304,28 @@ class NoSadViewModel(
         }
         Runtime.getRuntime().exit(0)
     }
+
+    fun forgotEmailReset() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.sendPasswordResetEmail(userEmail.value)
+                    .addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Email Sent")
+                        } else {
+                            toast.setText("Failed to Send Email")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+
+
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
 }

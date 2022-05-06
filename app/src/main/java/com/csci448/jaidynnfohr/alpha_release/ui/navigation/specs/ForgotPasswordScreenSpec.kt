@@ -19,7 +19,9 @@ object ForgotPasswordScreenSpec : IScreenSpec {
         navBackStackEntry: NavBackStackEntry,
         auth: FirebaseAuth
     ) {
-        ForgotPasswordScreen { navController.navigate(DetailScreenSpec.navigateTo()) }
+        ForgotPasswordScreen(
+            {navController.navigate(DetailScreenSpec.navigateTo())},
+            viewModel)
     }
 
 

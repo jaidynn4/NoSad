@@ -16,13 +16,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 
 @Composable
-fun EditTextAndButtons(onForgot: () -> Unit) {
-    var emailTextState by remember { mutableStateOf(TextFieldValue("")) }
+fun EditTextAndButtons(onForgot: () -> Unit, avm: NoSadViewModel) {
+    val emailTextState = avm.userEmail.value
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
-            value = emailTextState, onValueChange = { it -> emailTextState = it},
+            value = emailTextState, onValueChange = { avm.setUserEmail(it)},
             placeholder = {Text(text = stringResource(R.string.forgot_password_field_hint))},
             label = {Text(text = stringResource(R.string.forgot_password_field_hint))},
             shape = RoundedCornerShape(20.dp),
@@ -31,7 +32,8 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Button(
-            onClick = onForgot,
+            onClick = {avm.forgotEmailReset()
+                      onForgot()},
             shape = RoundedCornerShape(20.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = colorResource(id = R.color.app_green_color),
@@ -44,11 +46,13 @@ fun EditTextAndButtons(onForgot: () -> Unit) {
 }
 
 @Composable
-fun ForgotPasswordScreen(onForgot: () -> Unit) {
+fun ForgotPasswordScreen(
+    onForgot: () -> Unit,
+    avm: NoSadViewModel) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(R.string.forgot_password_title), color = colorResource(id = R.color.app_green_color), fontSize = 20.sp)
         Spacer(modifier = Modifier.padding(24.dp))
-        EditTextAndButtons(onForgot)
+        EditTextAndButtons(onForgot, avm)
     }
 }
