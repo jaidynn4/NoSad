@@ -68,11 +68,17 @@ import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    val day = record.journal_timestamp.date.toString()
+                    val mon = record.journal_timestamp.month.toString()
+                    val yr = (record.journal_timestamp.year - 100).toString()
+                    val hr = record.journal_timestamp.hours.toString()
+                    val min = record.journal_timestamp.minutes.toString()
+                    val sec = record.journal_timestamp.seconds.toString()
                     //Text(text = record.getDate())
-                    Text(text = record.journal_timestamp.date.toString())
+                    Text(text = "${mon}/${day}/${yr}")
                     Spacer(Modifier.width(8.dp))
                     //Text(text = record.getTextTime())
-                    Text(text = record.journal_timestamp.time.toString())
+                    Text(text = "${hr}:${min}:${sec}")
                     Column {
 
                     }

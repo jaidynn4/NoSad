@@ -13,12 +13,12 @@ class NoSadTypeConverters {
     fun toUUID(uuidString: String?) = UUID.fromString(uuidString)
 
     @TypeConverter
-    fun toDate(value: Long?): Date? {
+    fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }
     }
 
     @TypeConverter
-    fun fromDate(date: Date?): Long? {
+    fun dateToTimestamp(date: Date?): Long? {
         return date?.time?.toLong()
     }
 
