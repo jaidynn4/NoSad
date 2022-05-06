@@ -2,14 +2,15 @@ package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.ViewModel
 import androidx.navigation.*
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.ui.screens.PastRecordScreen
+import com.csci448.jaidynnfohr.alpha_release.ui.screens.RecordAlertDialog
 import com.csci448.jaidynnfohr.alpha_release.ui.theme.NoSad_Scaffold
 import com.csci448.jaidynnfohr.alpha_release.util.RecordGenerator
 import com.csci448.jaidynnfohr.alpha_release.viewmodels.NoSadViewModel
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.flow.MutableStateFlow
 
 object PastRecordsScreenSpec : IScreenSpec {
 
@@ -32,10 +33,10 @@ object PastRecordsScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = {
                 PastRecordScreen(
-                    //list = viewModel.recordsList,
                     list = journalEntryList.value,
-                    onSelectRecord = {}
+                    viewModel = viewModel
                 )
+
             },
             onAddMood = {navController.navigate(AddMoodScreenSpec.navigateTo())},
             onJournal = {navController.navigate(JournalScreenSpec.navigateTo())},
