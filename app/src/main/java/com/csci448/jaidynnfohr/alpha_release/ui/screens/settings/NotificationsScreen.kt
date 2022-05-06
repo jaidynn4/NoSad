@@ -1,10 +1,13 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens.settings
 
+import android.Manifest
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.pm.PackageManager
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -25,8 +28,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
+import com.csci448.jaidynnfohr.alpha_release.MainActivity
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.AddMoodScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.HomeScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.ResourcesScreenSpec
 
 
 val newsState : Boolean = false
@@ -94,7 +104,7 @@ fun NotificationsScreen(
                     .clickable {
                         onChange(
                             pushButton, isPush = true, 0, 0, 0,
-                            context = context
+                            context = context, screen = HomeScreenSpec.route, 0, 0
                         )
                     },
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -103,129 +113,143 @@ fun NotificationsScreen(
                     text = stringResource(R.string.push_button),
                     fontSize = 16.sp
                 )
-                RadioButton(
-                    selected = pushButton.value,
-                    onClick = { onChange(pushButton, isPush = true, 0,0,0,
-                        context = context) },
+                Switch(
+                    checked = pushButton.value,
+                    onCheckedChange = {
+                        onChange(pushButton, isPush = true, 0,0,0,
+                        context = context, screen = HomeScreenSpec.route, 0, 0)
+                              },
                     enabled = true
                 )
             }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!newsButton.value) {
-                            newsAlert.value = !newsAlert.value
-                        } else newsButton.value = !newsButton.value
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text =
-                stringResource(R.string.news_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = newsButton.value,
-                    onClick = {
-                        if(!newsButton.value) {
-                            newsAlert.value = !newsAlert.value
-                        } else newsButton.value = !newsButton.value
-                              },
-                    enabled = pushButton.value
-                )
-                if(newsAlert.value){
-                    alertProcess(
-                        button = newsButton,
-                        context = context,
-                        channelName = R.string.news_channel_name,
-                        channelDescription = R.string.news_channel_description,
-                        channelID = R.string.news_channel_id,
-                        dialogTitle = R.string.news_dialogue_title,
-                        dialogContent = R.string.news_dialogue_content,
-                        alert = newsAlert
+            if(pushButton.value) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!newsButton.value) {
+                                newsAlert.value = !newsAlert.value
+                            } else newsButton.value = !newsButton.value
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text =
+                        stringResource(R.string.news_button),
+                        fontSize = 16.sp
                     )
+                    Switch(
+                        checked = newsButton.value,
+                        onCheckedChange = {
+                            if (!newsButton.value) {
+                                newsAlert.value = !newsAlert.value
+                            } else newsButton.value = !newsButton.value
+                        },
+                        enabled = pushButton.value
+                    )
+                    if (newsAlert.value) {
+                        alertProcess(
+                            button = newsButton,
+                            context = context,
+                            channelName = R.string.news_channel_name,
+                            channelDescription = R.string.news_channel_description,
+                            channelID = R.string.news_channel_id,
+                            dialogTitle = R.string.news_dialogue_title,
+                            dialogContent = R.string.news_dialogue_content,
+                            alert = newsAlert,
+                            screen = ResourcesScreenSpec.route,
+                            notifTitle = R.string.news_notif_title,
+                            notifDesc = R.string.news_notif_description
+                        )
+                    }
                 }
-            }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!moodButton.value) {
-                            moodAlert.value = !moodAlert.value
-                        } else {
-                            moodButton.value = !moodButton.value
-                        }
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(R.string.mood_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = moodButton.value,
-                    onClick = {
-                        if(!moodButton.value) {
-                            moodAlert.value = !moodAlert.value
-                        } else{
-                            moodButton.value = !moodButton.value
-                        }
-                              },
-                    enabled = pushButton.value)
-                if(moodAlert.value){
-                    alertProcess(
-                        button = moodButton,
-                        context = context,
-                        channelName = R.string.mood_channel_name,
-                        channelDescription = R.string.mood_channel_description,
-                        channelID = R.string.mood_channel_id,
-                        dialogTitle = R.string.mood_dialogue_title,
-                        dialogContent = R.string.mood_dialogue_content,
-                        alert = moodAlert
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!moodButton.value) {
+                                moodAlert.value = !moodAlert.value
+                            } else {
+                                moodButton.value = !moodButton.value
+                            }
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(R.string.mood_button),
+                        fontSize = 16.sp
                     )
+                    Switch(
+                        checked = moodButton.value,
+                        onCheckedChange = {
+                            if (!moodButton.value) {
+                                moodAlert.value = !moodAlert.value
+                            } else {
+                                moodButton.value = !moodButton.value
+                            }
+                        },
+                        enabled = pushButton.value
+                    )
+                    if (moodAlert.value) {
+                        alertProcess(
+                            button = moodButton,
+                            context = context,
+                            channelName = R.string.mood_channel_name,
+                            channelDescription = R.string.mood_channel_description,
+                            channelID = R.string.mood_channel_id,
+                            dialogTitle = R.string.mood_dialogue_title,
+                            dialogContent = R.string.mood_dialogue_content,
+                            alert = moodAlert,
+                            screen = AddMoodScreenSpec.route,
+                            notifTitle = R.string.mood_notif_title,
+                            notifDesc = R.string.mood_notif_description
+                        )
+                    }
                 }
-            }
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
-                    .height(20.dp)
-                    .clickable {
-                        if (!scriptureButton.value) {
-                            scriptureAlert.value = !scriptureAlert.value
-                        } else scriptureButton.value = !scriptureButton.value
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(R.string.scripture_button),
-                    fontSize = 16.sp
-                )
-                RadioButton(
-                    selected = scriptureButton.value,
-                    onClick = {
-                                if (!scriptureButton.value) {
-                                    scriptureAlert.value = !scriptureAlert.value
-                                }
-                                else scriptureButton.value = !scriptureButton.value
-                              },
-                    enabled = pushButton.value,
-                )
-                if(scriptureAlert.value){
-                    alertProcess(
-                        button = scriptureButton,
-                        context = context,
-                        channelName = R.string.scripture_channel_name,
-                        channelDescription = R.string.scripture_channel_description,
-                        channelID = R.string.scripture_channel_id,
-                        dialogTitle = R.string.scripture_dialogue_title,
-                        dialogContent = R.string.scriptire_dialogue_content,
-                        alert = scriptureAlert
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp)
+                        .height(20.dp)
+                        .clickable {
+                            if (!scriptureButton.value) {
+                                scriptureAlert.value = !scriptureAlert.value
+                            } else scriptureButton.value = !scriptureButton.value
+                        },
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(R.string.scripture_button),
+                        fontSize = 16.sp
                     )
+                    Switch(
+                        checked = scriptureButton.value,
+                        onCheckedChange = {
+                            if (!scriptureButton.value) {
+                                scriptureAlert.value = !scriptureAlert.value
+                            } else scriptureButton.value = !scriptureButton.value
+                        },
+                        enabled = pushButton.value,
+                    )
+                    if (scriptureAlert.value) {
+                        alertProcess(
+                            button = scriptureButton,
+                            context = context,
+                            channelName = R.string.scripture_channel_name,
+                            channelDescription = R.string.scripture_channel_description,
+                            channelID = R.string.scripture_channel_id,
+                            dialogTitle = R.string.scripture_dialogue_title,
+                            dialogContent = R.string.scriptire_dialogue_content,
+                            alert = scriptureAlert,
+                            screen = ResourcesScreenSpec.route,
+                            notifTitle = R.string.scripture_notif_title,
+                            notifDesc = R.string.scripture_notif_description
+                        )
+                    }
                 }
             }
         }
@@ -241,7 +265,10 @@ private fun alertProcess(
     channelID: Int,
     dialogTitle : Int,
     dialogContent : Int,
-    alert : MutableState<Boolean>
+    alert : MutableState<Boolean>,
+    screen: String,
+    notifTitle: Int,
+    notifDesc: Int
 ){
     AlertDialog(
         onDismissRequest = { },
@@ -252,7 +279,10 @@ private fun alertProcess(
                     channelName = channelName,
                     channelDescription = channelDescription,
                     channelID = channelID,
-                    context = context
+                    context = context,
+                    screen = screen,
+                    notifTitle = notifTitle,
+                    notifDesc = notifDesc
                 )
                 alert.value = !alert.value
             }) {
@@ -278,43 +308,77 @@ private fun onChange(
     channelName : Int,
     channelDescription : Int,
     channelID: Int,
-    context: Context
+    context: Context,
+    screen: String,
+    notifTitle: Int,
+    notifDesc: Int
 ){
 //    when {
 //        ContextCompat.checkSelfPermission(
 //            context,
-//            Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED -> {
-//                // do nothing
+//            Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//        ) == PackageManager.PERMISSION_GRANTED -> {
+//            // do nothing
 //        }
-//        context.getActivity()?.let { ActivityCompat.shouldShowRequestPermissionRationale(it, Manifest.permission.ACCESS_NOTIFICATION_POLICY) } -> {
+//        context.getActivity()?.let {
+//            ActivityCompat.shouldShowRequestPermissionRationale(
+//                it,
+//                Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//            )
 //
+//        } == true -> {}
+//        else -> context.getActivity()?.let{
+//            ActivityCompat.requestPermissionLauncher.launch(
+//                Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//            )
 //        }
-//        else -> requestPermissionLauncher.launch(
-//            Manifest.permission.REQUESTED_PERMISSION
-//
-//        )
-//
 //    }
     if(!isPush) {
         createNotificationChannel(
             context = context,
             channelName = channelName,
             channelDescription = channelDescription,
-            channelID = channelID
+            channelID = channelID,
+            screen = screen,
+            notifTitle = notifTitle,
+            notifDesc = notifDesc
         )
     }
+
     notifChange.value = !notifChange.value
+
 }
 
 
-private fun createNotificationChannel(context: Context, channelName : Int, channelDescription : Int, channelID: Int){
+private fun createNotificationChannel(
+    context: Context,
+    channelName : Int,
+    channelDescription : Int,
+    channelID: Int,
+    screen : String,
+    notifTitle : Int,
+    notifDesc : Int){
     val importance = NotificationManager.IMPORTANCE_DEFAULT
     val channel = NotificationChannel(context.getString(channelID), context.getString(channelName),importance).apply {
         description = context.getString(channelDescription)
+        enableLights(true)
+        lightColor = android.graphics.Color.BLUE
+        setShowBadge(true)
     }
-    val notificationManager : NotificationManager = context.getSystemService(
-        Context.NOTIFICATION_SERVICE) as NotificationManager
+    val notificationManager = NotificationManagerCompat.from(context)
     notificationManager.createNotificationChannel(channel)
+
+    val pendingIntent = MainActivity.createPendingIntent(context, screen)
+
+    val notification = NotificationCompat.Builder(context,context.getString(channelID))
+        .setSmallIcon(android.R.drawable.ic_dialog_map)
+        .setContentTitle(context.resources.getString(notifTitle))
+        .setContentText(context.resources.getString(notifDesc))
+        .setAutoCancel(true)
+        .setContentIntent(pendingIntent)
+        .build()
+    Log.d("NOTIFICATION BUILDER", "The screen route is: ${screen}")
+    notificationManager.notify(channelID,notification)
 }
 
 private fun Context.getActivity() : Activity? = when (this) {

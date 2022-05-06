@@ -1,6 +1,10 @@
 package com.csci448.jaidynnfohr.alpha_release
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
+import android.app.TaskStackBuilder
+import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.NoSadNavHost
@@ -24,6 +29,23 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    companion object{
+        private val BASE_URI = "https://nosad.csci448.edu"
+        fun createPendingIntent(context : Context, targetScreen: String) : PendingIntent{
+            val deepLinkIntent = Intent(
+                Intent.ACTION_VIEW,
+                "$BASE_URI$targetScreen".toUri(),
+                context,
+                MainActivity::class.java
+            )
+
+            val deepLinkPendingIntent = TaskStackBuilder.create(context).run{
+                addNextIntentWithParentStack(deepLinkIntent)
+                getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            }
+            return deepLinkPendingIntent
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth

@@ -312,6 +312,12 @@
     <string name="scripture_channel_name">Scripture Notifications</string>
     <string name="scripture_channel_description">Notifies the user of the selected daily Bible verse.</string>
     <string name="scripture_channel_id">Scripture</string>
+    <string name="news_notif_title">NoSad News</string>
+    <string name="news_notif_description">View the latest on our Resources page!</string>
+    <string name="mood_notif_title">NoSad Mood Reminder</string>
+    <string name="mood_notif_description">Don\'t forget to enter in your Mood today!</string>
+    <string name="scripture_notif_title">NoSad Daily Scripture</string>
+    <string name="scripture_notif_description">1 Peter 5:7 : "Cast all your anxiety on him because he cares for you."</string>
 
     <!-- Privacy & Security Strings   -->
     <string name="request_data">Request Data</string>
