@@ -241,7 +241,7 @@ fun shimmer(colorList: List<Color>): Brush {
     )
     val brush = Brush.linearGradient(
         colors = colorList.reversed(),
-        end = Offset(0f,0f),//Offset(10f, 10f),
+        end = Offset(0f,0f),
         start = Offset(translateAnim, translateAnim)
     )
 

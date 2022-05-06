@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.csci448.jaidynnfohr.alpha_release.R
@@ -100,9 +102,19 @@ fun CreateAccountScreen(
     }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
-        Spacer(modifier = Modifier.padding(8.dp))
-        Text(text = stringResource(R.string.create_screen_title), fontSize = 20.sp, color = colorResource(id = R.color.app_green_color))
-        Spacer(modifier = Modifier.padding(24.dp))
+        Spacer(modifier = Modifier.padding(top = 64.dp))
+        Text(
+            text = stringResource(id = R.string.create_screen_title),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Divider(
+            thickness = 2.dp,
+            color = colorResource(id = R.color.app_green_color)
+        )
+        Spacer(modifier = Modifier.padding(16.dp))
         CreateEditTexts(avm)
         Spacer(modifier = Modifier.padding(8.dp))
         CreateButtons(onCreate, onAlready, avm)

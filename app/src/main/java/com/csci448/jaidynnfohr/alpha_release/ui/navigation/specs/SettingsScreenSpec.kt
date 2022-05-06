@@ -1,7 +1,5 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
-import android.app.Activity
-import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
@@ -32,7 +30,7 @@ object SettingsScreenSpec : IScreenSpec {
           onLogout = {
               viewModel.triggerRestart()
           },
-          onLogoutSuccessfull = {
+          onLogoutSuccessful = {
 
           },
           avm = viewModel
