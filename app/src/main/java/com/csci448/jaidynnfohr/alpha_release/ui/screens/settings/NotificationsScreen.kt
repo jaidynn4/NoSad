@@ -1,10 +1,12 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.screens.settings
 
+import android.Manifest
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.pm.PackageManager
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,12 +28,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.csci448.jaidynnfohr.alpha_release.MainActivity
 import com.csci448.jaidynnfohr.alpha_release.R
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.AddMoodScreenSpec
-import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.DetailScreenSpec
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.HomeScreenSpec
 import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.ResourcesScreenSpec
 
@@ -101,7 +104,7 @@ fun NotificationsScreen(
                     .clickable {
                         onChange(
                             pushButton, isPush = true, 0, 0, 0,
-                            context = context, screen = HomeScreenSpec.route
+                            context = context, screen = HomeScreenSpec.route, 0, 0
                         )
                     },
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -114,7 +117,7 @@ fun NotificationsScreen(
                     checked = pushButton.value,
                     onCheckedChange = {
                         onChange(pushButton, isPush = true, 0,0,0,
-                        context = context, screen = HomeScreenSpec.route)
+                        context = context, screen = HomeScreenSpec.route, 0, 0)
                               },
                     enabled = true
                 )
@@ -156,7 +159,9 @@ fun NotificationsScreen(
                             dialogTitle = R.string.news_dialogue_title,
                             dialogContent = R.string.news_dialogue_content,
                             alert = newsAlert,
-                            screen = ResourcesScreenSpec.route
+                            screen = ResourcesScreenSpec.route,
+                            notifTitle = R.string.news_notif_title,
+                            notifDesc = R.string.news_notif_description
                         )
                     }
                 }
@@ -199,7 +204,9 @@ fun NotificationsScreen(
                             dialogTitle = R.string.mood_dialogue_title,
                             dialogContent = R.string.mood_dialogue_content,
                             alert = moodAlert,
-                            screen = AddMoodScreenSpec.route
+                            screen = AddMoodScreenSpec.route,
+                            notifTitle = R.string.mood_notif_title,
+                            notifDesc = R.string.mood_notif_description
                         )
                     }
                 }
@@ -238,7 +245,9 @@ fun NotificationsScreen(
                             dialogTitle = R.string.scripture_dialogue_title,
                             dialogContent = R.string.scriptire_dialogue_content,
                             alert = scriptureAlert,
-                            screen = ResourcesScreenSpec.route
+                            screen = ResourcesScreenSpec.route,
+                            notifTitle = R.string.scripture_notif_title,
+                            notifDesc = R.string.scripture_notif_description
                         )
                     }
                 }
@@ -257,7 +266,9 @@ private fun alertProcess(
     dialogTitle : Int,
     dialogContent : Int,
     alert : MutableState<Boolean>,
-    screen: String
+    screen: String,
+    notifTitle: Int,
+    notifDesc: Int
 ){
     AlertDialog(
         onDismissRequest = { },
@@ -269,7 +280,9 @@ private fun alertProcess(
                     channelDescription = channelDescription,
                     channelID = channelID,
                     context = context,
-                    screen = screen
+                    screen = screen,
+                    notifTitle = notifTitle,
+                    notifDesc = notifDesc
                 )
                 alert.value = !alert.value
             }) {
@@ -296,22 +309,29 @@ private fun onChange(
     channelDescription : Int,
     channelID: Int,
     context: Context,
-    screen: String
+    screen: String,
+    notifTitle: Int,
+    notifDesc: Int
 ){
 //    when {
 //        ContextCompat.checkSelfPermission(
 //            context,
-//            Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED -> {
-//                // do nothing
+//            Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//        ) == PackageManager.PERMISSION_GRANTED -> {
+//            // do nothing
 //        }
-//        context.getActivity()?.let { ActivityCompat.shouldShowRequestPermissionRationale(it, Manifest.permission.ACCESS_NOTIFICATION_POLICY) } -> {
+//        context.getActivity()?.let {
+//            ActivityCompat.shouldShowRequestPermissionRationale(
+//                it,
+//                Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//            )
 //
+//        } == true -> {}
+//        else -> context.getActivity()?.let{
+//            ActivityCompat.requestPermissionLauncher.launch(
+//                Manifest.permission.ACCESS_NOTIFICATION_POLICY
+//            )
 //        }
-//        else -> requestPermissionLauncher.launch(
-//            Manifest.permission.REQUESTED_PERMISSION
-//
-//        )
-//
 //    }
     if(!isPush) {
         createNotificationChannel(
@@ -319,7 +339,9 @@ private fun onChange(
             channelName = channelName,
             channelDescription = channelDescription,
             channelID = channelID,
-            screen = screen
+            screen = screen,
+            notifTitle = notifTitle,
+            notifDesc = notifDesc
         )
     }
 
@@ -328,7 +350,14 @@ private fun onChange(
 }
 
 
-private fun createNotificationChannel(context: Context, channelName : Int, channelDescription : Int, channelID: Int, screen : String){
+private fun createNotificationChannel(
+    context: Context,
+    channelName : Int,
+    channelDescription : Int,
+    channelID: Int,
+    screen : String,
+    notifTitle : Int,
+    notifDesc : Int){
     val importance = NotificationManager.IMPORTANCE_DEFAULT
     val channel = NotificationChannel(context.getString(channelID), context.getString(channelName),importance).apply {
         description = context.getString(channelDescription)
@@ -343,8 +372,8 @@ private fun createNotificationChannel(context: Context, channelName : Int, chann
 
     val notification = NotificationCompat.Builder(context,context.getString(channelID))
         .setSmallIcon(android.R.drawable.ic_dialog_map)
-        .setContentTitle(context.resources.getString(channelName))
-        .setContentText(context.resources.getString(channelDescription))
+        .setContentTitle(context.resources.getString(notifTitle))
+        .setContentText(context.resources.getString(notifDesc))
         .setAutoCancel(true)
         .setContentIntent(pendingIntent)
         .build()
