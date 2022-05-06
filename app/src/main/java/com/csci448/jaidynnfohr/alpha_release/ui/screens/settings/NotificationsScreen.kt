@@ -25,8 +25,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.csci448.jaidynnfohr.alpha_release.MainActivity
 import com.csci448.jaidynnfohr.alpha_release.R
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.AddMoodScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.DetailScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.HomeScreenSpec
+import com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs.ResourcesScreenSpec
 
 
 val newsState : Boolean = false
@@ -94,7 +100,7 @@ fun NotificationsScreen(
                     .clickable {
                         onChange(
                             pushButton, isPush = true, 0, 0, 0,
-                            context = context
+                            context = context, screen = HomeScreenSpec.route
                         )
                     },
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -107,7 +113,7 @@ fun NotificationsScreen(
                     checked = pushButton.value,
                     onCheckedChange = {
                         onChange(pushButton, isPush = true, 0,0,0,
-                        context = context)
+                        context = context, screen = HomeScreenSpec.route)
                               },
                     enabled = true
                 )
@@ -148,7 +154,8 @@ fun NotificationsScreen(
                             channelID = R.string.news_channel_id,
                             dialogTitle = R.string.news_dialogue_title,
                             dialogContent = R.string.news_dialogue_content,
-                            alert = newsAlert
+                            alert = newsAlert,
+                            screen = ResourcesScreenSpec.route
                         )
                     }
                 }
@@ -190,7 +197,8 @@ fun NotificationsScreen(
                             channelID = R.string.mood_channel_id,
                             dialogTitle = R.string.mood_dialogue_title,
                             dialogContent = R.string.mood_dialogue_content,
-                            alert = moodAlert
+                            alert = moodAlert,
+                            screen = AddMoodScreenSpec.route
                         )
                     }
                 }
@@ -228,7 +236,8 @@ fun NotificationsScreen(
                             channelID = R.string.scripture_channel_id,
                             dialogTitle = R.string.scripture_dialogue_title,
                             dialogContent = R.string.scriptire_dialogue_content,
-                            alert = scriptureAlert
+                            alert = scriptureAlert,
+                            screen = ResourcesScreenSpec.route
                         )
                     }
                 }
@@ -246,7 +255,8 @@ private fun alertProcess(
     channelID: Int,
     dialogTitle : Int,
     dialogContent : Int,
-    alert : MutableState<Boolean>
+    alert : MutableState<Boolean>,
+    screen: String
 ){
     AlertDialog(
         onDismissRequest = { },
@@ -257,7 +267,8 @@ private fun alertProcess(
                     channelName = channelName,
                     channelDescription = channelDescription,
                     channelID = channelID,
-                    context = context
+                    context = context,
+                    screen = screen
                 )
                 alert.value = !alert.value
             }) {
@@ -283,7 +294,8 @@ private fun onChange(
     channelName : Int,
     channelDescription : Int,
     channelID: Int,
-    context: Context
+    context: Context,
+    screen: String
 ){
 //    when {
 //        ContextCompat.checkSelfPermission(
@@ -305,7 +317,8 @@ private fun onChange(
             context = context,
             channelName = channelName,
             channelDescription = channelDescription,
-            channelID = channelID
+            channelID = channelID,
+            screen = screen
         )
     }
 
@@ -314,14 +327,28 @@ private fun onChange(
 }
 
 
-private fun createNotificationChannel(context: Context, channelName : Int, channelDescription : Int, channelID: Int){
+private fun createNotificationChannel(context: Context, channelName : Int, channelDescription : Int, channelID: Int, screen : String){
     val importance = NotificationManager.IMPORTANCE_DEFAULT
     val channel = NotificationChannel(context.getString(channelID), context.getString(channelName),importance).apply {
         description = context.getString(channelDescription)
+        enableLights(true)
+        lightColor = android.graphics.Color.BLUE
+        setShowBadge(true)
     }
-    val notificationManager : NotificationManager = context.getSystemService(
-        Context.NOTIFICATION_SERVICE) as NotificationManager
+    val notificationManager = NotificationManagerCompat.from(context)
     notificationManager.createNotificationChannel(channel)
+
+    val pendingIntent = MainActivity.createPendingIntent(context, screen)
+
+    val notification = NotificationCompat.Builder(context,context.getString(channelID))
+        .setSmallIcon(android.R.drawable.ic_dialog_map)
+        .setContentTitle(context.resources.getString(channelName))
+        .setContentText(context.resources.getString(channelDescription))
+        .setAutoCancel(true)
+        .setContentIntent(pendingIntent)
+        .build()
+
+    notificationManager.notify(channelID,notification)
 }
 
 private fun Context.getActivity() : Activity? = when (this) {
