@@ -81,7 +81,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.journal_records_label_short))
+                            Text(stringResource(id = R.string.journal_entry_label_short))
                         },
                         selected = (bottomBarItemNumber == 2),
                         selectedContentColor = colorResource(id = R.color.white),
@@ -96,7 +96,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                             )
                         },
                         label = {
-                            Text(stringResource(id = R.string.recent_additions_label_short))
+                            Text(stringResource(id = R.string.record_history_label_short))
                         },
                         selected = (bottomBarItemNumber == 3),
                         selectedContentColor = colorResource(id = R.color.white),
@@ -121,7 +121,7 @@ fun NoSad_Scaffold(content: @Composable () -> Unit,
                     BottomNavigationItem(
                         icon = {
                             Icon(
-                                imageVector = Icons.Filled.Search,
+                                imageVector = Icons.Filled.Search,//TODO handshake icon
                                 contentDescription = "Resources icon"
                             )
                         },

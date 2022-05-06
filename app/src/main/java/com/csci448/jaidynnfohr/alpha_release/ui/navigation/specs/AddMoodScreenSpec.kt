@@ -24,8 +24,8 @@ object AddMoodScreenSpec : IScreenSpec {
         NoSad_Scaffold(
             content = {
                 EmotionsDropDown(
-                    onSaveMood = { color, string ->
-                        viewModel.tempColorStorage = color
+                    onSaveMood = { colorId, string ->
+                        viewModel.tempColorIdStorage = colorId
                         viewModel.tempStringStorage = string
                         navController.navigate(JournalScreenSpec.navigateTo())
                     }
@@ -41,22 +41,6 @@ object AddMoodScreenSpec : IScreenSpec {
             bottomBarItemNumber = 1
         )
     }
-
-
-//
-//    @Composable
-//    override fun Content(viewModel: ISamodelkinCharacterViewModel,
-//                         navController: NavController,
-//                         navBackStackEntry: NavBackStackEntry
-//    ) {
-//        val characterList = viewModel.characterListLiveData.observeAsState()
-//        CharacterListScreen(characterList = characterList.value, onSelectCharacter = {
-//                character -> navController.navigate(
-//            DetailScreenSpec.navigateTo(character.id.toString())
-//        )
-//        }
-//        )
-//    }
 
     override fun navigateTo(vararg args: String?): String {
         return route

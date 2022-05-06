@@ -15,6 +15,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material.icons.*
 import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.unit.sp
 
 
 @Composable
@@ -42,7 +43,8 @@ fun ScrollingCards(
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(16.dp)
                 ){
                     Icon(
                         imageVector = Icons.Filled.AddCircle,
@@ -53,7 +55,7 @@ fun ScrollingCards(
                             .height(48.dp)
                     )
                     Text(stringResource(id = R.string.add_mood_label_long),
-                        textAlign = TextAlign.Center,
+                        textAlign = TextAlign.End,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
                             .weight(1f)
@@ -73,7 +75,8 @@ fun ScrollingCards(
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(16.dp)
                 ){
                     Icon(
                         imageVector = Icons.Filled.Book,
@@ -83,8 +86,8 @@ fun ScrollingCards(
                             .weight(1f)
                             .height(48.dp)
                     )
-                    Text(stringResource(id = R.string.journal_records_label_long),
-                        textAlign = TextAlign.Center,
+                    Text(stringResource(id = R.string.journal_entry_label_long),
+                        textAlign = TextAlign.End,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
                             .weight(1f)
@@ -104,7 +107,8 @@ fun ScrollingCards(
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(16.dp)
                 ){
                     Icon(
                         imageVector = Icons.Filled.DateRange,
@@ -114,8 +118,8 @@ fun ScrollingCards(
                             .weight(1f)
                             .height(48.dp)
                     )
-                    Text(stringResource(id = R.string.recent_additions_label_long),
-                        textAlign = TextAlign.Center,
+                    Text(stringResource(id = R.string.record_history_label_long),
+                        textAlign = TextAlign.End,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
                             .weight(1f)
@@ -135,7 +139,8 @@ fun ScrollingCards(
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(16.dp)
                 ){
                     Icon(
                         imageVector = Icons.Filled.MultilineChart,
@@ -146,7 +151,7 @@ fun ScrollingCards(
                             .height(48.dp)
                     )
                     Text(stringResource(id = R.string.metrics_tracker_label_long),
-                        textAlign = TextAlign.Center,
+                        textAlign = TextAlign.End,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
                             .weight(1f)
@@ -166,7 +171,8 @@ fun ScrollingCards(
             ) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(16.dp)
                 ){
                     Icon(
                         imageVector = Icons.Filled.Search,
@@ -177,7 +183,7 @@ fun ScrollingCards(
                             .height(48.dp)
                     )
                     Text(stringResource(id = R.string.support_resources_label_long),
-                        textAlign = TextAlign.Center,
+                        textAlign = TextAlign.End,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 4.dp)
                             .weight(1f)
@@ -187,5 +193,4 @@ fun ScrollingCards(
         }
     }
 }
-
 

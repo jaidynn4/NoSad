@@ -21,14 +21,13 @@ import java.time.LocalTime
 @Composable
 fun JournalPage(
     mood_choice: String,
-    color_selection: Color,
+    color_id_selection: Int,
     title_text: String,
     thoughts_text: String,
     onAddMood: (String, String) -> Unit,
-    onSaveJournalEntry: (Color, String, String, LocalDate, LocalTime, LocalTime, String, MediaStore.Audio?) -> Unit
+    onSaveJournalEntry: (Int, String, String, LocalDate, LocalTime, LocalTime, String, MediaStore.Audio?) -> Unit
 ) {
-
-    val mood_set: Boolean by remember { mutableStateOf(color_selection != Color.White) }
+    val mood_set: Boolean by remember { mutableStateOf(color_id_selection != -1) }
     var journalTitle: String = title_text
     var title_set: Boolean by remember { mutableStateOf(journalTitle != "") }
     var journalThoughts: String = thoughts_text
@@ -60,7 +59,7 @@ fun JournalPage(
                     ) {
                         Text(
                             text = mood_choice,
-                            color = color_selection,
+                            color = if(color_id_selection != -1) colorResource(id = color_id_selection) else Color.White,
                             fontSize = 36.sp
                         )
                     }
@@ -124,7 +123,7 @@ fun JournalPage(
             ) {
                 Button(
                     onClick = {
-                        onSaveJournalEntry(color_selection, mood_choice, journalTitle, LocalDate.now(), LocalTime.now(), LocalTime.now(), journalThoughts, null)
+                        onSaveJournalEntry(color_id_selection, mood_choice, journalTitle, LocalDate.now(), LocalTime.now(), LocalTime.now(), journalThoughts, null)
                     },
                     enabled = (mood_set && title_set && entry_set),
                     shape = RoundedCornerShape(20.dp),
@@ -133,11 +132,12 @@ fun JournalPage(
                         contentColor = Color.White
                     )
                 ) {
-                    Text(text = stringResource(R.string.save_mood_button_label), fontSize = 14.sp)
+                    Text(
+                        text = stringResource(R.string.save_mood_button_label),
+                        fontSize = 14.sp
+                    )
                 }
             }
         }
     }
-
-
 }

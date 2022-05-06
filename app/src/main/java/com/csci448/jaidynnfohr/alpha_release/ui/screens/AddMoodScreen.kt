@@ -22,13 +22,15 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun EmotionsDropDown(
-    onSaveMood: (Color, String) -> Unit
+    onSaveMood: (Int, String) -> Unit
 ){
+    //List of 1st-level emotion strings
     val emotionsList = mutableListOf<String>()
     stringArrayResource(R.array.emotions_list).forEach {
         item -> emotionsList.add(item)
     }
 
+    //Lists of 2nd-level emotion strings
     val loveList = mutableListOf<String>()
     stringArrayResource(R.array.love_list).forEach {
             item -> loveList.add(item)
@@ -59,14 +61,17 @@ fun EmotionsDropDown(
             item -> fearList.add(item)
     }
 
-    val list_of_lists = mutableListOf<MutableList<String>>()
-    list_of_lists.add(loveList)
-    list_of_lists.add(joyList)
-    list_of_lists.add(surpriseList)
-    list_of_lists.add(sadnessList)
-    list_of_lists.add(angerList)
-    list_of_lists.add(fearList)
+    //List of the 2nd-level lists
+    val listOfLists = mutableListOf<MutableList<String>>()
+    listOfLists.add(loveList)
+    listOfLists.add(joyList)
+    listOfLists.add(surpriseList)
+    listOfLists.add(sadnessList)
+    listOfLists.add(angerList)
+    listOfLists.add(fearList)
 
+    //Lists of the 3rd-level emotion strings
+    //Note that each 2 entries correspond to one entry for the 2nd-level list of this emotion
     val loveSublist = mutableListOf<String>()
     stringArrayResource(R.array.love_sublist).forEach {
             item -> loveSublist.add(item)
@@ -97,42 +102,52 @@ fun EmotionsDropDown(
             item -> fearSublist.add(item)
     }
 
-    val list_of_sublists = mutableListOf<MutableList<String>>()
-    list_of_sublists.add(loveSublist)
-    list_of_sublists.add(joySublist)
-    list_of_sublists.add(surpriseSublist)
-    list_of_sublists.add(sadnessSublist)
-    list_of_sublists.add(angerSublist)
-    list_of_sublists.add(fearSublist)
+    //List of all the 3rd-level emotion strings
+    val listOfSublists = mutableListOf<MutableList<String>>()
+    listOfSublists.add(loveSublist)
+    listOfSublists.add(joySublist)
+    listOfSublists.add(surpriseSublist)
+    listOfSublists.add(sadnessSublist)
+    listOfSublists.add(angerSublist)
+    listOfSublists.add(fearSublist)
 
-    val colorList = mutableListOf<Color>()
-    colorList.add(colorResource(R.color.love_red_color))
-    colorList.add(colorResource(R.color.joy_yellow_color))
-    colorList.add(colorResource(R.color.surprise_green_color))
-    colorList.add(colorResource(R.color.sadness_blue_color))
-    colorList.add(colorResource(R.color.anger_orange_color))
-    colorList.add(colorResource(R.color.fear_purple_color))
+    //List of Int ids for the different color resources
+    val colorIdList = mutableListOf<Int>()
+    colorIdList.add(R.color.love_red_color)
+    colorIdList.add(R.color.joy_yellow_color)
+    colorIdList.add(R.color.surprise_green_color)
+    colorIdList.add(R.color.sadness_blue_color)
+    colorIdList.add(R.color.anger_orange_color)
+    colorIdList.add(R.color.fear_purple_color)
 
-    val placeholder_one = stringResource(id = R.string.category_dropdown_placeholder)
-    val placeholder_two = stringResource(id = R.string.feeling_dropdown_placeholder)
-    val placeholder_three = stringResource(id = R.string.specification_dropdown_placeholder)
+    //Placeholder strings for each of the three dropdown menus
+    val placeholderOne = stringResource(id = R.string.category_dropdown_placeholder)
+    val placeholderTwo = stringResource(id = R.string.feeling_dropdown_placeholder)
+    val placeholderThree = stringResource(id = R.string.specification_dropdown_placeholder)
 
-    var emotion: String by remember { mutableStateOf(placeholder_one) }
-    var emotion_expanded by remember { mutableStateOf(false)}
+    //VALUES of states for the first dropdown
+    var firstMenuChoice: String by remember { mutableStateOf(placeholderOne) }
+    var isFirstExpanded by remember { mutableStateOf(false)}
 
-    var secondList: MutableList<String> by remember { mutableStateOf(list_of_lists[0])}
-    var second_choice:String by remember { mutableStateOf(placeholder_two)}
-    var second_expanded by remember { mutableStateOf(false)}
-    var second_visible by remember { mutableStateOf(false)}
+    //VALUES of states for the second dropdown
+    var secondList: MutableList<String> by remember { mutableStateOf(listOfLists[0])}
+    var secondMenuChoice:String by remember { mutableStateOf(placeholderTwo)}
+    var isSecondExpanded by remember { mutableStateOf(false)}
+    var isSecondVisible by remember { mutableStateOf(false)}
     var subListIndex: Int by remember {mutableStateOf(0)}
 
-    var thirdList: MutableList<String> by remember { mutableStateOf(list_of_sublists[0])}
-    var third_choice: String by remember { mutableStateOf(placeholder_three)}
-    var third_expanded by remember { mutableStateOf(false)}
-    var third_visible by remember { mutableStateOf(false)}
+    //VALUES of states for the third dropdown
+    var thirdList: MutableList<String> by remember { mutableStateOf(listOfSublists[0])}
+    var thirdMenuChoice: String by remember { mutableStateOf(placeholderThree)}
+    var isThirdExpanded by remember { mutableStateOf(false)}
+    var isThirdVisible by remember { mutableStateOf(false)}
 
-    var answer_chosen by remember { mutableStateOf(false)}
-    var color_selection by remember { mutableStateOf(Color.White)}
+    //VALUE of state holding whether the save mood button should be displayed
+    var isEmotionChosen by remember { mutableStateOf(false)}
+
+    //VALUE of state holding the color id corresponding to the chosen emotion string
+    //R.color.white if none is chosen
+    var colorIdSelection by remember { mutableStateOf(R.color.white)}
 
     Box(Modifier.fillMaxWidth(),contentAlignment = Alignment.Center) {
         Column(
@@ -142,120 +157,185 @@ fun EmotionsDropDown(
         {
             Row(
                 Modifier
-                    .padding(18.dp)
                     .clickable {
-                        emotion_expanded = !emotion_expanded
-                        third_visible = false
-                        second_visible = false
-                        answer_chosen = false
-                        second_choice = placeholder_two
-                        color_selection = Color.White
-                    },
+                        isFirstExpanded = !isFirstExpanded
+                        isThirdVisible = false
+                        isSecondVisible = false
+                        isEmotionChosen = false
+                        secondMenuChoice = placeholderTwo
+                        colorIdSelection = R.color.white
+                    }
+                    .fillMaxWidth()
+                    .padding(18.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
-            ) { // Anchor view
-                Text(text = emotion, color = color_selection,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp)) // emotion name label
-                Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 18.dp)
+                ){
+                    //Emotion name label
+                    Text(
+                        text = firstMenuChoice,
+                        color = colorResource(colorIdSelection),
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(end = 8.dp))
+                    Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
-                //
-                DropdownMenu(expanded = emotion_expanded, onDismissRequest = {
-                    emotion_expanded = false
-                }) {
-                    for (i in 0 until emotionsList.size) {
-                        DropdownMenuItem(onClick = {
-                            emotion_expanded = false
-                            emotion = emotionsList[i]
-                            secondList = list_of_lists[i]
-                            second_visible = true
-                            thirdList = list_of_sublists[i]
-                            color_selection = colorList[i]
-                        }) {
-                            Text(text = emotionsList[i], color = colorList[i])
+                    DropdownMenu(expanded = isFirstExpanded, onDismissRequest = {
+                        isFirstExpanded = false
+                    }) {
+                        for (i in 0 until emotionsList.size) {
+                            DropdownMenuItem(onClick = {
+                                isFirstExpanded = false
+                                firstMenuChoice = emotionsList[i]
+                                secondList = listOfLists[i]
+                                isSecondVisible = true
+                                thirdList = listOfSublists[i]
+                                colorIdSelection = colorIdList[i]
+                            }) {
+                                Text(
+                                    text = emotionsList[i],
+                                    color = colorResource(colorIdList[i]))
+                            }
                         }
                     }
                 }
             }
 
-            if(second_visible){
+            if(isSecondVisible){
                 Row(
                     Modifier
-                        .padding(18.dp)
                         .clickable {
-                            second_expanded = !second_expanded
-                            third_visible = false
-                            answer_chosen = false
-                            third_choice = placeholder_three
-                        },
+                            isSecondExpanded = !isSecondExpanded
+                            isThirdVisible = false
+                            isEmotionChosen = false
+                            thirdMenuChoice = placeholderThree
+                        }
+                        .fillMaxWidth()
+                        .padding(18.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
-                ) { // Anchor view
-                    if (second_choice == placeholder_two){
-                        Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = Color.White) // emotion name label
-                    } else {
-                        Text(text = second_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
-                    }
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 18.dp)
+                    ) {
 
-                    Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+                        if (secondMenuChoice == placeholderTwo) {
+                            Text(
+                                text = secondMenuChoice,
+                                fontSize = 18.sp,
+                                modifier = Modifier.padding(end = 8.dp),
+                                color = Color.White
+                            ) // emotion name label
+                        } else {
+                            //Emotion Category label
+                            Text(
+                                text = secondMenuChoice,
+                                fontSize = 18.sp,
+                                modifier = Modifier.padding(end = 8.dp),
+                                color = colorResource(colorIdSelection)
+                            )
+                        }
 
-                    DropdownMenu(expanded = second_expanded, onDismissRequest = {
-                        second_expanded = false
-                    }) {
-                        for (i in 0 until secondList.size) {
-                            DropdownMenuItem(onClick = {
-                                second_expanded = false
-                                second_choice = secondList[i]
-                                third_visible = true
-                                subListIndex = i * 2
-                            }) {
-                                Text(text = secondList[i], color = color_selection)
+                        Icon(
+                            imageVector = Icons.Filled.ArrowDropDown,
+                            contentDescription = ""
+                        )
+
+                        DropdownMenu(expanded = isSecondExpanded, onDismissRequest = {
+                            isSecondExpanded = false
+                        }) {
+                            for (i in 0 until secondList.size) {
+                                DropdownMenuItem(onClick = {
+                                    isSecondExpanded = false
+                                    secondMenuChoice = secondList[i]
+                                    isThirdVisible = true
+                                    subListIndex = i * 2
+                                }) {
+                                    Text(
+                                        text = secondList[i],
+                                        color = colorResource(colorIdSelection)
+                                    )
+                                }
                             }
                         }
                     }
                 }
 
 
-                if (third_visible){
+                if (isThirdVisible){
                     Row(
                         Modifier
-                            .padding(18.dp)
                             .clickable {
-                                third_expanded = !third_expanded
-                                answer_chosen = false
-                            },
+                                isThirdExpanded = !isThirdExpanded
+                                isEmotionChosen = false
+                            }
+                            .fillMaxWidth()
+                            .padding(18.dp),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        if (third_choice == stringResource(id = R.string.specification_dropdown_placeholder)){
-                            Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = Color.White) // emotion name label
-                        } else {
-                            Text(text = third_choice,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp), color = color_selection) // emotion name label
-                        }
-                        Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+                        Row(
+                            modifier = Modifier.padding(horizontal = 18.dp)
+                        ) {
 
-
-                        DropdownMenu(expanded = third_expanded, onDismissRequest = {
-                            third_expanded = false
-                        }) {
-                            DropdownMenuItem(onClick = {
-                                third_expanded = false
-                                third_choice = thirdList[subListIndex]
-                                answer_chosen = true
-                            }) {
-                                Text(text = thirdList[subListIndex], color = color_selection)
+                            if (thirdMenuChoice == stringResource(id = R.string.specification_dropdown_placeholder)) {
+                                Text(
+                                    text = thirdMenuChoice,
+                                    fontSize = 18.sp,
+                                    modifier = Modifier.padding(end = 8.dp), color = Color.White
+                                )
+                            } else {
+                                Text(
+                                    text = thirdMenuChoice,
+                                    fontSize = 18.sp,
+                                    modifier = Modifier.padding(end = 8.dp),
+                                    color = colorResource(colorIdSelection)
+                                )
                             }
-                            DropdownMenuItem(onClick = {
-                                third_expanded = false
-                                third_choice = thirdList[subListIndex + 1]
-                                answer_chosen = true
-                            }) {
-                                Text(text = thirdList[subListIndex + 1], color = color_selection)
+                            Icon(
+                                imageVector = Icons.Filled.ArrowDropDown,
+                                contentDescription = ""
+                            )
+
+
+                            DropdownMenu(
+                                expanded = isThirdExpanded,
+                                onDismissRequest = {
+                                    isThirdExpanded = false
+                                }
+                            ) {
+                                DropdownMenuItem(
+                                    onClick = {
+                                        isThirdExpanded = false
+                                        thirdMenuChoice = thirdList[subListIndex]
+                                        isEmotionChosen = true
+                                    }
+                                ) {
+                                    Text(
+                                        text = thirdList[subListIndex],
+                                        color = colorResource(colorIdSelection)
+                                    )
+                                }
+                                DropdownMenuItem(
+                                    onClick = {
+                                        isThirdExpanded = false
+                                        thirdMenuChoice = thirdList[subListIndex + 1]
+                                        isEmotionChosen = true
+                                    }
+                                ) {
+                                    Text(
+                                        text = thirdList[subListIndex + 1],
+                                        color = colorResource(colorIdSelection)
+                                    )
+                                }
                             }
                         }
                     }
                 }
             }
 
-            if(answer_chosen){
+            if(isEmotionChosen){
                 Row(
                     Modifier
                         .padding(18.dp),
@@ -274,8 +354,8 @@ fun EmotionsDropDown(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = third_choice,
-                                color = color_selection,
+                                text = thirdMenuChoice,
+                                color = colorResource(colorIdSelection),
                                 fontSize = 36.sp,
                                 modifier = Modifier.padding(end = 8.dp),
                             )
@@ -291,7 +371,7 @@ fun EmotionsDropDown(
                 ) {
                     Button(
                         onClick = {
-                            onSaveMood(color_selection, third_choice)
+                            onSaveMood(colorIdSelection, thirdMenuChoice)
                         },
                         shape = RoundedCornerShape(20.dp),
                         colors = ButtonDefaults.buttonColors(
@@ -308,5 +388,5 @@ fun EmotionsDropDown(
 @Preview
 @Composable
 fun ColorScreenPreview(){
-    EmotionsDropDown({color, string -> {}})
+    EmotionsDropDown { _, _ -> }
 }
