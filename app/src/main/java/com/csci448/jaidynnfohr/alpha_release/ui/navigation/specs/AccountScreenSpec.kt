@@ -25,11 +25,14 @@ object AccountScreenSpec : IScreenSpec {
         AccountScreen(viewModel = viewModel as NoSadViewModel,
             myProfile = Profile(
                 language = stringResource(id = R.string.viewModel_placeholder),
-                email = stringResource(id = R.string.viewModel_placeholder),
+                email = viewModel.userEmail.value,
                 name = stringResource(id = R.string.viewModel_placeholder),
                 emergencyContact = stringResource(id = R.string.viewModel_placeholder),
-                password = stringResource(id = R.string.viewModel_placeholder)),
-            onBack = { navController.popBackStack() })
+                password = viewModel.password.value
+            ),
+            onBack = { navController.popBackStack() },
+            avm = viewModel
+        )
     }
 
     override fun navigateTo(vararg args: String?): String {

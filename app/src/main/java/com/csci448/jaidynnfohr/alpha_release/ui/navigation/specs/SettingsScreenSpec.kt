@@ -1,5 +1,7 @@
 package com.csci448.jaidynnfohr.alpha_release.ui.navigation.specs
 
+import android.app.Activity
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
@@ -28,9 +30,11 @@ object SettingsScreenSpec : IScreenSpec {
           onAboutClick = { navController.navigate(AboutScreenSpec.navigateTo()) },
           onBack = { navController.popBackStack() },
           onLogout = {
-              viewModel.signOut()
+              viewModel.triggerRestart()
           },
-          onLogoutSuccessfull = { navController.navigate(DetailScreenSpec.navigateTo()) },
+          onLogoutSuccessfull = {
+
+          },
           avm = viewModel
       )
     }

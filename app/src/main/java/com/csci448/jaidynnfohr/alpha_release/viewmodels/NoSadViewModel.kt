@@ -1,6 +1,8 @@
 package com.csci448.jaidynnfohr.alpha_release.viewmodels
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
@@ -16,6 +18,7 @@ import com.csci448.jaidynnfohr.alpha_release.R
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.*
 import androidx.navigation.compose.rememberNavController
+import com.csci448.jaidynnfohr.alpha_release.MainActivity
 import com.csci448.jaidynnfohr.alpha_release.data.JournalEntry
 import com.csci448.jaidynnfohr.alpha_release.data.PastRecord
 import com.csci448.jaidynnfohr.alpha_release.data.database.NoSadRepository
@@ -159,7 +162,7 @@ class NoSadViewModel(
             _loginSuccessful.value = false
             _error.value = task.exception?.localizedMessage ?: "Unknown error"
             val toast = Toast(context)
-            toast.setText("Invalid Email or Password")
+            toast.setText("Sign-in Error")
             toast.duration = Toast.LENGTH_SHORT
             toast.show()
             Log.w("AUTH", "SignInWithEmail:failure", task.exception)
@@ -185,6 +188,53 @@ class NoSadViewModel(
         _loginSuccessful.value = false
     }
 
+    fun updateAccountEmail() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updateEmail(userEmail.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Email Updated")
+                        } else {
+                            toast.setText("Failed to Update Email")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
+
+    fun updateAccountPassword() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updatePassword(password.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Password Updated")
+                        } else {
+                            toast.setText("Failed to Update Password")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+
+
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
+
     fun signOut() {
         viewModelScope.launch {
             try {
@@ -199,5 +249,59 @@ class NoSadViewModel(
                 Log.d("AUTH", "Sign out fail: $e")
             }
         }
+    }
+
+    fun updateBoth() {
+        viewModelScope.launch {
+            try {
+                _error.value = ""
+                Firebase.auth.currentUser?.updateEmail(userEmail.value)
+                    ?.addOnCompleteListener { task ->
+                        val toast = Toast(context)
+                        if (task.isSuccessful) {
+                            toast.setText("Email Updated")
+                        } else {
+                            toast.setText("Failed to Update Email")
+                        }
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.show()
+                        viewModelScope.launch {
+                            try {
+                                _error.value = ""
+                                Firebase.auth.currentUser?.updatePassword(password.value)
+                                    ?.addOnCompleteListener { task ->
+                                        val toast = Toast(context)
+                                        if (task.isSuccessful) {
+                                            toast.setText("Password Updated")
+                                        } else {
+                                            toast.setText("Failed to Update Password")
+                                        }
+                                        toast.duration = Toast.LENGTH_SHORT
+                                        toast.show()
+
+
+                                    }
+                            } catch (e: Exception) {
+                                _error.value = e.localizedMessage ?: "Unknown error"
+                                Log.d("AUTH", "Sign in fail: $e")
+                            }
+                        }
+                    }
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage ?: "Unknown error"
+                Log.d("AUTH", "Sign in fail: $e")
+            }
+        }
+    }
+
+    //https://gist.github.com/easterapps/7127ce0749cfce2edf083e55b6eecec5
+    fun triggerRestart() {
+        val intent = Intent(context, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
+        if (context is Activity) {
+            (context as Activity).finish()
+        }
+        Runtime.getRuntime().exit(0)
     }
 }
